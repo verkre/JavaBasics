@@ -80,16 +80,6 @@ public class UserInput {
             // action object has a doIt method (that is overwritten in each subclass)
             // **action object factory!!!!**
             
-//            try {   
-//                // REFACT write helper method to do the exception catching?
-//                // and range checking
-//                // like getIntegerFromUser(minValue, maxValue), returning an integer in the desired range
-//                userChoice = new java.util.Scanner(System.in).nextInt();
-//            } 
-//            catch(InputMismatchException inputNotInteger) {
-//                System.out.println("Invalid input. Please enter one of these numbers (0 to exit):");
-//                continue;
-//            }
             userChoice = UserInput.askInputNumber(0, 5);
 
             if (userChoice >= 0 && userChoice <= 5) {
