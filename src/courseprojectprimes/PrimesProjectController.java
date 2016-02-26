@@ -53,13 +53,9 @@ public class PrimesProjectController {
                     aoListPrimes.go();
                     break;
                 case 4:
-                    // let them choose which one
-                    // output result
+                case 5:
                     ActionObjectEulerProblems aoEulerProblems = new ActionObjectEulerProblems();
                     aoEulerProblems.go();
-                    break;
-                case 5:
-                    System.out.println("Sorry, can't do that yet");
                     break;
 
             }
