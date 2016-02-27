@@ -13,7 +13,7 @@ public class ActionObjectListPrimes extends ActionObject {
     @Override
     public void go() {
         int howMany = UserInput.askInputNumber(1);
-        ArrayList<Integer> primeList = PrimeList.listFirstNPrimes(howMany);
+        ArrayList<Integer> primeList = PrimesHelper.listFirstNPrimes(howMany);
         System.out.printf("Here is a list of the first %d primes: %n", howMany);
         System.out.println(primeList);
     }

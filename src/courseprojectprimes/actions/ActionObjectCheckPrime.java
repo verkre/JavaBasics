@@ -1,6 +1,6 @@
 package courseprojectprimes.actions;
 
-import courseprojectprimes.Number;
+import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 
 public class ActionObjectCheckPrime extends ActionObject {
@@ -23,8 +23,7 @@ public class ActionObjectCheckPrime extends ActionObject {
     @Override
     public void go() {
         int intToCheck = UserInput.askInputNumber(1, 2000000000);
-        Number numberToCheck = new Number(intToCheck);
-        if (numberToCheck.isPrime()) {
+        if (PrimesHelper.isPrime(intToCheck)) {
             System.out.printf("%d is prime.%n", intToCheck);
         }
         else {

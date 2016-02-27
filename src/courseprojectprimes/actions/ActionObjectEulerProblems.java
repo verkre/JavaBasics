@@ -1,6 +1,6 @@
 package courseprojectprimes.actions;
 
-import courseprojectprimes.PrimeList;
+import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class ActionObjectEulerProblems extends ActionObject {
             return;
         }
         if (eulerProblemChoice == 7) {
-            ArrayList<Integer> primeList = PrimeList.listFirstNPrimes(10001);
+            ArrayList<Integer> primeList = PrimesHelper.listFirstNPrimes(10001);
             System.out.println("The 10001st prime is " + primeList.get(10000));
         } 
         else {
