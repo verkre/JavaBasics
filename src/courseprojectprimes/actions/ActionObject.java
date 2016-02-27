@@ -13,8 +13,6 @@ public class ActionObject {
     }
     
     
-    // TODO right now this method adds no functionality. Is there any reason to have it here
-    // in the superclass and then override it in every single subclass? - Yes!
     public void go() {
         throw new RuntimeException("override me!");
     }
