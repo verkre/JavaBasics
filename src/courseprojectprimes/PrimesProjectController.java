@@ -26,41 +26,29 @@ public class PrimesProjectController {
         // -- problem 41: permutations of 9 (8..) digits, check for primeness and find largest
         // -- problem 49: ...
         // -- problem 50: add sub-lists of prime list and check result for primeness (possibly optimize that to make it faster)
-//        UserInput.displayMainMenuNew();
         
         while (true) {
-            
-        
-            int mainMenuChoice = UserInput.chooseMainMenu();
-
-
-            // REFACT make menu item numbers "dynamic"
-            switch (mainMenuChoice) {
-                case 0:
-                    ActionObjectExit aoExit = new ActionObjectExit();
-                    aoExit.go();
-                    break;
-                case 1:
-                    ActionObjectCheckPrime aoCheckPrime = new ActionObjectCheckPrime(); // instantiating action object
-                    aoCheckPrime.go(); 
-                    break;
-                case 2:
-                    ActionObjectListPrimeFactors aoPrimeFactors = new ActionObjectListPrimeFactors();
-                    aoPrimeFactors.go();
-                    break;
-                case 3:
-                    ActionObjectListPrimes aoListPrimes = new ActionObjectListPrimes();
-                    aoListPrimes.go();
-                    break;
-                case 4:
-                case 5:
-                    ActionObjectEulerProblems aoEulerProblems = new ActionObjectEulerProblems();
-                    aoEulerProblems.go();
-                    break;
-
-            }
-            
+            UserInput.displayAndChooseFromMenu(collectActionObjects());
         }
+        
+        
+    }
+
+    // is-a
+    // has-a
+    // knows how to
+    // - display different menus (main, sub), optionally getting the menu items from the controller (?)
+    // - ask the user for an input
+    // - check user input for validity and return it to the controller
+    public static ArrayList<ActionObject> collectActionObjects() {
+        // get the descriptions from each action object, collect them in an ArrayList
+        ArrayList<ActionObject> availableActionObjects = new ArrayList<>();
+        availableActionObjects.add(new ActionObjectExit());
+        availableActionObjects.add(new ActionObjectCheckPrime());
+        availableActionObjects.add(new ActionObjectListPrimeFactors());
+        availableActionObjects.add(new ActionObjectListPrimes());
+        availableActionObjects.add(new ActionObjectEulerProblems());
+        return availableActionObjects;
     }
     
 }
