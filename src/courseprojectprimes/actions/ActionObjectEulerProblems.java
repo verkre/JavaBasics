@@ -21,6 +21,9 @@ public class ActionObjectEulerProblems extends ActionObject {
     @Override
     public void go() {
         int eulerProblemChoice = UserInput.chooseEulerProblem();
+        if (eulerProblemChoice == 0) {
+            return;
+        }
         if (eulerProblemChoice == 7) {
             ArrayList<Integer> primeList = PrimeList.listFirstNPrimes(10001);
             System.out.println("The 10001st prime is " + primeList.get(10000));
