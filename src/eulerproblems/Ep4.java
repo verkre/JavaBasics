@@ -34,7 +34,7 @@ public class Ep4 extends Action {
     }
     
     public void execute() {
-        System.out.println("The largest palindrome number made from the product of two 3-digit numbers is " + this.showSolution());
+        System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.showSolution());
     }
     
     private boolean isPalindromic(int number) {

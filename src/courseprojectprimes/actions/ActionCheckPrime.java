@@ -17,10 +17,10 @@ public class ActionCheckPrime extends Action {
     public void execute() {
         int intToCheck = UserInput.askInputNumber(1, 2000000000);
         if (PrimesHelper.isPrime(intToCheck)) {
-            System.out.printf("%d is prime.%n", intToCheck);
+            System.out.printf("\n%d is prime.%n", intToCheck);
         }
         else {
-            System.out.printf("%d is not prime.%n", intToCheck);
+            System.out.printf("\n%d is not prime.%n", intToCheck);
         }
     }
     

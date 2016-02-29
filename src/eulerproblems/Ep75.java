@@ -32,7 +32,7 @@ public class Ep75 extends Action {
     }
     
     public void execute() {
-        System.out.printf("For %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.showSolution());
+        System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.showSolution());
     }
 
     

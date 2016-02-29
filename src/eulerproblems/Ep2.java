@@ -34,7 +34,7 @@ public class Ep2 extends Action {
     }
     
     public void execute() {
-        System.out.println("The sum of the even-valued fibonacci numbers up to 4 million is " + this.showSolution());
+        System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.showSolution());
     }
     
     public int evenFibSumUpTo(int upperBound) {

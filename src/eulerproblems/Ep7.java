@@ -30,7 +30,7 @@ public class Ep7 extends Action {
     }
     
     public void execute() {
-        System.out.println("The 10001st prime is " + this.showSolution());
+        System.out.println("\nThe 10001st prime is " + this.showSolution());
     }
 
 }
