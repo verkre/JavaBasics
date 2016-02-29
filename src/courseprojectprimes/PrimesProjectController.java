@@ -19,7 +19,7 @@ public class PrimesProjectController {
         // -- problem 41: permutations of 9 (8..) digits, check for primeness and find largest
         // -- problem 49: ...
         // -- problem 50: add up sub-lists of prime list and check result for primeness (possibly optimize that to make it faster)
-        
+
         while (true) {
             UserInput.displayAndChooseFromMenu(collectActionObjects());
         }
@@ -27,7 +27,8 @@ public class PrimesProjectController {
     }
 
     public static ArrayList<ActionObject> collectActionObjects() {
-        // get the descriptions from each action object, collect them in an ArrayList
+        // make an instance from each ActionObject class, collect them in an ArrayList
+        // to pass them as an argument to the main menu method in the UserInput class
         ArrayList<ActionObject> availableActionObjects = new ArrayList<>();
         availableActionObjects.add(new ActionObjectExit());
         availableActionObjects.add(new ActionObjectCheckPrime());
