@@ -13,8 +13,6 @@ public class ActionEulerProblems extends Action {
     // - find the solution
     // - output the solution.
 
-    // TODO make the EP objects know about which solutions it already computed and store them
-    // would be nice for the computations that take longer than a second or so.
     public ActionEulerProblems() {
     }
 
@@ -28,7 +26,7 @@ public class ActionEulerProblems extends Action {
     Ep75 ep75Object = new Ep75();
     
     
-    
+  
     @Override
     public String giveDescription() {
         return "show the solution to a problem from Project Euler";
@@ -36,31 +34,26 @@ public class ActionEulerProblems extends Action {
 
     @Override
     public void execute() {
-        // TODO use displayMenu method (pass list of Ep objects as arguments), give Ep objects go methods that show the solution
+        
+        
         
         // stay in this sub-menu until user enters 0 (to return to main menu)
         while (true) {
-            int eulerProblemChoice = UserInput.chooseEulerProblem();
-            if (eulerProblemChoice == 0) {
-                return;
-            }
-            if (eulerProblemChoice == 2) {
-                ep2Object.execute();
-            }
-            if (eulerProblemChoice == 4) {
-                ep4Object.execute();
-            } 
-            else if (eulerProblemChoice == 7) {
-                ep7Object.execute();
-            } 
-            else if (eulerProblemChoice == 75) {
-                ep75Object.execute();
-            }
-            else {
-                System.out.println("Sorry, can't do that yet.");
-            }
-
+            
+            UserInput.displayAndChooseFromMenu(this.collectEulerProblems());
         }
     }
 
+    public ArrayList<Action> collectEulerProblems() {
+        ArrayList<Action> availableEulerProblems = new ArrayList<>();
+        availableEulerProblems.add(new ExitToMainMenu());
+        availableEulerProblems.add(ep2Object);
+        availableEulerProblems.add(ep4Object);
+        availableEulerProblems.add(ep7Object);
+        availableEulerProblems.add(ep75Object);
+        return availableEulerProblems;
+    }
+    
+    
+    
 }
