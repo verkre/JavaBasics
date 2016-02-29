@@ -2,10 +2,15 @@
 package eulerproblems;
 
 
+/**
+ * This is a class to help with some operations on an array of integers (used in
+ * the generation of fibonacci numbers and sums)
+ * @author Vera Kreuter
+ */
 
-public class NumberList {
+public class FibonacciArray {
     public int[] array;
-    public NumberList(int[] array) {
+    public FibonacciArray(int[] array) {
         this.array = array;
     }
     
