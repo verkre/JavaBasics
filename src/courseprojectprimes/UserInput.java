@@ -23,6 +23,9 @@ public class UserInput {
     }
     
     
+   
+    
+    
     // TODO change this method to accept larger numbers
     // using BigInteger class
     // is it better to just use the biggest possible class (BigInteger) for all
@@ -30,5 +33,42 @@ public class UserInput {
     // resorting to BigInteger?
     // or maybe try to cast it to a smaller type before making the calculations and iterations?
     
+    public static int askInputNumber(int lowerBound, int upperBound) { // TODO change this to be non-static?
+        System.out.printf("Please type a number between %d and %d. > ", lowerBound, upperBound);
+        int inputNumber;
+        while (true) {
+            try {
+                inputNumber = new java.util.Scanner(System.in).nextInt();
+            } catch(InputMismatchException inputNotInteger) {
+                System.out.printf("That was not an integer. Please enter an integer between %d and %d. > ", lowerBound, upperBound);
+                continue;
+            }
+            if (inputNumber >= lowerBound && inputNumber <= upperBound) {
+                return inputNumber;
+            }
+            else {
+                System.out.printf("Invalid input. Please enter a number between %d and %d. > ", lowerBound, upperBound);
+            }
+        }
+    }
+    
+    public static int askInputNumber(int lowerBound) {
+        System.out.printf("Please type a number (%d or greater). > ", lowerBound);
+        int inputNumber;
+        while (true) {
+            try {
+                inputNumber = new java.util.Scanner(System.in).nextInt();
+            } catch(InputMismatchException inputNotInteger) {
+                System.out.printf("That was not an integer. Please type an integer (%d or greater). > ", lowerBound);
+                continue;
+            }
+            if (inputNumber >= lowerBound) {
+                return inputNumber;
+            }
+            else {
+                System.out.printf("Invalid input. Number must be at least %d. > ", lowerBound);
+            }
+        }
+    }
     
 }
