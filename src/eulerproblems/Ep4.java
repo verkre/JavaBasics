@@ -6,10 +6,8 @@ correct answer: 906609
 */
 package eulerproblems;
 
-import courseprojectprimes.actions.Executable;
 
-
-public class Ep4 implements Executable {
+public class Ep4 extends EulerProblem {
     
     private int solution;
     private boolean solutionWasComputed;

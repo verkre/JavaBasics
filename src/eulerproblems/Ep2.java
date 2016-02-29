@@ -7,12 +7,8 @@ find the sum of even-valued fibonacci numbers that do not exceed four million.
 
 package eulerproblems;
 
-// TODO make a super class (or interface?) for all these Ep classes!
 
-import courseprojectprimes.actions.Executable;
-
-
-public class Ep2 implements Executable {
+public class Ep2 extends EulerProblem {
     
     private int solution;
     private boolean solutionWasComputed;
