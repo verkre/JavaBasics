@@ -2,7 +2,6 @@ package courseprojectprimes;
 
 import courseprojectprimes.actions.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class MenuInterface {
     

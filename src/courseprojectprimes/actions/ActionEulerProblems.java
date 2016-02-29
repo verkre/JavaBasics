@@ -16,8 +16,6 @@ public class ActionEulerProblems extends Action {
     Ep7 ep7Object = new Ep7();
     Ep75 ep75Object = new Ep75();
     
-    
-  
     @Override
     public String giveDescription() {
         return "show the solution to a problem from Project Euler";
@@ -25,13 +23,10 @@ public class ActionEulerProblems extends Action {
 
     @Override
     public void execute() {
-        
-        
-        
         // stay in this sub-menu until user enters 0 (to return to main menu)
-        MenuInterface eulerUserInterface = new MenuInterface(this.collectEulerProblems());
+        MenuInterface eulerMenuInterface = new MenuInterface(this.collectEulerProblems());
         while (true) {
-            eulerUserInterface.displayAndChooseFromMenu();
+            eulerMenuInterface.displayAndChooseFromMenu();
         }
     }
 
@@ -44,7 +39,5 @@ public class ActionEulerProblems extends Action {
         availableEulerProblems.add(ep75Object);
         return availableEulerProblems;
     }
-    
-    
     
 }
