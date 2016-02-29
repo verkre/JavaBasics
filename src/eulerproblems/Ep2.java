@@ -38,20 +38,18 @@ public class Ep2 extends Action {
     }
     
     public int evenFibSumUpTo(int upperBound) {
-        // list of last 3 fibs so far
-        // if last one ist even, add to resultSum
-        // update list by shifting the values to the left and adding the next fib on the right
-        // do all of this while third element of list is < 4 million
-        NumberList lastThreeFibs = new NumberList(new int[]{0, 1, 1});
+        // keeps only the last 3 computed fibonacci numbers in an array
+        // if last one is even, add it to resultSum
+        // update the array by shifting the values to the left and adding the next fib on the right
+        // do all of this while the third element of list is < upperBound
+        FibonacciArray lastThreeFibs = new FibonacciArray(new int[]{0, 1, 1});
         int resultSum = 0;
         while (lastThreeFibs.getLastElement() < upperBound) {
             // if the last fibonacci number we generated so far is even, add it to the sum
             if (lastThreeFibs.isLastElementEven()) {
                 resultSum += lastThreeFibs.getLastElement();
             }
-            
             lastThreeFibs.computeNextFib();
-            // if we exceed the given upperBound here, the loop ends
         }
         return resultSum;
     }
