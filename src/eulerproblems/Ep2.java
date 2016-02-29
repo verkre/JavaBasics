@@ -9,7 +9,10 @@ package eulerproblems;
 
 // TODO make a super class (or interface?) for all these Ep classes!
 
-public class Ep2 {
+import courseprojectprimes.actions.Executable;
+
+
+public class Ep2 implements Executable {
     
     private int solution;
     private boolean solutionWasComputed;

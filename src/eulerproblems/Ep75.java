@@ -1,11 +1,12 @@
 package eulerproblems;
 
+import courseprojectprimes.actions.Executable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Math;
 
 
-public class Ep75 {
+public class Ep75 implements Executable {
     
     private int solution;
     private boolean solutionWasComputed;

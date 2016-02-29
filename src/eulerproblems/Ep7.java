@@ -2,9 +2,10 @@
 package eulerproblems;
 
 import courseprojectprimes.PrimesHelper;
+import courseprojectprimes.actions.Executable;
 
 
-public class Ep7 {
+public class Ep7 implements Executable {
 
     private int solution;
     private boolean solutionWasComputed;
