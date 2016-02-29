@@ -3,14 +3,18 @@ package courseprojectprimes.actions;
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 
-public class ActionObjectListPrimeFactors extends ActionObject {
+public class ActionListPrimeFactors extends Action {
     
-    public ActionObjectListPrimeFactors() {
-        description = "compute the prime factors of a number";
+    public ActionListPrimeFactors() {
     }
     
     @Override
-    public void go() {
+    public String giveDescription() {
+        return "compute the prime factors of a number";
+    }
+    
+    @Override
+    public void execute() {
         int intToFactorize = UserInput.askInputNumber(2);
         System.out.printf("The prime factors of %d are:%n", intToFactorize);
         System.out.println(PrimesHelper.computePrimeFactors(intToFactorize));

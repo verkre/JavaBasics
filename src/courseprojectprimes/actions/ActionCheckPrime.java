@@ -3,14 +3,18 @@ package courseprojectprimes.actions;
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 
-public class ActionObjectCheckPrime extends ActionObject {
+public class ActionCheckPrime extends Action {
 
-    public ActionObjectCheckPrime() {
-        description = "check if a number is prime";
+    public ActionCheckPrime() {
     }
     
     @Override
-    public void go() {
+    public String giveDescription() {
+        return "check if a number is prime";
+    }
+    
+    @Override
+    public void execute() {
         int intToCheck = UserInput.askInputNumber(1, 2000000000);
         if (PrimesHelper.isPrime(intToCheck)) {
             System.out.printf("%d is prime.%n", intToCheck);
