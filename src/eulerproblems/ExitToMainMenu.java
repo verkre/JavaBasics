@@ -5,7 +5,7 @@
  */
 package eulerproblems;
 
-import courseprojectprimes.UserInput;
+import courseprojectprimes.MenuInterface;
 import courseprojectprimes.actions.Action;
 
 /**
@@ -21,7 +21,7 @@ public class ExitToMainMenu extends Action {
     
     @Override
     public void execute() {
-        System.exit(0);
+//        System.exit(0);
         // TODO How can I go back to the main menu from here?
     }
 }
