@@ -6,8 +6,10 @@ correct answer: 906609
 */
 package eulerproblems;
 
+import courseprojectprimes.actions.Action;
 
-public class Ep4 extends EulerProblem {
+
+public class Ep4 extends Action {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -15,12 +17,16 @@ public class Ep4 extends EulerProblem {
         this.solutionWasComputed = false;
     }
     
+    public String giveDescription() {
+        return "Problem 4 - Largest palindrome product";
+    }
+    
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
     
     public int showSolution() {
-        if (this.solutionWasComputed) {
+        if (!this.solutionWasComputed) {
             this.solution = this.findLargestPalindromeProduct(3);
             this.solutionWasComputed = true;
         }

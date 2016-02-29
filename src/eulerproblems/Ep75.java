@@ -1,11 +1,12 @@
 package eulerproblems;
 
+import courseprojectprimes.actions.Action;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.lang.Math;
 
 
-public class Ep75 extends EulerProblem {
+public class Ep75 extends Action {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -13,7 +14,11 @@ public class Ep75 extends EulerProblem {
     public Ep75() {
         solutionWasComputed = false;
     }
-
+    
+    public String giveDescription() {
+        return "Problem 75 - Singular integer right triangles (this will take a few minutes!)";
+    }
+    
     public boolean isSolved() {
         return this.solutionWasComputed;
     }

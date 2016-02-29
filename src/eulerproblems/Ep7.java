@@ -2,8 +2,9 @@
 package eulerproblems;
 
 import courseprojectprimes.PrimesHelper;
+import courseprojectprimes.actions.Action;
 
-public class Ep7 extends EulerProblem {
+public class Ep7 extends Action {
 
     private int solution;
     private boolean solutionWasComputed;
@@ -11,7 +12,11 @@ public class Ep7 extends EulerProblem {
     public Ep7() {
         solutionWasComputed = false;
     }
-
+    
+    public String giveDescription() {
+        return "Problem 7 - 10001st prime";
+    }
+    
     public boolean isSolved() {
         return this.solutionWasComputed;
     }

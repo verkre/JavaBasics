@@ -7,8 +7,9 @@ find the sum of even-valued fibonacci numbers that do not exceed four million.
 
 package eulerproblems;
 
+import courseprojectprimes.actions.Action;
 
-public class Ep2 extends EulerProblem {
+public class Ep2 extends Action {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -16,12 +17,16 @@ public class Ep2 extends EulerProblem {
         this.solutionWasComputed = false;
     }
     
+    public String giveDescription() {
+        return "Problem 2 - Even Fibonacci numbers";
+    }
+    
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
     
     public int showSolution() {
-        if (this.solutionWasComputed) {
+        if (!this.solutionWasComputed) {
             this.solution = this.evenFibSumUpTo(4_000_000);
             this.solutionWasComputed = true;
         }
