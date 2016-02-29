@@ -18,35 +18,8 @@ public class UserInput {
     }
     
     
-    public static int chooseEulerProblem() {
-        System.out.println("\nRight now, I can do problems 4, 7, and 75 from Project Euler. Please choose one:");
-        int userChoice;
-        while (true) {
-            System.out.println("4 - show me the answer to problem 4 (Largest palindrome product)");
-            System.out.println("7 - show me the answer to problem 7 (10001st prime)");
-            System.out.println("75 - Singular integer right triangles (this will take a few minutes!)");
-            System.out.println("0 - no thanks; go back to main menu");
-            System.out.print("> ");
-        
-            try {
-                userChoice = new java.util.Scanner(System.in).nextInt();
-            }
-            catch (InputMismatchException inputNotInteger) {
-                System.out.println("Invalid input. Please enter one of these numbers (0 to go back to main menu):");
-                continue;
-            }
-
-            if (userChoice == 0) {
-                return userChoice; // to return to main menu instead of exiting right away
-            }
-            else if (userChoice == 4 | userChoice == 7 | userChoice == 75) {
-                return userChoice;
-            }
-            else {
-                System.out.println("Invalid input. Please enter one of these numbers (0 to go back to main menu):");
-            }
-        }
-    }
+   
+    
     
     // TODO change this method to accept larger numbers
     // using BigInteger class
