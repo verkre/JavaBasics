@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Controller {
     // TODO make it work for bigger numbers (use BigInteger class)
     
+    
+    
     public static void main(String[] args) {
         // ask user what they want to do:
         // - check if a number is prime
@@ -22,8 +24,9 @@ public class Controller {
         // -- problem 49: ...
         // -- problem 50: add up sub-lists of prime list and check result for primeness (possibly optimize that to make it faster)
         
+        UserInput userInterface = new UserInput(collectActionObjects());
         while (true) {
-            UserInput.displayAndChooseFromMenu(collectActionObjects());
+            userInterface.displayAndChooseFromMenu();
         }
         
     }

@@ -6,15 +6,20 @@ import java.util.InputMismatchException;
 
 public class UserInput {
     
+    private ArrayList<Action> menuItems;
     
-    public static void displayAndChooseFromMenu(ArrayList<Action> availableMenuChoices) {
+    public UserInput(ArrayList<Action> availableMenuItems) {
+        this.menuItems = availableMenuItems;
+    }
+    
+    public void displayAndChooseFromMenu() {
         System.out.println("\n");
         // print a newline before the menu because it looks better
-        for (int i = 0; i < availableMenuChoices.size(); i++) {
-            System.out.printf("%d - " + availableMenuChoices.get(i).getDescription() + "%n", i);
+        for (int i = 0; i < this.menuItems.size(); i++) {
+            System.out.printf("%d - " + this.menuItems.get(i).getDescription() + "%n", i);
         }
-        int userChoice = UserInput.askInputNumber(0, availableMenuChoices.size() - 1);
-        availableMenuChoices.get(userChoice).execute();
+        int userChoice = UserInput.askInputNumber(0, this.menuItems.size() - 1);
+        this.menuItems.get(userChoice).execute();
     }
     
     
