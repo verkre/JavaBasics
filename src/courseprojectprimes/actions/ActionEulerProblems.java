@@ -29,7 +29,7 @@ public class ActionEulerProblems extends Action {
         
         
         // stay in this sub-menu until user enters 0 (to return to main menu)
-        UserInput eulerUserInterface = new UserInput(this.collectEulerProblems());
+        MenuInterface eulerUserInterface = new MenuInterface(this.collectEulerProblems());
         while (true) {
             eulerUserInterface.displayAndChooseFromMenu();
         }

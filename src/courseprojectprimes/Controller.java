@@ -24,7 +24,7 @@ public class Controller {
         // -- problem 49: ...
         // -- problem 50: add up sub-lists of prime list and check result for primeness (possibly optimize that to make it faster)
         
-        UserInput userInterface = new UserInput(collectActionObjects());
+        MenuInterface userInterface = new MenuInterface(collectActionObjects());
         while (true) {
             userInterface.displayAndChooseFromMenu();
         }
@@ -33,7 +33,7 @@ public class Controller {
 
     public static ArrayList<Action> collectActionObjects() {
         // make an instance from each ActionObject class, collect them in an ArrayList
-        // to pass them as an argument to the main menu method in the UserInput class
+        // to pass them as an argument to the main menu method in the MenuInterface class
         ArrayList<Action> availableActionObjects = new ArrayList<>();
         availableActionObjects.add(new ActionExit());
         availableActionObjects.add(new ActionCheckPrime());

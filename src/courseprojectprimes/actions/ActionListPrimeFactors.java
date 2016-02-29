@@ -2,6 +2,7 @@ package courseprojectprimes.actions;
 
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
+import courseprojectprimes.MenuInterface;
 
 public class ActionListPrimeFactors extends Action {
     
@@ -15,8 +16,8 @@ public class ActionListPrimeFactors extends Action {
     
     @Override
     public void execute() {
-        int intToFactorize = UserInput.askInputNumber(2);
-        System.out.printf("The prime factors of %d are:%n", intToFactorize);
+        int intToFactorize = new UserInput().askInputNumber(2);
+        System.out.printf("\nThe prime factors of %d are:%n", intToFactorize);
         System.out.println(PrimesHelper.computePrimeFactors(intToFactorize));
     }
 }
