@@ -9,7 +9,7 @@ package courseprojectprimes.actions.eulerproblems;
 import courseprojectprimes.actions.Action;
 
 
-public class Ep4 extends Action {
+public class Ep4 extends Action implements EulerProblem {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -17,10 +17,12 @@ public class Ep4 extends Action {
         this.solutionWasComputed = false;
     }
     
+    @Override
     public String giveDescription() {
-        return "Problem 4 - Largest palindrome product";
+        return "Largest palindrome product (Problem 4)";
     }
     
+    @Override
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
@@ -33,6 +35,7 @@ public class Ep4 extends Action {
         return this.solution;
     }
     
+    @Override
     public void execute() {
         System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution());
     }
@@ -42,7 +45,6 @@ public class Ep4 extends Action {
         String reverseNumberString = new StringBuilder(numberString).reverse().toString();
     
         return numberString.equals(reverseNumberString);
-
     }
 
     private int findLargestPalindromeProduct(int numberOfDigits) {

@@ -9,7 +9,7 @@ package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.actions.Action;
 
-public class Ep2 extends Action {
+public class Ep2 extends Action implements EulerProblem {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -19,9 +19,10 @@ public class Ep2 extends Action {
     
     @Override
     public String giveDescription() {
-        return "Problem 2 - Even Fibonacci numbers";
+        return "Even Fibonacci numbers (Problem 2)";
     }
     
+    @Override
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
@@ -31,9 +32,13 @@ public class Ep2 extends Action {
             this.solution = this.evenFibSumUpTo(4_000_000);
             this.solutionWasComputed = true;
         }
+        else {
+            System.out.println("\n...getting cached solution...");
+        }
         return this.solution;
     }
     
+    @Override
     public void execute() {
         System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
     }

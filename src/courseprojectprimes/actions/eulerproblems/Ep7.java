@@ -4,7 +4,7 @@ package courseprojectprimes.actions.eulerproblems;
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.actions.Action;
 
-public class Ep7 extends Action {
+public class Ep7 extends Action implements EulerProblem {
 
     private int solution;
     private boolean solutionWasComputed;
@@ -13,10 +13,12 @@ public class Ep7 extends Action {
         solutionWasComputed = false;
     }
     
+    @Override
     public String giveDescription() {
-        return "Problem 7 - 10001st prime";
+        return "10001st prime (Problem 7)";
     }
     
+    @Override
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
@@ -29,6 +31,7 @@ public class Ep7 extends Action {
         return this.solution;
     }
     
+    @Override
     public void execute() {
         System.out.println("\nThe 10001st prime is " + this.getSolution());
     }

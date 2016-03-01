@@ -1,12 +1,10 @@
 package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.actions.Action;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.lang.Math;
 
 
-public class Ep75 extends Action {
+public class Ep75 extends Action implements EulerProblem {
     
     private int solution;
     private boolean solutionWasComputed;
@@ -15,10 +13,12 @@ public class Ep75 extends Action {
         solutionWasComputed = false;
     }
     
+    @Override
     public String giveDescription() {
-        return "Problem 75 - Singular integer right triangles (this will take a few minutes!)";
+        return "Singular integer right triangles (Problem 75). This will take a few minutes!";
     }
     
+    @Override
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
@@ -31,6 +31,7 @@ public class Ep75 extends Action {
         return this.solution;
     }
     
+    @Override
     public void execute() {
         System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.getSolution());
     }
