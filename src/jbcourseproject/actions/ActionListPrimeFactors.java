@@ -1,7 +1,7 @@
-package courseprojectprimes.actions;
+package jbcourseproject.actions;
 
-import courseprojectprimes.PrimesHelper;
-import courseprojectprimes.UserInput;
+import jbcourseproject.PrimesHelper;
+import jbcourseproject.UserInput;
 
 /**
  * Ask the user for a number, compute and print its prime factors.

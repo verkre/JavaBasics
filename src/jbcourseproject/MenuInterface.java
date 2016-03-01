@@ -1,7 +1,7 @@
-package courseprojectprimes;
+package jbcourseproject;
 
-import courseprojectprimes.actions.*;
-import courseprojectprimes.actions.ActionExitToMainMenu;
+import jbcourseproject.actions.Action;
+import jbcourseproject.actions.ActionExitToMainMenu;
 import java.util.ArrayList;
 
 public class MenuInterface {

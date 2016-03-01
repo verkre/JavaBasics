@@ -1,11 +1,10 @@
-package courseprojectprimes;
+package jbcourseproject;
 
 import java.util.InputMismatchException;
 
 /**
  * This class has several methods to ask the user for input (numbers), giving either 
  * just a lower or a lower and an upper bound.
- * @author Vera Kreuter
  */
 public class UserInput {
     public UserInput() {

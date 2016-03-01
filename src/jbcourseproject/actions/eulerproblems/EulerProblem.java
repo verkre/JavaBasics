@@ -1,6 +1,6 @@
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
-import courseprojectprimes.actions.*;
+import jbcourseproject.actions.Action;
 
 /**
  * This is a superclass for all the "Project Euler" problems which show up in their

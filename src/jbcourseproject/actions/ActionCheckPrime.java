@@ -1,7 +1,7 @@
-package courseprojectprimes.actions;
+package jbcourseproject.actions;
 
-import courseprojectprimes.PrimesHelper;
-import courseprojectprimes.UserInput;
+import jbcourseproject.PrimesHelper;
+import jbcourseproject.UserInput;
 
 /**
  * This asks the user for an input number (long), checks whether that number is a prime,
@@ -13,7 +13,7 @@ public class ActionCheckPrime extends Action {
     }
     
     @Override
-    public String giveDescription() {
+    protected String giveDescription() {
         return "check if a number is prime";
     }
     

@@ -1,4 +1,4 @@
-package courseprojectprimes.actions;
+package jbcourseproject.actions;
 
 
 /**

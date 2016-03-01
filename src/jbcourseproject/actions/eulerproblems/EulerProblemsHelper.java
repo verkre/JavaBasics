@@ -1,4 +1,4 @@
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
 
 

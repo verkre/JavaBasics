@@ -1,6 +1,7 @@
-package courseprojectprimes.actions;
+package jbcourseproject.actions;
 
-import courseprojectprimes.*;
+import jbcourseproject.UserInput;
+import jbcourseproject.PrimesHelper;
 import java.util.ArrayList;
 
 /**

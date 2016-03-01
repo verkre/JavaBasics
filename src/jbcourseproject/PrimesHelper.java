@@ -1,11 +1,10 @@
 
-package courseprojectprimes;
+package jbcourseproject;
 
 import java.util.ArrayList;
 
 /**
  * This class contains several (static) helper methods for computing or checking primes.
- * @author Vera Kreuter
  */
 public class PrimesHelper {
     

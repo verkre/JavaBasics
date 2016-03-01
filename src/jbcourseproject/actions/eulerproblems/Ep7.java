@@ -1,8 +1,8 @@
 
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
-import courseprojectprimes.PrimesHelper;
-import courseprojectprimes.actions.Action;
+import jbcourseproject.PrimesHelper;
+import jbcourseproject.actions.Action;
 
 public class Ep7 extends EulerProblem {
 

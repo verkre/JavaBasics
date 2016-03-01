@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
-import courseprojectprimes.PrimesHelper;
+import jbcourseproject.PrimesHelper;
 
 public class Ep3 extends EulerProblem {
 

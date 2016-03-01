@@ -1,6 +1,6 @@
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
-import courseprojectprimes.actions.Action;
+import jbcourseproject.actions.Action;
 import java.util.ArrayList;
 
 

@@ -1,4 +1,4 @@
-package courseprojectprimes.actions;
+package jbcourseproject.actions;
 
 /**
  * This interface is here just to test the use of interfaces - the execute() method 

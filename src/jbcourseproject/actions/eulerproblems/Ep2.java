@@ -5,7 +5,7 @@ find the sum of even-valued fibonacci numbers that do not exceed four million.
 
 */
 
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
 
 public class Ep2 extends EulerProblem {

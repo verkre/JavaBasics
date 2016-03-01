@@ -1,11 +1,10 @@
 
-package courseprojectprimes.actions.eulerproblems;
+package jbcourseproject.actions.eulerproblems;
 
 
 /**
  * This is a class to help with some operations on an array of integers (used in
  * the generation of fibonacci numbers and sums)
- * @author Vera Kreuter
  */
 
 public class FibonacciArray {
