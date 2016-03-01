@@ -16,8 +16,8 @@ public class Controller {
         // -- problem 50: add up sub-lists of prime list and check result for primeness (possibly optimize that to make it faster)
         
         MenuInterface mainMenuInterface = new MenuInterface(collectActionObjects());
-        while (true) {
-            mainMenuInterface.displayAndChooseFromMenu();
+        while (mainMenuInterface.displayAndChooseFromMenu()) {
+            
         }
     }
 

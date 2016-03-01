@@ -1,6 +1,7 @@
 package courseprojectprimes;
 
 import courseprojectprimes.actions.*;
+import courseprojectprimes.actions.ExitToMainMenu;
 import java.util.ArrayList;
 
 public class MenuInterface {
@@ -14,14 +15,20 @@ public class MenuInterface {
         this.menuItems = availableMenuItems;
     }
     
-    public void displayAndChooseFromMenu() {
+    public boolean displayAndChooseFromMenu() {
         System.out.println("\n");
         // print a newline before the menu because it looks better
         for (int i = 0; i < this.menuItems.size(); i++) {
             System.out.printf("%d - " + this.menuItems.get(i).getDescription() + "%n", i);
         }
         int userChoice = new UserInput().askInputNumber(0, this.menuItems.size() - 1);
+        
+        // to return to main menu: return false if user chose the exit option (= exit object)
+        if (this.menuItems.get(userChoice) instanceof ExitToMainMenu) {
+            return false;
+        }
         this.menuItems.get(userChoice).execute();
+        return true;
     }
     
     
