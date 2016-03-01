@@ -1,7 +1,7 @@
 package courseprojectprimes;
 
 import courseprojectprimes.actions.*;
-import courseprojectprimes.actions.ExitToMainMenu;
+import courseprojectprimes.actions.ActionExitToMainMenu;
 import java.util.ArrayList;
 
 public class MenuInterface {
@@ -24,7 +24,7 @@ public class MenuInterface {
         int userChoice = new UserInput().askInputInteger(0, this.menuItems.size() - 1);
         
         // to return to main menu: return false if user chose the exit option (= exit object)
-        if (this.menuItems.get(userChoice) instanceof ExitToMainMenu) {
+        if (this.menuItems.get(userChoice) instanceof ActionExitToMainMenu) {
             return false;
         }
         this.menuItems.get(userChoice).execute();
