@@ -21,7 +21,7 @@ public class MenuInterface {
         for (int i = 0; i < this.menuItems.size(); i++) {
             System.out.printf("%d - " + this.menuItems.get(i).getDescription() + "%n", i);
         }
-        int userChoice = new UserInput().askInputNumber(0, this.menuItems.size() - 1);
+        int userChoice = new UserInput().askInputInteger(0, this.menuItems.size() - 1);
         
         // to return to main menu: return false if user chose the exit option (= exit object)
         if (this.menuItems.get(userChoice) instanceof ExitToMainMenu) {
@@ -42,7 +42,7 @@ public class MenuInterface {
     // resorting to BigInteger?
     // or maybe try to cast it to a smaller type before making the calculations and iterations?
 //    
-//    public int askInputNumber(int lowerBound, int upperBound) { // TODO change this to be non-static?
+//    public int askInputInteger(int lowerBound, int upperBound) { // TODO change this to be non-static?
 //        System.out.printf("Please type a number between %d and %d. > ", lowerBound, upperBound);
 //        int inputNumber;
 //        while (true) {
@@ -61,7 +61,7 @@ public class MenuInterface {
 //        }
 //    }
 //    
-//    public static int askInputNumber(int lowerBound) {
+//    public static int askInputInteger(int lowerBound) {
 //        System.out.printf("Please type a number (%d or greater). > ", lowerBound);
 //        int inputNumber;
 //        while (true) {
