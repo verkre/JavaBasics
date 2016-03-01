@@ -30,6 +30,20 @@ public class PrimesHelper {
         return true;
     }
     
+    public static boolean isPrime(long potentialPrime) {
+        if (potentialPrime == 0 || potentialPrime == 1) {
+            return false;
+        }
+        else {
+            for (long i = 2; i < potentialPrime/2; i++) {
+                if (potentialPrime % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
     /**
      * can only check numbers up to Integer.MAX_VALUE.
      * takes a list of all primes below the number it checks for primeness and uses it to make the checking faster
@@ -59,6 +73,20 @@ public class PrimesHelper {
             factorsList.add(numberToFactorize);
         }
         return factorsList;
+    }
+    
+    public static long findLargestPrimeFactor(long numberToFactorize) {
+        long largestPrimeFactor = 1;
+        for (long i = 2; i * i <= numberToFactorize; i++) {
+            if ((numberToFactorize % i == 0) && PrimesHelper.isPrime(i)) {
+                largestPrimeFactor = i;
+                numberToFactorize /= i;
+            }
+        }
+        if (PrimesHelper.isPrime(numberToFactorize)) {
+            largestPrimeFactor = numberToFactorize;
+        }
+        return largestPrimeFactor;
     }
 
     public static ArrayList<Integer> listPrimesBelow(int upperBound) {
