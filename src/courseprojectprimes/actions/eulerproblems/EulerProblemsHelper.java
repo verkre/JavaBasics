@@ -1,4 +1,4 @@
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 
 
@@ -6,6 +6,7 @@ public class EulerProblemsHelper {
     
     // compute the greatest common divisor of p and q
     // this method is copied from http://introcs.cs.princeton.edu/java/23recursion/BinaryGCD.java.html
+    // TODO just saw that BigInteger class has a method gcd() - maybe use that instead of this?
     public static int gcd(int p, int q) {
         if (q == 0) return p;
         if (p == 0) return q;

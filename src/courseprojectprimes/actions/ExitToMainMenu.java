@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eulerproblems;
+package courseprojectprimes.actions;
 
-import courseprojectprimes.MenuInterface;
-import courseprojectprimes.actions.Action;
 
 /**
  *
@@ -16,12 +14,12 @@ public class ExitToMainMenu extends Action {
     
     @Override
     public String giveDescription() {
-        return "Exit (returning to main menu doesn't work yet, sorry)";
+        return "Back to main menu";
     }
     
     @Override
     public void execute() {
-//        System.exit(0);
-        // TODO How can I go back to the main menu from here?
+    // this method is not used, but has to be here because of Executable interface inherited from Action.
     }
+    
 }

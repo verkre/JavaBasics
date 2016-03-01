@@ -4,7 +4,7 @@ https://projecteuler.net/problem=4
 Find the largest palindrome made from the product of two 3-digit numbers.
 correct answer: 906609
 */
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.actions.Action;
 
@@ -25,7 +25,7 @@ public class Ep4 extends Action {
         return this.solutionWasComputed;
     }
     
-    public int showSolution() {
+    public int getSolution() {
         if (!this.solutionWasComputed) {
             this.solution = this.findLargestPalindromeProduct(3);
             this.solutionWasComputed = true;
@@ -34,7 +34,7 @@ public class Ep4 extends Action {
     }
     
     public void execute() {
-        System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.showSolution());
+        System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution());
     }
     
     private boolean isPalindromic(int number) {

@@ -1,4 +1,4 @@
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.actions.Action;
 import java.lang.reflect.Array;
@@ -23,7 +23,7 @@ public class Ep75 extends Action {
         return this.solutionWasComputed;
     }
     
-    public int showSolution() {
+    public int getSolution() {
         if (!this.solutionWasComputed) {
             this.solution = this.howManyTriplesWithUniqueSum(1_500_000);
             this.solutionWasComputed = true;
@@ -32,7 +32,7 @@ public class Ep75 extends Action {
     }
     
     public void execute() {
-        System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.showSolution());
+        System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.getSolution());
     }
 
     

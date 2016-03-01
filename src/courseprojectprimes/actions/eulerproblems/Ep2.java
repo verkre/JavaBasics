@@ -5,7 +5,7 @@ find the sum of even-valued fibonacci numbers that do not exceed four million.
 
 */
 
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.actions.Action;
 
@@ -17,6 +17,7 @@ public class Ep2 extends Action {
         this.solutionWasComputed = false;
     }
     
+    @Override
     public String giveDescription() {
         return "Problem 2 - Even Fibonacci numbers";
     }
@@ -25,7 +26,7 @@ public class Ep2 extends Action {
         return this.solutionWasComputed;
     }
     
-    public int showSolution() {
+    public int getSolution() {
         if (!this.solutionWasComputed) {
             this.solution = this.evenFibSumUpTo(4_000_000);
             this.solutionWasComputed = true;
@@ -34,7 +35,7 @@ public class Ep2 extends Action {
     }
     
     public void execute() {
-        System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.showSolution());
+        System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
     }
     
     public int evenFibSumUpTo(int upperBound) {

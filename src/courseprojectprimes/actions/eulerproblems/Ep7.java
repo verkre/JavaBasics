@@ -1,5 +1,5 @@
 
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.actions.Action;
@@ -21,7 +21,7 @@ public class Ep7 extends Action {
         return this.solutionWasComputed;
     }
     
-    public int showSolution() {
+    public int getSolution() {
         if (!this.solutionWasComputed) {
             this.solution = PrimesHelper.listFirstNPrimes(10001).get(10000);
             this.solutionWasComputed = true;
@@ -30,7 +30,7 @@ public class Ep7 extends Action {
     }
     
     public void execute() {
-        System.out.println("\nThe 10001st prime is " + this.showSolution());
+        System.out.println("\nThe 10001st prime is " + this.getSolution());
     }
 
 }

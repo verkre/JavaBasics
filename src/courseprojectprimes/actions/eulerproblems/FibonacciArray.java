@@ -1,5 +1,5 @@
 
-package eulerproblems;
+package courseprojectprimes.actions.eulerproblems;
 
 
 /**
