@@ -1,9 +1,14 @@
 package courseprojectprimes.actions.eulerproblems;
 
-import courseprojectprimes.actions.*
+import courseprojectprimes.actions.*;
+
 /**
- *
- * @author Vera Kreuter
+ * This is a superclass for all the "Project Euler" problems which show up in their
+ * own sub-menu. They are different from the other Actions in that no user interaction
+ * (asking for input number) is required. Once their solution was computed for the first time,
+ * it is cached and the cached value is returned if the user chooses the same problem again.
+ * Additionally to the description and the execute() method defined in the Action superclass,
+ * this class has attributes and methods for computing, caching and getting the solution.
  */
 public abstract class EulerProblem extends Action {
 
@@ -12,10 +17,6 @@ public abstract class EulerProblem extends Action {
     
     public EulerProblem() {
         this.solutionWasComputed = false;
-    }
-    
-    protected String giveDescription() {
-        return "EulerProblem superclass, subclass of Action";
     }
     
     public boolean isSolved() {
@@ -35,5 +36,4 @@ public abstract class EulerProblem extends Action {
         return this.solution;
     }
     
-    public abstract void execute();
 }

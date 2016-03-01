@@ -1,20 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package courseprojectprimes;
 
 import java.util.InputMismatchException;
 
 /**
- *
+ * This class has several methods to ask the user for input (numbers), giving either 
+ * just a lower or a lower and an upper bound.
  * @author Vera Kreuter
  */
 public class UserInput {
     public UserInput() {
         
     }
+    
+    // TODO there is really no need for these methods to be non-static, is there?
+    // Decided to keep it this way for now.
+    // Might be useful for implementing a graphical interface later?
     
     public long askInputLongInt(long lowerBound, long upperBound) {
         System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");

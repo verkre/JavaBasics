@@ -3,6 +3,9 @@ package courseprojectprimes.actions;
 import courseprojectprimes.*;
 import java.util.ArrayList;
 
+/**
+ * This asks the user for a number and prints a list of primes of that length.
+ */
 public class ActionListPrimes extends Action {
     
     public ActionListPrimes() {

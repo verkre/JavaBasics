@@ -3,6 +3,10 @@ package courseprojectprimes.actions;
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 
+/**
+ * This asks the user for an input number (long), checks whether that number is a prime,
+ * and prints the result.
+ */
 public class ActionCheckPrime extends Action {
 
     public ActionCheckPrime() {

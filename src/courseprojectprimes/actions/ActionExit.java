@@ -1,5 +1,8 @@
 package courseprojectprimes.actions;
 
+/**
+ * Exit the program.
+ */
 public class ActionExit extends Action {
 
     public ActionExit() {

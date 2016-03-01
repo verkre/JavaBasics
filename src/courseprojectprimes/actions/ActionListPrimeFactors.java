@@ -3,6 +3,9 @@ package courseprojectprimes.actions;
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
 
+/**
+ * Ask the user for a number, compute and print its prime factors.
+ */
 public class ActionListPrimeFactors extends Action {
     
     public ActionListPrimeFactors() {

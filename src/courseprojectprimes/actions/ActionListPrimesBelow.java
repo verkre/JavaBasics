@@ -3,6 +3,9 @@ package courseprojectprimes.actions;
 import courseprojectprimes.*;
 import java.util.ArrayList;
 
+/**
+ * This asks the user for a number and prints a list of all primes smaller than that number.
+ */
 public class ActionListPrimesBelow extends Action {
     
     public ActionListPrimesBelow() {

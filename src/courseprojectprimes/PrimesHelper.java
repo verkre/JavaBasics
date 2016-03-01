@@ -4,13 +4,13 @@ package courseprojectprimes;
 import java.util.ArrayList;
 
 /**
- *
+ * This class contains several (static) helper methods for computing or checking primes.
  * @author Vera Kreuter
  */
 public class PrimesHelper {
     
     /**
-     * can only check numbers up to Integer.MAX_VALUE
+     * Checks numbers up to Integer.MAX_VALUE for primeness.
      * @param potentialPrime
      * @return true if argument is prime
      */
@@ -29,7 +29,7 @@ public class PrimesHelper {
     }
     
     /**
-     * can check numbers up to the max value of long
+     * Checks a number for primeness.
      * @param potentialPrime
      * @return true if argument is prime
      */
@@ -48,12 +48,11 @@ public class PrimesHelper {
     }
     
     /**
-     * can only check numbers up to Integer.MAX_VALUE.
-     * takes a list of all primes below the number it checks for primeness and uses it to make the checking faster
+     * Checks numbers up to Integer.MAX_VALUE.
+     * Takes a list of all primes below the number it checks and uses it to make the checking faster
      * @param potentialPrime, allPrimesUptToPotentialPrime
      * @return true if argument is prime
      */
-    // overloading static isPrime method
     public static boolean isPrime(int potentialPrime, ArrayList<Integer> allPrimesUptToPotentialPrime) {
         for (Integer prime : allPrimesUptToPotentialPrime) {
             if (potentialPrime % prime == 0) {
@@ -64,9 +63,9 @@ public class PrimesHelper {
     }
     
     /**
-     * 
+     * Computes all prime factors of a number.
      * @param numberToFactorize
-     * @return an ArrayList<Long> containing all prime factors of the input number
+     * @return an ArrayList<Long>.
      */
     public static ArrayList<Long> computePrimeFactors(long numberToFactorize) {
         // optimization: we only check potential factors up to Sqrt(numberToFactorize)
@@ -85,9 +84,9 @@ public class PrimesHelper {
     }
     
     /**
-     * 
+     * Computes the largest prime factor of a number. 
      * @param numberToFactorize
-     * @return the largest prime factor of the input number
+     * @return the largest prime factor
      */
     public static long findLargestPrimeFactor(long numberToFactorize) {
         long largestPrimeFactor = 1;
@@ -106,9 +105,9 @@ public class PrimesHelper {
     }
 
     /**
-     * 
+     * Computes a list of primes up to the given upper Bound.
      * @param upperBound
-     * @return an ArrayList of all primes smaller than input number
+     * @return An ArrayList<Integer> of primes.
      */
     public static ArrayList<Integer> listPrimesBelow(int upperBound) {
         ArrayList<Integer> primeList = new ArrayList<>();
@@ -130,9 +129,9 @@ public class PrimesHelper {
 
 
     /**
-     * accepts positive (non-zero) integers as input.
+     * Computes a list of primes of a given length.
      * @param howMany
-     * @return an ArrayList of the first howMany primes
+     * @return An ArrayList<Integer> of primes.
      */
     public static ArrayList<Integer> listFirstNPrimes(int howMany) {
         ArrayList<Integer> primeList = new ArrayList<>();

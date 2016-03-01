@@ -4,6 +4,10 @@ import courseprojectprimes.actions.eulerproblems.*;
 import courseprojectprimes.*;
 import java.util.ArrayList;
 
+/**
+ * This manages the Project Euler problem objects, and basically acts as a sub-controller
+ * (instantiates a sub-menu for the problems)
+ */
 public class ActionEulerProblems extends Action {
     
     Ep2 ep2Object;
@@ -12,6 +16,9 @@ public class ActionEulerProblems extends Action {
     Ep7 ep7Object;
     Ep75 ep75Object;
     
+    /**
+     * Instantiate each available EulerProblem, but only when called for the first time.
+     */
     public ActionEulerProblems() {
         if (ep2Object == null) {
             ep2Object = new Ep2();
@@ -30,14 +37,6 @@ public class ActionEulerProblems extends Action {
         }
     }
 
-    // TODO these objects live as long as we stay in this action object - once we return to the main menu they are gone
-    // and so are their cached solutions (better: keep objects and their stored solution as long as the program runs)
-    
-//    ep3Object = new Ep3();
-//    ep4Object = new Ep4();
-//    ep7Object = new Ep7();
-//    ep75Object = new Ep75();
-    
     @Override
     public String giveDescription() {
         return "show the solution to a problem from Project Euler";
@@ -52,9 +51,14 @@ public class ActionEulerProblems extends Action {
         }
     }
 
+    /**
+     * Make a list of all the available problems that should show up in the sub-menu,
+     * plus the exit-back-to-main Action.
+     * @return An ArrayList<> of EulerProblem objects.
+     */
     public ArrayList<Action> collectEulerProblems() {
         ArrayList<Action> availableEulerProblems = new ArrayList<>();
-        availableEulerProblems.add(new ExitToMainMenu());
+        availableEulerProblems.add(new ActionExitToMainMenu());
         availableEulerProblems.add(ep2Object);
         availableEulerProblems.add(ep3Object);
         availableEulerProblems.add(ep4Object);
