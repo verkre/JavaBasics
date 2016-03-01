@@ -9,8 +9,6 @@ import java.util.ArrayList;
  */
 public class PrimesHelper {
     
-    // TODO rewrite these methods to work for long integers (or overload)    
-
     /**
      * can only check numbers up to Integer.MAX_VALUE
      * @param potentialPrime
@@ -21,7 +19,7 @@ public class PrimesHelper {
             return false;
         }
         else {
-            for (int i = 2; i < potentialPrime/2; i++) {
+            for (int i = 2; i * i <= potentialPrime; i++) {
                 if (potentialPrime % i == 0) {
                     return false;
                 }
@@ -30,12 +28,17 @@ public class PrimesHelper {
         return true;
     }
     
+    /**
+     * can check numbers up to the max value of long
+     * @param potentialPrime
+     * @return true if argument is prime
+     */
     public static boolean isPrime(long potentialPrime) {
         if (potentialPrime == 0 || potentialPrime == 1) {
             return false;
         }
         else {
-            for (long i = 2; i < potentialPrime/2; i++) {
+            for (long i = 2; i * i <= potentialPrime; i++) {
                 if (potentialPrime % i == 0) {
                     return false;
                 }
@@ -60,13 +63,19 @@ public class PrimesHelper {
         return true;
     }
     
-    public static ArrayList<Integer> computePrimeFactors(int numberToFactorize) {
-        // optimization: we only check potential factors up to (number/2 + 1)
+    /**
+     * 
+     * @param numberToFactorize
+     * @return an ArrayList<Long> containing all prime factors of the input number
+     */
+    public static ArrayList<Long> computePrimeFactors(long numberToFactorize) {
+        // optimization: we only check potential factors up to Sqrt(numberToFactorize)
         // (and the number itself after the for loop in case it is a prime)
-        ArrayList<Integer> factorsList = new ArrayList<>();
-        for (int i = 2; i < (numberToFactorize/2 + 1); i++) {
+        ArrayList<Long> factorsList = new ArrayList<>();
+        for (long i = 2; i * i <= numberToFactorize; i++) {
             if ((numberToFactorize % i == 0) && PrimesHelper.isPrime(i))  {
                 factorsList.add(i);
+                numberToFactorize /= i;
             }
         }
         if (PrimesHelper.isPrime(numberToFactorize)) {
@@ -75,37 +84,46 @@ public class PrimesHelper {
         return factorsList;
     }
     
+    /**
+     * 
+     * @param numberToFactorize
+     * @return the largest prime factor of the input number
+     */
     public static long findLargestPrimeFactor(long numberToFactorize) {
         long largestPrimeFactor = 1;
+        // check potential factors (optimized to be a lot faster than just checking each number up to numberToFactorize/2)
         for (long i = 2; i * i <= numberToFactorize; i++) {
             if ((numberToFactorize % i == 0) && PrimesHelper.isPrime(i)) {
                 largestPrimeFactor = i;
                 numberToFactorize /= i;
             }
         }
+        // if the number we have left is prime (or numberToFactorize is itself prime), add it as a factor
         if (PrimesHelper.isPrime(numberToFactorize)) {
             largestPrimeFactor = numberToFactorize;
         }
         return largestPrimeFactor;
     }
 
+    /**
+     * 
+     * @param upperBound
+     * @return an ArrayList of all primes smaller than input number
+     */
     public static ArrayList<Integer> listPrimesBelow(int upperBound) {
         ArrayList<Integer> primeList = new ArrayList<>();
-        if (upperBound <= 2) {
+        if (upperBound == 2) {
             return primeList;
-            // empty list; there are no primes smaller than 2
+            // empty list/ there are no primes smaller than 2
         }
         primeList.add(2);
-        if (upperBound <= 3) {
+        if (upperBound == 3) {
             return primeList;
-            // 2 is the only even prime and we only check odd numbers in the following loop
         }
-        int potentialNextPrime = 3;
-        while (potentialNextPrime < upperBound) {
-            if (PrimesHelper.isPrime(potentialNextPrime, primeList)) {
-                primeList.add(potentialNextPrime);
+        for (int i = 3; i < upperBound; i += 2) {
+            if (PrimesHelper.isPrime(i)) {
+                primeList.add(i);
             }
-            potentialNextPrime += 2;
         }
         return primeList;
     }
@@ -114,24 +132,16 @@ public class PrimesHelper {
     /**
      * accepts positive (non-zero) integers as input.
      * @param howMany
-     * @return a list of the first howMany primes
+     * @return an ArrayList of the first howMany primes
      */
     public static ArrayList<Integer> listFirstNPrimes(int howMany) {
         ArrayList<Integer> primeList = new ArrayList<>();
         primeList.add(2);
         int potentialNextPrime = 3;
-        whileLoop:
         while (primeList.size() < howMany) {
-            // check if potentialPrime is divisible by a prime we already found
-            for (Integer foundPrime : primeList) {
-                if (potentialNextPrime % foundPrime == 0) {
-                    potentialNextPrime += 2;
-                    continue whileLoop;
-                    // not a prime, stop checking the list, i.e. jump out of the for loop
-                }
+            if (PrimesHelper.isPrime(potentialNextPrime)) {
+                primeList.add(potentialNextPrime);
             }
-            // if the for-loop ran through we have a new prime.
-            primeList.add(potentialNextPrime);
             potentialNextPrime += 2;
         }
         return primeList;

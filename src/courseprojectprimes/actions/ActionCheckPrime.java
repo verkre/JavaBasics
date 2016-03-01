@@ -2,7 +2,6 @@ package courseprojectprimes.actions;
 
 import courseprojectprimes.PrimesHelper;
 import courseprojectprimes.UserInput;
-import courseprojectprimes.MenuInterface;
 
 public class ActionCheckPrime extends Action {
 
@@ -16,12 +15,12 @@ public class ActionCheckPrime extends Action {
     
     @Override
     public void execute() {
-        int intToCheck = new UserInput().askInputNumber(1, 2000000000);
-        if (PrimesHelper.isPrime(intToCheck)) {
-            System.out.printf("\n%d is prime.%n", intToCheck);
+        long numberToCheck = new UserInput().askInputLongInt(1L, 9_223_372_036_854_775_807L);
+        if (PrimesHelper.isPrime(numberToCheck)) {
+            System.out.printf("\n%d is prime.%n", numberToCheck);
         }
         else {
-            System.out.printf("\n%d is not prime.%n", intToCheck);
+            System.out.printf("\n%d is not prime.%n", numberToCheck);
         }
     }
     

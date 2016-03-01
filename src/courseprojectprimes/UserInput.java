@@ -16,10 +16,46 @@ public class UserInput {
         
     }
     
-    // TODO this class does not have any attributes. Should it?
+    public long askInputLongInt(long lowerBound, long upperBound) {
+        System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");
+        long inputNumber;
+        while (true) {
+            try {
+                inputNumber = new java.util.Scanner(System.in).nextLong();
+            } catch(InputMismatchException inputNotLong) {
+                System.out.print("That was not an integer. Please type a number between " + lowerBound + " and " + upperBound + ". > ");
+                continue;
+            }
+            if (inputNumber >= lowerBound && inputNumber <= upperBound) {
+                return inputNumber;
+            }
+            else {
+                System.out.print("Invalid input. Please type a number between " + lowerBound + " and " + upperBound + ". > ");
+            }
+        }
+    }
     
-    public int askInputNumber(int lowerBound, int upperBound) {
-        System.out.printf("Please type a number between %d and %d. > ", lowerBound, upperBound);
+    public long askInputLongInt(long lowerBound) {
+        System.out.print("Please type a number (" + lowerBound + " or greater). > ");
+        long inputNumber;
+        while (true) {
+            try {
+                inputNumber = new java.util.Scanner(System.in).nextInt();
+            } catch(InputMismatchException inputNotLong) {
+                System.out.print("That was not an integer. Please type an integer (" + lowerBound + " or greater). > ");
+                continue;
+            }
+            if (inputNumber >= lowerBound) {
+                return inputNumber;
+            }
+            else {
+                System.out.print("Invalid input. Number must be at least " + lowerBound + ". > ");
+            }
+        }
+    }
+
+    public int askInputInteger(int lowerBound, int upperBound) {
+        System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");
         int inputNumber;
         while (true) {
             try {
@@ -37,7 +73,7 @@ public class UserInput {
         }
     }
     
-    public int askInputNumber(int lowerBound) {
+    public int askInputInteger(int lowerBound) {
         System.out.printf("Please type a number (%d or greater). > ", lowerBound);
         int inputNumber;
         while (true) {
