@@ -1,17 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package courseprojectprimes.actions.eulerproblems;
 
+import courseprojectprimes.actions.*
 /**
  *
  * @author Vera Kreuter
  */
-public interface EulerProblem {
+public abstract class EulerProblem extends Action {
 
-
-    boolean isSolved();
+    long solution;
+    boolean solutionWasComputed;
     
+    public EulerProblem() {
+        this.solutionWasComputed = false;
+    }
+    
+    protected String giveDescription() {
+        return "EulerProblem superclass, subclass of Action";
+    }
+    
+    public boolean isSolved() {
+        return this.solutionWasComputed;
+    }
+    
+    public abstract long solve();
+    
+    public long getSolution() {
+        if (!this.solutionWasComputed) {
+            this.solution = this.solve();
+            this.solutionWasComputed = true;
+        }
+        else {
+            System.out.println("\n...getting cached solution...");
+        }
+        return this.solution;
+    }
+    
+    public abstract void execute();
 }

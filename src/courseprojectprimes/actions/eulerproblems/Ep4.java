@@ -6,15 +6,11 @@ correct answer: 906609
 */
 package courseprojectprimes.actions.eulerproblems;
 
-import courseprojectprimes.actions.Action;
 
 
-public class Ep4 extends Action implements EulerProblem {
+public class Ep4 extends EulerProblem {
     
-    private int solution;
-    private boolean solutionWasComputed;
     public Ep4() {
-        this.solutionWasComputed = false;
     }
     
     @Override
@@ -23,16 +19,8 @@ public class Ep4 extends Action implements EulerProblem {
     }
     
     @Override
-    public boolean isSolved() {
-        return this.solutionWasComputed;
-    }
-    
-    public int getSolution() {
-        if (!this.solutionWasComputed) {
-            this.solution = this.findLargestPalindromeProduct(3);
-            this.solutionWasComputed = true;
-        }
-        return this.solution;
+    public long solve() {
+        return this.findLargestPalindromeProduct(3);
     }
     
     @Override

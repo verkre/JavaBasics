@@ -4,13 +4,9 @@ import courseprojectprimes.actions.Action;
 import java.util.ArrayList;
 
 
-public class Ep75 extends Action implements EulerProblem {
-    
-    private int solution;
-    private boolean solutionWasComputed;
+public class Ep75 extends EulerProblem {
     
     public Ep75() {
-        solutionWasComputed = false;
     }
     
     @Override
@@ -18,18 +14,10 @@ public class Ep75 extends Action implements EulerProblem {
         return "Singular integer right triangles (Problem 75). This will take a few minutes!";
     }
     
-    @Override
-    public boolean isSolved() {
-        return this.solutionWasComputed;
+    public long solve() {
+        return this.howManyTriplesWithUniqueSum(1_500_000);
     }
     
-    public int getSolution() {
-        if (!this.solutionWasComputed) {
-            this.solution = this.howManyTriplesWithUniqueSum(1_500_000);
-            this.solutionWasComputed = true;
-        }
-        return this.solution;
-    }
     
     @Override
     public void execute() {
