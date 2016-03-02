@@ -18,7 +18,7 @@ public class ActionListPrimeFactors extends Action {
     
     @Override
     public void execute() {
-        long numberToFactorize = new UserInput().askInputLongInt(2L, 9_223_372_036_854_775_807L);
+        long numberToFactorize = new UserInput().askInputLongInt(2L);
         System.out.printf("\nThe prime factors of %d are:%n", numberToFactorize);
         System.out.println(PrimesUtils.computePrimeFactors(numberToFactorize));
     }
