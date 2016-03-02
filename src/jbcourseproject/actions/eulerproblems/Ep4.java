@@ -1,38 +1,40 @@
 /*
-https://projecteuler.net/problem=4
+ https://projecteuler.net/problem=4
 
-Find the largest palindrome made from the product of two 3-digit numbers.
-correct answer: 906609
-*/
+ Find the largest palindrome made from the product of two 3-digit numbers.
+ correct answer: 906609
+ */
 package jbcourseproject.actions.eulerproblems;
 
-
-
 public class Ep4 extends EulerProblem {
-    
+
     public Ep4() {
-        this.url = "https://projecteuler.net/problem=4";
     }
-    
+
     @Override
     public String giveDescription() {
         return "Largest palindrome product (Problem 4)";
     }
-    
+
+    @Override
+    public String giveUrl() {
+        return "https://projecteuler.net/problem=4";
+    }
+
     @Override
     public long solve() {
         return this.findLargestPalindromeProduct(3);
     }
-    
+
     @Override
     public void execute() {
         System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution());
     }
-    
+
     private boolean isPalindromic(int number) {
         String numberString = Integer.toString(number);
         String reverseNumberString = new StringBuilder(numberString).reverse().toString();
-    
+
         return numberString.equals(reverseNumberString);
     }
 
@@ -45,11 +47,8 @@ public class Ep4 extends EulerProblem {
                 }
             }
         }
-        this.solution = largestPalindrome;
-        solutionWasComputed = true;
         return largestPalindrome;
-    
+
     }
 
-    
 }

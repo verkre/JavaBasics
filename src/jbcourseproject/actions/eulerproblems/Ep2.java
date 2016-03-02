@@ -11,12 +11,16 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep2 extends EulerProblem {
     
     public Ep2() {
-        this.url = "https://projecteuler.net/problem=2";
     }
     
     @Override
     public String giveDescription() {
         return "Even Fibonacci numbers (Problem 2)";
+    }
+    
+    @Override
+    public String giveUrl() {
+        return "https://projecteuler.net/problem=2";
     }
     
     @Override
@@ -46,6 +50,7 @@ public class Ep2 extends EulerProblem {
         }
         return resultSum;
     }
+
 
    
     

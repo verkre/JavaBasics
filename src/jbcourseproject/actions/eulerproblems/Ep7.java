@@ -8,12 +8,16 @@ public class Ep7 extends EulerProblem {
 
     
     public Ep7() {
-        this.url = "https://projecteuler.net/problem=7";
     }
     
     @Override
     public String giveDescription() {
         return "10001st prime (Problem 7)";
+    }
+
+    @Override
+    public String giveUrl() {
+        return "https://projecteuler.net/problem=7";
     }
     
     public long solve() {

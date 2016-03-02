@@ -12,13 +12,17 @@ import jbcourseproject.actions.Action;
  */
 public abstract class EulerProblem extends Action {
 
-    long solution;
-    boolean solutionWasComputed;
-    protected String url;
+    private long solution;
+    private boolean solutionWasComputed;
+    private String url;
     
     public EulerProblem() {
         this.solutionWasComputed = false;
+        this.url = giveUrl();
     }
+    
+    public abstract String giveUrl();
+    public abstract long solve();
     
     public void printUrl() {
         System.out.println("Find details on this problem here: " + this.url);
@@ -27,8 +31,6 @@ public abstract class EulerProblem extends Action {
     public boolean isSolved() {
         return this.solutionWasComputed;
     }
-    
-    public abstract long solve();
     
     public long getSolution() {
         if (!this.solutionWasComputed) {
