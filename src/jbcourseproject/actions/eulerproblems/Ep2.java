@@ -14,7 +14,7 @@ public class Ep2 extends EulerProblem {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "Even Fibonacci numbers (Problem 2)";
     }
     
@@ -34,7 +34,7 @@ public class Ep2 extends EulerProblem {
         this.printUrl();
     }
     
-    public long evenFibSumUpTo(long upperBound) {
+    private long evenFibSumUpTo(long upperBound) {
         // keeps only the last 3 computed fibonacci numbers in an array
         // if last one is even, add it to resultSum
         // update the array by shifting the values to the left and adding the next fib on the right

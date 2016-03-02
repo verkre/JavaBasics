@@ -12,7 +12,7 @@ public class Ep4 extends EulerProblem {
     }
 
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "Largest palindrome product (Problem 4)";
     }
 

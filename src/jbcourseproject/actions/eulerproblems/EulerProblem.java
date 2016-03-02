@@ -21,8 +21,9 @@ public abstract class EulerProblem extends Action {
         this.url = giveUrl();
     }
     
-    public abstract String giveUrl();
     public abstract long solve();
+    
+    protected abstract String giveUrl();
     
     public void printUrl() {
         System.out.println("Find details on this problem here: " + this.url);

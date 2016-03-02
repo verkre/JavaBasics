@@ -9,7 +9,7 @@ public class Ep75 extends EulerProblem {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "Singular integer right triangles (Problem 75). This will take a few minutes!";
     }
 
@@ -28,7 +28,7 @@ public class Ep75 extends EulerProblem {
         System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.getSolution());
     }
     
-    public int howManyTriplesWithUniqueSum(int maxSum) {
+    private int howManyTriplesWithUniqueSum(int maxSum) {
         ArrayList<Integer> sumsFoundOnce = new ArrayList<>();
         ArrayList<Integer> sumsFoundMoreThanOnce = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class Ep75 extends EulerProblem {
         return sumsFoundOnce.size();
     }
 
-        public int generatePythagoreanTripleSum(int m, int n, int k) {
+        private int generatePythagoreanTripleSum(int m, int n, int k) {
         // where m and n are coprime, m > n, m-n is odd.
         int a = k * (m*m - n*n);
         int b = k * (2 * m *n);
