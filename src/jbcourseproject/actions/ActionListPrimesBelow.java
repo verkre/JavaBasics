@@ -1,7 +1,7 @@
 package jbcourseproject.actions;
 
 import jbcourseproject.UserInput;
-import jbcourseproject.PrimesHelper;
+import jbcourseproject.PrimesUtils;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +20,7 @@ public class ActionListPrimesBelow extends Action {
     @Override
     public void execute() {
         int upperBound = new UserInput().askInputInteger(1);
-        ArrayList<Integer> primeList = PrimesHelper.listPrimesBelow(upperBound);
+        ArrayList<Integer> primeList = PrimesUtils.listPrimesBelow(upperBound);
         System.out.printf("Here is a list of all primes smaller than %d: %n", upperBound);
         System.out.println(primeList);
     }

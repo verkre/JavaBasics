@@ -1,7 +1,7 @@
 package jbcourseproject.actions;
 
 import jbcourseproject.UserInput;
-import jbcourseproject.PrimesHelper;
+import jbcourseproject.PrimesUtils;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +20,7 @@ public class ActionListPrimes extends Action {
     @Override
     public void execute() {
         int howMany = new UserInput().askInputInteger(1);
-        ArrayList<Integer> primeList = PrimesHelper.listFirstNPrimes(howMany);
+        ArrayList<Integer> primeList = PrimesUtils.listFirstNPrimes(howMany);
         System.out.printf("Here is a list of the first %d primes: %n", howMany);
         System.out.println(primeList);
     }

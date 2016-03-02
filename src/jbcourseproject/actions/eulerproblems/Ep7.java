@@ -1,7 +1,7 @@
 
 package jbcourseproject.actions.eulerproblems;
 
-import jbcourseproject.PrimesHelper;
+import jbcourseproject.PrimesUtils;
 import jbcourseproject.actions.Action;
 
 public class Ep7 extends EulerProblem {
@@ -21,7 +21,7 @@ public class Ep7 extends EulerProblem {
     }
     
     public long solve() {
-        return PrimesHelper.listFirstNPrimes(10001).get(10000);
+        return PrimesUtils.listFirstNPrimes(10001).get(10000);
     }
     
     @Override

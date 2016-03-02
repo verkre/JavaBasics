@@ -2,7 +2,7 @@ package jbcourseproject.actions.eulerproblems;
 
 
 
-public class EulerProblemsHelper {
+public class EulerProblemsUtils {
     
     // compute the greatest common divisor of p and q
     // this method is copied from http://introcs.cs.princeton.edu/java/23recursion/BinaryGCD.java.html

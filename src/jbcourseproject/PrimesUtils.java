@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * This class contains several (static) helper methods for computing or checking primes.
  */
-public class PrimesHelper {
+public class PrimesUtils {
     
     /**
      * Checks numbers up to Integer.MAX_VALUE for primeness.
@@ -71,12 +71,12 @@ public class PrimesHelper {
         // (and the number itself after the for loop in case it is a prime)
         ArrayList<Long> factorsList = new ArrayList<>();
         for (long i = 2; i * i <= numberToFactorize; i++) {
-            if ((numberToFactorize % i == 0) && PrimesHelper.isPrime(i))  {
+            if ((numberToFactorize % i == 0) && PrimesUtils.isPrime(i))  {
                 factorsList.add(i);
                 numberToFactorize /= i;
             }
         }
-        if (PrimesHelper.isPrime(numberToFactorize)) {
+        if (PrimesUtils.isPrime(numberToFactorize)) {
             factorsList.add(numberToFactorize);
         }
         return factorsList;
@@ -91,13 +91,13 @@ public class PrimesHelper {
         long largestPrimeFactor = 1;
         // check potential factors (optimized to be a lot faster than just checking each number up to numberToFactorize/2)
         for (long i = 2; i * i <= numberToFactorize; i++) {
-            if ((numberToFactorize % i == 0) && PrimesHelper.isPrime(i)) {
+            if ((numberToFactorize % i == 0) && PrimesUtils.isPrime(i)) {
                 largestPrimeFactor = i;
                 numberToFactorize /= i;
             }
         }
         // if the number we have left is prime (or numberToFactorize is itself prime), add it as a factor
-        if (PrimesHelper.isPrime(numberToFactorize)) {
+        if (PrimesUtils.isPrime(numberToFactorize)) {
             largestPrimeFactor = numberToFactorize;
         }
         return largestPrimeFactor;
@@ -119,7 +119,7 @@ public class PrimesHelper {
             return primeList;
         }
         for (int i = 3; i < upperBound; i += 2) {
-            if (PrimesHelper.isPrime(i)) {
+            if (PrimesUtils.isPrime(i)) {
                 primeList.add(i);
             }
         }
@@ -137,7 +137,7 @@ public class PrimesHelper {
         primeList.add(2);
         int potentialNextPrime = 3;
         while (primeList.size() < howMany) {
-            if (PrimesHelper.isPrime(potentialNextPrime)) {
+            if (PrimesUtils.isPrime(potentialNextPrime)) {
                 primeList.add(potentialNextPrime);
             }
             potentialNextPrime += 2;

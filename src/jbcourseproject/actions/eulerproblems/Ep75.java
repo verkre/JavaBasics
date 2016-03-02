@@ -35,7 +35,7 @@ public class Ep75 extends EulerProblem {
 
         for (int m = 1; m <= Math.sqrt(maxSum); m++) {
             for (int n = 1; n < m; n++) {
-                if ((m - n) % 2 == 0 || EulerProblemsHelper.gcd(m, n) != 1) {
+                if ((m - n) % 2 == 0 || EulerProblemsUtils.gcd(m, n) != 1) {
                     // m - n has to be odd and the greatest common divisor of m and n ahs to be 1
                     continue;
                 }

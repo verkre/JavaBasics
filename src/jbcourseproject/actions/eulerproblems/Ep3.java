@@ -5,7 +5,7 @@
  */
 package jbcourseproject.actions.eulerproblems;
 
-import jbcourseproject.PrimesHelper;
+import jbcourseproject.PrimesUtils;
 
 public class Ep3 extends EulerProblem {
 
@@ -24,7 +24,7 @@ public class Ep3 extends EulerProblem {
     
     @Override
     public long solve() {
-        return PrimesHelper.findLargestPrimeFactor(600851475143L);
+        return PrimesUtils.findLargestPrimeFactor(600851475143L);
     }
 
     @Override
