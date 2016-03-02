@@ -17,7 +17,8 @@ public abstract class EulerProblem extends Action {
     private boolean solutionWasComputed;
     private String url;
     
-    public EulerProblem() {
+    public EulerProblem(String description) {
+        super(description);
         this.solutionWasComputed = false;
         this.url = giveUrl();
     }

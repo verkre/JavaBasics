@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class ActionListPrimesBelow extends Action {
     
     public ActionListPrimesBelow() {
+        super("compute all prime numbers smaller than a certain number");
     }
     
-    @Override
-    public String describeSelf() {
-        return "compute all prime numbers smaller than a certain number";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "compute all prime numbers smaller than a certain number";
+//    }
     
     @Override
     public void execute() {

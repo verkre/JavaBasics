@@ -24,6 +24,7 @@ public class ActionEulerProblems extends Action {
      * Instantiate each available EulerProblem, but only when called for the first time.
      */
     public ActionEulerProblems() {
+        super("show the solution to a problem from Project Euler");
         ep2Object = new Ep2();
         ep3Object = new Ep3();
         ep4Object = new Ep4();
@@ -31,10 +32,10 @@ public class ActionEulerProblems extends Action {
         ep75Object = new Ep75();
     }
 
-    @Override
-    protected String describeSelf() {
-        return "show the solution to a problem from Project Euler";
-    }
+//    @Override
+//    protected String describeSelf() {
+//        return "show the solution to a problem from Project Euler";
+//    }
 
     @Override
     public void execute() {

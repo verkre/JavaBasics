@@ -6,12 +6,13 @@ import java.util.ArrayList;
 public class Ep75 extends EulerProblem {
     
     public Ep75() {
+        super("Singular integer right triangles (Problem 75). This will take a few minutes!");
     }
     
-    @Override
-    public String describeSelf() {
-        return "Singular integer right triangles (Problem 75). This will take a few minutes!";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "Singular integer right triangles (Problem 75). This will take a few minutes!";
+//    }
 
     @Override
     public String giveUrl() {

@@ -10,12 +10,13 @@ import jbcourseproject.PrimesUtils;
 public class Ep3 extends EulerProblem {
 
     public Ep3() {
+        super("Largest prime factor of 600851475143 (Problem 3)");
     }
 
-    @Override
-    protected String describeSelf() {
-        return "Largest prime factor of 600851475143 (Problem 3)";
-    }
+//    @Override
+//    protected String describeSelf() {
+//        return "Largest prime factor of 600851475143 (Problem 3)";
+//    }
 
     @Override
     public String giveUrl() {

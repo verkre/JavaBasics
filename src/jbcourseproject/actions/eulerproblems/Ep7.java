@@ -8,12 +8,13 @@ public class Ep7 extends EulerProblem {
 
     
     public Ep7() {
+        super("10001st prime (Problem 7)");
     }
     
-    @Override
-    public String describeSelf() {
-        return "10001st prime (Problem 7)";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "10001st prime (Problem 7)";
+//    }
 
     @Override
     public String giveUrl() {

@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class ActionListPrimes extends Action {
     
     public ActionListPrimes() {
+        super("compute a certain number of prime numbers");
     }
     
-    @Override
-    public String describeSelf() {
-        return "compute a certain number of prime numbers";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "compute a certain number of prime numbers";
+//    }
     
     @Override
     public void execute() {

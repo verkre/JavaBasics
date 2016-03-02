@@ -6,12 +6,13 @@ package jbcourseproject.actions;
 public class ActionExit extends Action {
 
     public ActionExit() {
+        super("Exit");
     }
     
-    @Override
-    public String describeSelf() {
-        return "Exit";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "Exit";
+//    }
 
     @Override
     public void execute() {

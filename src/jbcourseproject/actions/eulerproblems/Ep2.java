@@ -11,12 +11,13 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep2 extends EulerProblem {
     
     public Ep2() {
+        super("Even Fibonacci numbers (Problem 2)");
     }
     
-    @Override
-    public String describeSelf() {
-        return "Even Fibonacci numbers (Problem 2)";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "Even Fibonacci numbers (Problem 2)";
+//    }
     
     @Override
     public String giveUrl() {

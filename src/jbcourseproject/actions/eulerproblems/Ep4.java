@@ -9,12 +9,13 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep4 extends EulerProblem {
 
     public Ep4() {
+        super("Largest palindrome product (Problem 4)");
     }
 
-    @Override
-    public String describeSelf() {
-        return "Largest palindrome product (Problem 4)";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "Largest palindrome product (Problem 4)";
+//    }
 
     @Override
     public String giveUrl() {

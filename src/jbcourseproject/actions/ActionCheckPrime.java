@@ -9,12 +9,13 @@ import jbcourseproject.UserInput;
 public class ActionCheckPrime extends Action {
 
     public ActionCheckPrime() {
+        super("check if a number is prime");
     }
     
-    @Override
-    public String describeSelf() {
-        return "check if a number is prime";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return "check if a number is prime";
+//    }
     
     @Override
     public void execute() {

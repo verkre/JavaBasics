@@ -9,12 +9,13 @@ import jbcourseproject.UserInput;
 public class ActionListPrimeFactors extends Action {
     
     public ActionListPrimeFactors() {
+        super("compute the prime factors of a number");
     }
     
-    @Override
-    public String describeSelf() {
-        return "compute the prime factors of a number";
-    }
+//    @Override
+//    public String describeSelf() {
+//        return ;
+//    }
     
     @Override
     public void execute() {
