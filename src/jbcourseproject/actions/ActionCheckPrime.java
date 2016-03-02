@@ -4,8 +4,7 @@ import jbcourseproject.PrimesHelper;
 import jbcourseproject.UserInput;
 
 /**
- * This asks the user for an input number (long), checks whether that number is a prime,
- * and prints the result.
+ * 
  */
 public class ActionCheckPrime extends Action {
 

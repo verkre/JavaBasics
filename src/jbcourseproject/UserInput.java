@@ -11,9 +11,8 @@ public class UserInput {
         
     }
     
-    // TODO there is really no need for these methods to be non-static, is there?
+    // there is really no need for these methods to be non-static, is there?
     // Decided to keep it this way for now.
-    // Might be useful for implementing a graphical interface later?
     
     public long askInputLongInt(long lowerBound, long upperBound) {
         System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");

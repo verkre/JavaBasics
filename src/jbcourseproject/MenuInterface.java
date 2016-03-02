@@ -8,13 +8,14 @@ public class MenuInterface {
     
     private ArrayList<Action> menuItems;
     
-    public MenuInterface() {
-    }
-    
     public MenuInterface(ArrayList<Action> availableMenuItems) {
         this.menuItems = availableMenuItems;
     }
     
+    /**
+     * Displays descriptions of available menu items, lets user choose one and calls its execute method.
+     * @return false if the user chose the exit-to-main-menu option, true otherwise
+     */
     public boolean displayAndChooseFromMenu() {
         System.out.println("\n");
         // print a newline before the menu because it looks better

@@ -23,13 +23,14 @@ public class Controller {
             mainMenuInterface.displayAndChooseFromMenu();
         }
     }
-
+    
+    /**
+     * Collect all Actions that should appear in the main menu in an ArrayList.
+     * @return 
+     */
     public ArrayList<Action> collectActionObjects() {
-        // make an instance from each ActionObject class, collect them in an ArrayList
-        // to pass them as an argument to the main menu method in the MenuInterface class
-        //
-        // these are only instantiated once at the start of the program - so no need to declare them as 
-        // object attributes (as with the EulerProblem objects in the sub-menu)
+        // these are only instantiated once at the start of the program - so there is no need to declare them as 
+        // class attributes (as with the EulerProblem objects in the sub-menu)
         ArrayList<Action> availableActionObjects = new ArrayList<>();
         availableActionObjects.add(new ActionExit());
         availableActionObjects.add(new ActionCheckPrime());
