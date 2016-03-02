@@ -12,11 +12,6 @@ public class ActionCheckPrime extends Action {
         super("check if a number is prime");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "check if a number is prime";
-//    }
-    
     @Override
     public void execute() {
         long numberToCheck = new UserInput().askInputLongInt(1L);

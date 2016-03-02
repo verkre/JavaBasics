@@ -13,11 +13,6 @@ public class Ep3 extends EulerProblem {
         super("Largest prime factor of 600851475143 (Problem 3)");
     }
 
-//    @Override
-//    protected String describeSelf() {
-//        return "Largest prime factor of 600851475143 (Problem 3)";
-//    }
-
     @Override
     public String giveUrl() {
         return "https://projecteuler.net/problem=3";

@@ -9,15 +9,9 @@ public class ActionExitToMainMenu extends Action {
         super("Back to main menu");
     }
 
-    
-//    @Override
-//    public String describeSelf() {
-//        return "Back to main menu";
-//    }
-//    
     @Override
     public void execute() {
-    // this method is never used, but has to be here because of Executable interface inherited from Action.
+        // this method is never used, but has to be here because of Executable interface inherited from Action.
     }
-    
+
 }

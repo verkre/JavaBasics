@@ -11,11 +11,6 @@ public class Ep7 extends EulerProblem {
         super("10001st prime (Problem 7)");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "10001st prime (Problem 7)";
-//    }
-
     @Override
     public String giveUrl() {
         return "https://projecteuler.net/problem=7";

@@ -13,11 +13,6 @@ public class ActionListPrimesBelow extends Action {
         super("compute all prime numbers smaller than a certain number");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "compute all prime numbers smaller than a certain number";
-//    }
-    
     @Override
     public void execute() {
         int upperBound = new UserInput().askInputInteger(1);

@@ -9,11 +9,6 @@ public class ActionExit extends Action {
         super("Exit");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "Exit";
-//    }
-
     @Override
     public void execute() {
         System.exit(0);

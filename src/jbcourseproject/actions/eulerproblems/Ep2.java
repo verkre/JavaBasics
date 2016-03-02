@@ -14,11 +14,6 @@ public class Ep2 extends EulerProblem {
         super("Even Fibonacci numbers (Problem 2)");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "Even Fibonacci numbers (Problem 2)";
-//    }
-    
     @Override
     public String giveUrl() {
         return "https://projecteuler.net/problem=2";

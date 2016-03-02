@@ -12,11 +12,6 @@ public class Ep4 extends EulerProblem {
         super("Largest palindrome product (Problem 4)");
     }
 
-//    @Override
-//    public String describeSelf() {
-//        return "Largest palindrome product (Problem 4)";
-//    }
-
     @Override
     public String giveUrl() {
         return "https://projecteuler.net/problem=4";

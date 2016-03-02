@@ -9,11 +9,6 @@ public class Ep75 extends EulerProblem {
         super("Singular integer right triangles (Problem 75). This will take a few minutes!");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "Singular integer right triangles (Problem 75). This will take a few minutes!";
-//    }
-
     @Override
     public String giveUrl() {
         return "https://projecteuler.net/problem=75";

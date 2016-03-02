@@ -32,11 +32,6 @@ public class ActionEulerProblems extends Action {
         ep75Object = new Ep75();
     }
 
-//    @Override
-//    protected String describeSelf() {
-//        return "show the solution to a problem from Project Euler";
-//    }
-
     @Override
     public void execute() {
         // stay in this sub-menu until user enters 0 (to return to main menu)

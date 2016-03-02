@@ -11,19 +11,14 @@ public abstract class Action implements Executable {
     
     public Action(String description) {
         this.description = description;
-//        description = describeSelf();
-        // the compiler warns me because I call an overridable method in the constructor.
-        // the only alternative I can think of is making the description attribute protected
-        // and defining it directly in the constructor of each subclass
+        // now each subclass calls the superclass constructor with its own description string
+        // as an argument. (As a way to keep the description attribute private, yet allow each 
+        // subclass to set it to its own string).
     }
-    
-//    protected abstract String describeSelf();
     
     @Override
     public String getDescription() {
         return description;
-        
-        // TODO overwrite getDescription method in each subclass, have it return the string directly?
     }
     
 }

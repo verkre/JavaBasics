@@ -13,11 +13,6 @@ public class ActionListPrimes extends Action {
         super("compute a certain number of prime numbers");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return "compute a certain number of prime numbers";
-//    }
-    
     @Override
     public void execute() {
         int howMany = new UserInput().askInputInteger(1);

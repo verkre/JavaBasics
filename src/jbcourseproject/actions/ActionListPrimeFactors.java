@@ -12,11 +12,6 @@ public class ActionListPrimeFactors extends Action {
         super("compute the prime factors of a number");
     }
     
-//    @Override
-//    public String describeSelf() {
-//        return ;
-//    }
-    
     @Override
     public void execute() {
         long numberToFactorize = new UserInput().askInputLongInt(2L);
