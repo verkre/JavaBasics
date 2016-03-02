@@ -8,6 +8,7 @@ public class Ep7 extends EulerProblem {
 
     
     public Ep7() {
+        this.url = "https://projecteuler.net/problem=7";
     }
     
     @Override

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Ep75 extends EulerProblem {
     
     public Ep75() {
+        this.url = "https://projecteuler.net/problem=75";
     }
     
     @Override

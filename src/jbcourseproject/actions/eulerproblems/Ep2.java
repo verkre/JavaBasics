@@ -11,6 +11,7 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep2 extends EulerProblem {
     
     public Ep2() {
+        this.url = "https://projecteuler.net/problem=2";
     }
     
     @Override
@@ -18,6 +19,7 @@ public class Ep2 extends EulerProblem {
         return "Even Fibonacci numbers (Problem 2)";
     }
     
+    @Override
     public long solve() {
         return this.evenFibSumUpTo(4_000_000L);
     }
@@ -25,6 +27,7 @@ public class Ep2 extends EulerProblem {
     @Override
     public void execute() {
         System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
+        this.printUrl();
     }
     
     public long evenFibSumUpTo(long upperBound) {

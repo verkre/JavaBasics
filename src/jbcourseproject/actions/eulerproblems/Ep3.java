@@ -10,6 +10,7 @@ import jbcourseproject.PrimesHelper;
 public class Ep3 extends EulerProblem {
 
     public Ep3() {
+        this.url = "https://projecteuler.net/problem=3";
     }
 
     @Override

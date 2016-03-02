@@ -14,9 +14,14 @@ public abstract class EulerProblem extends Action {
 
     long solution;
     boolean solutionWasComputed;
+    protected String url;
     
     public EulerProblem() {
         this.solutionWasComputed = false;
+    }
+    
+    public void printUrl() {
+        System.out.println("Find details on this problem here: " + this.url);
     }
     
     public boolean isSolved() {

@@ -11,6 +11,7 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep4 extends EulerProblem {
     
     public Ep4() {
+        this.url = "https://projecteuler.net/problem=4";
     }
     
     @Override
