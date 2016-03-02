@@ -8,42 +8,24 @@ import java.util.InputMismatchException;
  */
 public class UserInput {
     
-    private java.util.Scanner inputScanner;
+    public static final int MAX_INT = Integer.MAX_VALUE;
+    public static final long MAX_LONG = 9_223_372_036_854_775_807L;
     
     public UserInput() {
-        this.inputScanner = new java.util.Scanner(System.in);
     }
     
-    // there is really no need for these methods to be non-static, is there?
+    // Could or should this be a utility class? There is really no need for these methods to be non-static, is there?
     // Decided to keep it this way for now.
     
-    public long askInputLongInt(long lowerBound, long upperBound) {
-        System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");
-        long inputNumber;
-        while (true) {
-            try {
-                inputNumber = this.inputScanner.nextLong();
-            } catch(InputMismatchException inputNotLong) {
-                System.out.print("That was not an integer. Please type a number between " + lowerBound + " and " + upperBound + ". > ");
-                continue;
-            }
-            if (inputNumber >= lowerBound && inputNumber <= upperBound) {
-                return inputNumber;
-            }
-            else {
-                System.out.print("Invalid input. Please type a number between " + lowerBound + " and " + upperBound + ". > ");
-            }
-        }
-    }
-    
+   
     public long askInputLongInt(long lowerBound) {
         System.out.print("Please type a number (" + lowerBound + " or greater). > ");
         long inputNumber;
         while (true) {
             try {
-                inputNumber = this.inputScanner.nextInt();
+                inputNumber = new java.util.Scanner(System.in).nextInt();
             } catch(InputMismatchException inputNotLong) {
-                System.out.print("That was not an integer. Please type an integer (" + lowerBound + " or greater). > ");
+                System.out.print("That was not an integer. Please type an integer between " + lowerBound + " and " + MAX_LONG + ". > ");
                 continue;
             }
             if (inputNumber >= lowerBound) {
@@ -60,7 +42,7 @@ public class UserInput {
         int inputNumber;
         while (true) {
             try {
-                inputNumber = this.inputScanner.nextInt();
+                inputNumber = new java.util.Scanner(System.in).nextInt();
             } catch(InputMismatchException inputNotInteger) {
                 System.out.printf("That was not an integer. Please enter an integer between %d and %d. > ", lowerBound, upperBound);
                 continue;
@@ -79,9 +61,9 @@ public class UserInput {
         int inputNumber;
         while (true) {
             try {
-                inputNumber = this.inputScanner.nextInt();
+                inputNumber = new java.util.Scanner(System.in).nextInt();
             } catch(InputMismatchException inputNotInteger) {
-                System.out.printf("That was not an integer. Please type an integer (%d or greater). > ", lowerBound);
+                System.out.printf("That was not an integer. Please type an integer between %d and %d. > ", lowerBound, MAX_INT);
                 continue;
             }
             if (inputNumber >= lowerBound) {
