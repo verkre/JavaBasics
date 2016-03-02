@@ -25,13 +25,13 @@ public class Ep2 extends EulerProblem {
     
     @Override
     public long solve() {
-        return this.evenFibSumUpTo(4_000_000L);
+        return evenFibSumUpTo(4_000_000L);
     }
         
     @Override
     public void execute() {
         System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
-        this.printUrl();
+        printUrl();
     }
     
     private long evenFibSumUpTo(long upperBound) {

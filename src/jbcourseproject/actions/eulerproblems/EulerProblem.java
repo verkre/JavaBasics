@@ -8,7 +8,8 @@ import jbcourseproject.actions.Action;
  * (asking for input number) is required. Once their solution was computed for the first time,
  * it is cached and the cached value is returned if the user chooses the same problem again.
  * Additionally to the description and the execute() method defined in the Action superclass,
- * this class has attributes and methods for computing, caching and getting the solution.
+ * this class has attributes and methods for computing, caching and getting the solution, as well
+ * as for printing the URL of the respective projecteuler.com page.
  */
 public abstract class EulerProblem extends Action {
 

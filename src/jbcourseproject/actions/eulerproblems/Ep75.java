@@ -20,12 +20,13 @@ public class Ep75 extends EulerProblem {
     
     @Override
     public long solve() {
-        return this.howManyTriplesWithUniqueSum(1_500_000);
+        return howManyTriplesWithUniqueSum(1_500_000);
     }
     
     @Override
     public void execute() {
         System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.getSolution());
+        printUrl();
     }
     
     private int howManyTriplesWithUniqueSum(int maxSum) {

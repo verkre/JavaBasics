@@ -30,6 +30,7 @@ public class Ep3 extends EulerProblem {
     @Override
     public void execute() {
         System.out.println("\nThe largest prime factor of 600851475143 is " + this.getSolution() + ".");
+        printUrl();
     }
 
 }

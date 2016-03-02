@@ -27,6 +27,7 @@ public class Ep7 extends EulerProblem {
     @Override
     public void execute() {
         System.out.println("\nThe 10001st prime is " + this.getSolution());
+        printUrl();
     }
 
 }

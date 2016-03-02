@@ -29,6 +29,7 @@ public class Ep4 extends EulerProblem {
     @Override
     public void execute() {
         System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution());
+        printUrl();
     }
 
     private boolean isPalindromic(int number) {
