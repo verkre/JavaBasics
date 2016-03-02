@@ -7,8 +7,11 @@ import java.util.InputMismatchException;
  * just a lower or a lower and an upper bound.
  */
 public class UserInput {
+    
+    private java.util.Scanner inputScanner;
+    
     public UserInput() {
-        
+        this.inputScanner = new java.util.Scanner(System.in);
     }
     
     // there is really no need for these methods to be non-static, is there?
@@ -19,7 +22,7 @@ public class UserInput {
         long inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextLong();
+                inputNumber = this.inputScanner.nextLong();
             } catch(InputMismatchException inputNotLong) {
                 System.out.print("That was not an integer. Please type a number between " + lowerBound + " and " + upperBound + ". > ");
                 continue;
@@ -38,7 +41,7 @@ public class UserInput {
         long inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextInt();
+                inputNumber = this.inputScanner.nextInt();
             } catch(InputMismatchException inputNotLong) {
                 System.out.print("That was not an integer. Please type an integer (" + lowerBound + " or greater). > ");
                 continue;
@@ -57,7 +60,7 @@ public class UserInput {
         int inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextInt();
+                inputNumber = this.inputScanner.nextInt();
             } catch(InputMismatchException inputNotInteger) {
                 System.out.printf("That was not an integer. Please enter an integer between %d and %d. > ", lowerBound, upperBound);
                 continue;
@@ -76,7 +79,7 @@ public class UserInput {
         int inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextInt();
+                inputNumber = this.inputScanner.nextInt();
             } catch(InputMismatchException inputNotInteger) {
                 System.out.printf("That was not an integer. Please type an integer (%d or greater). > ", lowerBound);
                 continue;
