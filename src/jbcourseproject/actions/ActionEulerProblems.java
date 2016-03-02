@@ -32,7 +32,7 @@ public class ActionEulerProblems extends Action {
     }
 
     @Override
-    protected String giveDescription() {
+    protected String describeSelf() {
         return "show the solution to a problem from Project Euler";
     }
 

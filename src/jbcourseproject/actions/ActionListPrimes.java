@@ -13,7 +13,7 @@ public class ActionListPrimes extends Action {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "compute a certain number of prime numbers";
     }
     

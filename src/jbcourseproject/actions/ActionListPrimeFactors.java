@@ -12,7 +12,7 @@ public class ActionListPrimeFactors extends Action {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "compute the prime factors of a number";
     }
     

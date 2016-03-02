@@ -7,7 +7,7 @@ package jbcourseproject.actions;
 public class ActionExitToMainMenu extends Action {
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "Back to main menu";
     }
     

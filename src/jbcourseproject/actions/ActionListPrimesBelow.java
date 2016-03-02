@@ -13,7 +13,7 @@ public class ActionListPrimesBelow extends Action {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "compute all prime numbers smaller than a certain number";
     }
     

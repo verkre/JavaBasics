@@ -12,7 +12,7 @@ public class ActionCheckPrime extends Action {
     }
     
     @Override
-    protected String giveDescription() {
+    public String describeSelf() {
         return "check if a number is prime";
     }
     

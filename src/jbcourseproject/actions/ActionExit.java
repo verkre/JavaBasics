@@ -9,7 +9,7 @@ public class ActionExit extends Action {
     }
     
     @Override
-    public String giveDescription() {
+    public String describeSelf() {
         return "Exit";
     }
 

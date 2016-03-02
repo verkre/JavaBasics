@@ -10,10 +10,13 @@ public abstract class Action implements Executable {
     private String description;
     
     public Action() {
-        description = giveDescription();
+        description = describeSelf();
+        // the compiler warns me because I call an overridable method in the constructor.
+        // the only alternative I can think of is making the description attribute protected
+        // and defining it directly in the constructor of each subclass
     }
     
-    protected abstract String giveDescription();
+    protected abstract String describeSelf();
     
     @Override
     public String getDescription() {
