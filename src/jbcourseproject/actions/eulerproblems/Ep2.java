@@ -6,12 +6,7 @@ package jbcourseproject.actions.eulerproblems;
 public class Ep2 extends EulerProblem {
     
     public Ep2() {
-        super("Even Fibonacci numbers (Problem 2)");
-    }
-    
-    @Override
-    public String giveUrl() {
-        return "https://projecteuler.net/problem=2";
+        super("Even Fibonacci numbers (Problem 2)", "https://projecteuler.net/problem=2");
     }
     
     @Override

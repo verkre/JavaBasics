@@ -10,12 +10,7 @@ public class Ep7 extends EulerProblem {
     private static final int ep7InputNumber = 10001;
     
     public Ep7() {
-        super("10001st prime (Problem 7)");
-    }
-    
-    @Override
-    public String giveUrl() {
-        return "https://projecteuler.net/problem=7";
+        super("10001st prime (Problem 7)", "https://projecteuler.net/problem=7");
     }
     
     @Override

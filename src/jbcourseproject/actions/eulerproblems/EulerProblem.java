@@ -17,16 +17,14 @@ public abstract class EulerProblem extends Action {
     private boolean solutionWasComputed;
     private String url;
     
-    public EulerProblem(String description) {
+    public EulerProblem(String description, String url) {
         super(description);
-        // passes the constructor argument to the constructor of the superclass (Action)
+        // passes the first constructor argument to the constructor of the superclass (Action)
         this.solutionWasComputed = false;
-        this.url = giveUrl();
+        this.url = url;
     }
     
     public abstract long solve();
-    
-    protected abstract String giveUrl();
     
     public void printUrl() {
         System.out.println("Find details on this problem here: " + this.url);

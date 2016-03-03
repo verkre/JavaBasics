@@ -8,12 +8,7 @@ public class Ep4 extends EulerProblem {
     private static final int ep4InputNumber = 3;
     
     public Ep4() {
-        super("Largest palindrome product (Problem 4)");
-    }
-
-    @Override
-    public String giveUrl() {
-        return "https://projecteuler.net/problem=4";
+        super("Largest palindrome product (Problem 4)", "https://projecteuler.net/problem=4");
     }
 
     @Override
