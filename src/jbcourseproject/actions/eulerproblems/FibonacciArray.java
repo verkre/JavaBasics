@@ -3,12 +3,12 @@ package jbcourseproject.actions.eulerproblems;
 
 
 /**
- * This is a class to help with some operations on an array of integers (used in
- * the generation of fibonacci numbers and sums)
+ * Implements some methods on a long array of 3 consecutive fibonacci numbers. 
+ * Specific to use within the Ep2 class to help with the solution of the 2nd problem on projecteuler.com.
  */
-
 public class FibonacciArray {
-    public long[] array;
+    private long[] array;
+    
     public FibonacciArray(long[] array) {
         this.array = array;
     }
@@ -30,5 +30,8 @@ public class FibonacciArray {
         this.array[2] = nextFib;
         
     }
-
+    
+    // TODO This class is now very specific for use in the Ep2 class. It is not very robust
+    // (e.g. no checking whether the argument really is a 3-element array, which it has to be)
+    // or useful for anything but this purpose.
 }

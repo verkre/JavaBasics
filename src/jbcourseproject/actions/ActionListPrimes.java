@@ -5,7 +5,7 @@ import jbcourseproject.PrimesUtils;
 import java.util.ArrayList;
 
 /**
- * This asks the user for a number and prints a list of primes of that length.
+ * Main menu item/action: Ask the user for a number and print a list of primes of that length.
  */
 public class ActionListPrimes extends Action {
     

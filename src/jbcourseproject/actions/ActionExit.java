@@ -1,7 +1,7 @@
 package jbcourseproject.actions;
 
 /**
- * Exit the program.
+ * Main menu item/action: Exit the program.
  */
 public class ActionExit extends Action {
 

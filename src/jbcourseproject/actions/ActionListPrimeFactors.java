@@ -4,7 +4,7 @@ import jbcourseproject.PrimesUtils;
 import jbcourseproject.UserInput;
 
 /**
- * Ask the user for a number, compute and print its prime factors.
+ * Main menu item/action: Ask the user for a number, compute and print its prime factors.
  */
 public class ActionListPrimeFactors extends Action {
     

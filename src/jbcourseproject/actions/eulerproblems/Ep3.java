@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jbcourseproject.actions.eulerproblems;
 
 import jbcourseproject.PrimesUtils;
 
+/**
+ * EulerProblem sub-menu item/action: Compute and print the result of problem 3.
+ */
 public class Ep3 extends EulerProblem {
-
+    
+    private static final long ep3InputNumber = 600851475143L;
     public Ep3() {
         super("Largest prime factor of 600851475143 (Problem 3)");
     }
@@ -20,7 +19,7 @@ public class Ep3 extends EulerProblem {
     
     @Override
     public long solve() {
-        return PrimesUtils.findLargestPrimeFactor(600851475143L);
+        return PrimesUtils.findLargestPrimeFactor(ep3InputNumber);
     }
 
     @Override

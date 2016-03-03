@@ -1,11 +1,13 @@
-
 package jbcourseproject.actions.eulerproblems;
 
 import jbcourseproject.PrimesUtils;
-import jbcourseproject.actions.Action;
 
+/**
+ * EulerProblem sub-menu item/action: Compute and print the result of problem 7.
+ */
 public class Ep7 extends EulerProblem {
 
+    private static final int ep7InputNumber = 10001;
     
     public Ep7() {
         super("10001st prime (Problem 7)");
@@ -16,8 +18,9 @@ public class Ep7 extends EulerProblem {
         return "https://projecteuler.net/problem=7";
     }
     
+    @Override
     public long solve() {
-        return PrimesUtils.listFirstNPrimes(10001).get(10000);
+        return PrimesUtils.listFirstNPrimes(ep7InputNumber).get(ep7InputNumber - 1);
     }
     
     @Override

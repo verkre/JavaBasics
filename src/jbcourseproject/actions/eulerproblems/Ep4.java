@@ -1,13 +1,12 @@
-/*
- https://projecteuler.net/problem=4
-
- Find the largest palindrome made from the product of two 3-digit numbers.
- correct answer: 906609
- */
 package jbcourseproject.actions.eulerproblems;
 
+/**
+ * EulerProblem sub-menu item/action: Compute and print the result of problem 4.
+ */
 public class Ep4 extends EulerProblem {
 
+    private static final int ep4InputNumber = 3;
+    
     public Ep4() {
         super("Largest palindrome product (Problem 4)");
     }
@@ -19,7 +18,7 @@ public class Ep4 extends EulerProblem {
 
     @Override
     public long solve() {
-        return this.findLargestPalindromeProduct(3);
+        return this.findLargestPalindromeProduct(ep4InputNumber);
     }
 
     @Override

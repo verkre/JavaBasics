@@ -2,7 +2,7 @@ package jbcourseproject.actions;
 
 
 /**
- * Exit the sub-menu to go back to the main menu
+ * Sub-menu item/action: Exit the sub-menu to go back to the main menu.
  */
 public class ActionExitToMainMenu extends Action {
     public ActionExitToMainMenu() {
@@ -11,7 +11,7 @@ public class ActionExitToMainMenu extends Action {
 
     @Override
     public void execute() {
-        // this method is never used, but has to be here because of Executable interface inherited from Action.
+        // this method is never used, but has to be here because of the Executable interface inherited from Action.
     }
 
 }

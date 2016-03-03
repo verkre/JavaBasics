@@ -4,7 +4,7 @@ import jbcourseproject.PrimesUtils;
 import jbcourseproject.UserInput;
 
 /**
- * 
+ * Main menu item/action: Check a number (input from user) for primeness.
  */
 public class ActionCheckPrime extends Action {
 

@@ -1,13 +1,8 @@
-/*
-https://projecteuler.net/problem=2
-
-find the sum of even-valued fibonacci numbers that do not exceed four million.
-
-*/
-
 package jbcourseproject.actions.eulerproblems;
 
-
+/**
+ * EulerProblem sub-menu item/action: Compute and print the result of problem 2.
+ */
 public class Ep2 extends EulerProblem {
     
     public Ep2() {
@@ -31,14 +26,12 @@ public class Ep2 extends EulerProblem {
     }
     
     private long evenFibSumUpTo(long upperBound) {
-        // keeps only the last 3 computed fibonacci numbers in an array
-        // if last one is even, add it to resultSum
-        // update the array by shifting the values to the left and adding the next fib on the right
+        // instantiates an FibonacciArray object which keeps the last 3 computed fibonacci numbers in an array
+        // if last one is even, add it to resultSum, then compute the next fib. number
         // do all of this while the third element of list is < upperBound
         FibonacciArray lastThreeFibs = new FibonacciArray(new long[]{0, 1, 1});
         long resultSum = 0;
         while (lastThreeFibs.getLastElement() < upperBound) {
-            // if the last fibonacci number we generated so far is even, add it to the sum
             if (lastThreeFibs.isLastElementEven()) {
                 resultSum += lastThreeFibs.getLastElement();
             }

@@ -5,7 +5,7 @@ import jbcourseproject.PrimesUtils;
 import java.util.ArrayList;
 
 /**
- * This asks the user for a number and prints a list of all primes smaller than that number.
+ * Main menu item/action: Ask the user for a number and print a list of all primes smaller than that number.
  */
 public class ActionListPrimesBelow extends Action {
     
