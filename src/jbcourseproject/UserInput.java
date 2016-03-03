@@ -19,7 +19,7 @@ public class UserInput {
         long inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextInt();
+                inputNumber = new java.util.Scanner(System.in).nextLong();
             } catch(InputMismatchException inputNotLong) {
                 System.out.print("That was not an integer. Please type an integer between " + lowerBound + " and " + MAX_LONG + ". > ");
                 continue;
