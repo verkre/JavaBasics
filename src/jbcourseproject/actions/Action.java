@@ -11,7 +11,7 @@ public abstract class Action implements Executable {
     
     public Action(String description) {
         this.description = description;
-        // now each subclass calls the superclass constructor with its own description string
+        // each subclass calls the superclass constructor with its own description string
         // as an argument. (As a way to keep the description attribute private, yet allow each 
         // subclass to set it to its own string).
     }

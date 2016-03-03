@@ -7,19 +7,15 @@ import java.util.InputMismatchException;
  * just a lower or a lower and an upper bound.
  */
 public class UserInput {
-    
+    // these constants are used to prompt the user if they enter a too-large number.
     public static final int MAX_INT = Integer.MAX_VALUE;
     public static final long MAX_LONG = 9_223_372_036_854_775_807L;
     
     public UserInput() {
     }
     
-    // Could or should this be a utility class? There is really no need for these methods to be non-static, is there?
-    // Decided to keep it this way for now.
-    
-   
     public long askInputLongInt(long lowerBound) {
-        System.out.print("Please type a number (" + lowerBound + " or greater). > ");
+        System.out.printf("Please type a number (" + lowerBound + " or greater). > ");
         long inputNumber;
         while (true) {
             try {
@@ -38,7 +34,7 @@ public class UserInput {
     }
 
     public int askInputInteger(int lowerBound, int upperBound) {
-        System.out.print("Please type a number between " + lowerBound + " and " + upperBound + ". > ");
+        System.out.printf("Please type a number between %d and %d. > ", lowerBound, upperBound);
         int inputNumber;
         while (true) {
             try {
@@ -74,4 +70,8 @@ public class UserInput {
             }
         }
     }
+    
+    // TODO Could or should this be a utility class? There is really no need for these methods to be non-static, is there?
+    // Decided to keep it this way for now.
+
 }

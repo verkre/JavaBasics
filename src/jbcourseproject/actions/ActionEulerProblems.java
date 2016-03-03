@@ -9,8 +9,8 @@ import jbcourseproject.MenuInterface;
 import java.util.ArrayList;
 
 /**
- * This manages the Project Euler problem objects, and basically acts as a sub-controller
- * (instantiates a sub-menu for the problems)
+ * This class manages the Project Euler problem objects, and basically acts as a sub-controller
+ * (shows a sub-menu for the problems).
  */
 public class ActionEulerProblems extends Action {
     
@@ -20,9 +20,6 @@ public class ActionEulerProblems extends Action {
     private Ep7 ep7Object;
     private Ep75 ep75Object;
     
-    /**
-     * Instantiate each available EulerProblem, but only when called for the first time.
-     */
     public ActionEulerProblems() {
         super("show the solution to a problem from Project Euler");
         ep2Object = new Ep2();
@@ -34,10 +31,10 @@ public class ActionEulerProblems extends Action {
 
     @Override
     public void execute() {
-        // stay in this sub-menu until user enters 0 (to return to main menu)
         MenuInterface eulerMenuInterface = new MenuInterface(this.collectEulerProblems());
+        // the method call is in the loop header expression so that we can stay in this sub-menu until user enters 0
+        // displayAndChooseFromMenu will return false once the user chooses the back-to-main-menu option.
         while (eulerMenuInterface.displayAndChooseFromMenu()) {
-            // displayAndChooseFromMenu will return false once the user chooses the back-to-main-menu option
         }
     }
 

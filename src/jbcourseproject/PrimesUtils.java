@@ -96,7 +96,7 @@ public class PrimesUtils {
                 numberToFactorize /= i;
             }
         }
-        // if the number we have left is prime (or numberToFactorize is itself prime), add it as a factor
+        // if the number we have left after the for loop is prime (or numberToFactorize is itself prime), add it as a factor
         if (PrimesUtils.isPrime(numberToFactorize)) {
             largestPrimeFactor = numberToFactorize;
         }
@@ -106,18 +106,19 @@ public class PrimesUtils {
     /**
      * Computes a list of primes up to the given upper Bound.
      * @param upperBound
-     * @return An ArrayList<Integer> of primes.
+     * @return An ArrayList of primes.
      */
     public static ArrayList<Integer> listPrimesBelow(int upperBound) {
         ArrayList<Integer> primeList = new ArrayList<>();
         if (upperBound == 2) {
             return primeList;
-            // empty list/ there are no primes smaller than 2
+            // empty list; there are no primes smaller than 2
         }
         primeList.add(2);
         if (upperBound == 3) {
             return primeList;
         }
+        // if upperBound is larger than 3, check every odd number up to upperBound and add it if it is prime.
         for (int i = 3; i < upperBound; i += 2) {
             if (PrimesUtils.isPrime(i)) {
                 primeList.add(i);
@@ -130,12 +131,13 @@ public class PrimesUtils {
     /**
      * Computes a list of primes of a given length.
      * @param howMany
-     * @return An ArrayList<Integer> of primes.
+     * @return An ArrayList of primes.
      */
     public static ArrayList<Integer> listFirstNPrimes(int howMany) {
         ArrayList<Integer> primeList = new ArrayList<>();
         primeList.add(2);
         int potentialNextPrime = 3;
+        // check every odd number and add it if it is prime until we have found howMany primes.
         while (primeList.size() < howMany) {
             if (PrimesUtils.isPrime(potentialNextPrime)) {
                 primeList.add(potentialNextPrime);
