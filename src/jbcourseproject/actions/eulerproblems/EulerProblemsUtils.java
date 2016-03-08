@@ -11,8 +11,8 @@ public class EulerProblemsUtils {
     /**
      * Efficiently computes the greatest common divisor of two integers using bit-shifting operations.
      * This method is copied from http://introcs.cs.princeton.edu/java/23recursion/BinaryGCD.java.html
-     * @param p
-     * @param q
+     * @param p an integer
+     * @param q an integer
      * @return the greatest common divisor of p and q
      */
     public static int greatestCommonDivisor(int p, int q) {
@@ -37,9 +37,9 @@ public class EulerProblemsUtils {
 
     /**
      * An implementation of an algorithm that generates Pythagorean triples from three positive integers.
-     * @param m
-     * @param n
-     * @param k
+     * @param m an integer
+     * @param n an integer
+     * @param k an integer
      * @return the sum of a Pythagorean triple generated from the three arguments
      */
     public static int generatePythagoreanTripleSum(int m, int n, int k) {

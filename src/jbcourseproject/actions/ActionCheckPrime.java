@@ -23,5 +23,12 @@ public class ActionCheckPrime extends Action {
         }
     }
     
+    // TODO for GUI:
+    // declare a executeForGUI method in the Action class, 
+    // or in a new DisplayableInGui interface, (and implement it here) that
+    // - gets user input from the GUI somehow(?)
+    // - calls the method that solves the problem
+    // - passes its result to the GUI/ view object
+    
     
 }

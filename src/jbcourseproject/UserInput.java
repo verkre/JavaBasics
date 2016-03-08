@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 public class UserInput {
     // these constants are used to prompt the user if they enter a too-large number.
     public static final int MAX_INT = Integer.MAX_VALUE;
-    public static final long MAX_LONG = 9_223_372_036_854_775_807L;
+    public static final long MAX_LONG = Long.MAX_VALUE;
     
     public UserInput() {
     }

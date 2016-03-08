@@ -10,7 +10,7 @@ public class PrimesUtils {
     
     /**
      * Checks numbers up to Integer.MAX_VALUE for primeness.
-     * @param potentialPrime
+     * @param potentialPrime a non-negative integer
      * @return true if argument is prime
      */
     public static boolean isPrime(int potentialPrime) {
@@ -29,7 +29,7 @@ public class PrimesUtils {
     
     /**
      * Checks a number for primeness.
-     * @param potentialPrime
+     * @param potentialPrime a non-negative integer
      * @return true if argument is prime
      */
     public static boolean isPrime(long potentialPrime) {
@@ -49,7 +49,8 @@ public class PrimesUtils {
     /**
      * Checks numbers up to Integer.MAX_VALUE.
      * Takes a list of all primes below the number it checks and uses it to make the checking faster
-     * @param potentialPrime, allPrimesUptToPotentialPrime
+     * @param potentialPrime a non-negative integer
+     * @param allPrimesUptToPotentialPrime an ArrayList of all primes up to potentialPrime
      * @return true if argument is prime
      */
     public static boolean isPrime(int potentialPrime, ArrayList<Integer> allPrimesUptToPotentialPrime) {
@@ -63,8 +64,8 @@ public class PrimesUtils {
     
     /**
      * Computes all prime factors of a number.
-     * @param numberToFactorize
-     * @return an ArrayList<Long>.
+     * @param numberToFactorize a non-negative integer (2 or greater)
+     * @return an ArrayList of prime factors
      */
     public static ArrayList<Long> computePrimeFactors(long numberToFactorize) {
         // optimization: we only check potential factors up to Sqrt(numberToFactorize)
@@ -84,7 +85,7 @@ public class PrimesUtils {
     
     /**
      * Computes the largest prime factor of a number. 
-     * @param numberToFactorize
+     * @param numberToFactorize an integer greater than 1
      * @return the largest prime factor
      */
     public static long findLargestPrimeFactor(long numberToFactorize) {
@@ -105,7 +106,7 @@ public class PrimesUtils {
 
     /**
      * Computes a list of primes up to the given upper Bound.
-     * @param upperBound
+     * @param upperBound an integer greater than 1
      * @return An ArrayList of primes.
      */
     public static ArrayList<Integer> listPrimesBelow(int upperBound) {
@@ -130,7 +131,7 @@ public class PrimesUtils {
 
     /**
      * Computes a list of primes of a given length.
-     * @param howMany
+     * @param howMany a non-negative integer
      * @return An ArrayList of primes.
      */
     public static ArrayList<Integer> listFirstNPrimes(int howMany) {

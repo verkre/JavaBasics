@@ -41,7 +41,7 @@ public class ActionEulerProblems extends Action {
     /**
      * Make a list of all the available problems that should show up in the sub-menu,
      * plus the exit-back-to-main Action.
-     * @return An ArrayList<> of EulerProblem objects.
+     * @return An ArrayList of EulerProblem objects
      */
     public ArrayList<Action> collectEulerProblems() {
         ArrayList<Action> availableEulerProblems = new ArrayList<>();

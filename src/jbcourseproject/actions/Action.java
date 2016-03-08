@@ -8,6 +8,7 @@ package jbcourseproject.actions;
 public abstract class Action implements Executable {
     
     private String description;
+    // TODO add a title and a getTitle method for display on tabs
     
     public Action(String description) {
         this.description = description;

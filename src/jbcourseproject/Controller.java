@@ -20,7 +20,7 @@ public class Controller {
     
     /**
      * Collect all Actions that should appear in the main menu in an ArrayList.
-     * @return 
+     * @return an ArrayList of Action objects
      */
     public ArrayList<Action> collectActionObjects() {
         // these are only instantiated once at the start of the program - so there is no need to declare them as 
