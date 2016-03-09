@@ -17,8 +17,8 @@ public abstract class EulerProblem extends Action {
     private boolean solutionWasComputed;
     private String url;
     
-    public EulerProblem(String description, String url) {
-        super(description);
+    public EulerProblem(String title, String description, String url) {
+        super(title, description);
         // passes the first constructor argument to the constructor of the superclass (Action)
         this.solutionWasComputed = false;
         this.url = url;

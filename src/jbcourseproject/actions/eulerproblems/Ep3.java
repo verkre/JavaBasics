@@ -9,7 +9,7 @@ public class Ep3 extends EulerProblem {
     
     private static final long ep3InputNumber = 600851475143L;
     public Ep3() {
-        super("Largest prime factor of 600851475143 (Problem 3)", "https://projecteuler.net/problem=3");
+        super("Problem 3", "Largest prime factor of 600851475143 (Problem 3)", "https://projecteuler.net/problem=3");
     }
 
     @Override
