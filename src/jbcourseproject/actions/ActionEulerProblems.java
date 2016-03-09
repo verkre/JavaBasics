@@ -21,7 +21,7 @@ public class ActionEulerProblems extends Action {
     private Ep75 ep75Object;
     
     public ActionEulerProblems() {
-        super("show the solution to a problem from Project Euler");
+        super("Project Euler Problems", "show the solution to a problem from Project Euler");
         ep2Object = new Ep2();
         ep3Object = new Ep3();
         ep4Object = new Ep4();

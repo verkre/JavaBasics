@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ActionListPrimes extends Action {
     
     public ActionListPrimes() {
-        super("compute a certain number of prime numbers");
+        super("Prime list", "compute a certain number of prime numbers");
     }
     
     @Override

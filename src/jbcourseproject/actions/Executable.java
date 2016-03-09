@@ -8,6 +8,7 @@ package jbcourseproject.actions;
  */
 public interface Executable {
     void execute();
+    String getTitle();
     String getDescription();
     
 }

@@ -9,7 +9,7 @@ import jbcourseproject.UserInput;
 public class ActionCheckPrime extends Action {
 
     public ActionCheckPrime() {
-        super("check if a number is prime");
+        super("Prime checker", "check if a number is prime");
     }
     
     @Override

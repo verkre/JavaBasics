@@ -6,7 +6,7 @@ package jbcourseproject.actions;
  */
 public class ActionExitToMainMenu extends Action {
     public ActionExitToMainMenu() {
-        super("Back to main menu");
+        super("Back to main menu", "Back to main menu");
     }
 
     @Override

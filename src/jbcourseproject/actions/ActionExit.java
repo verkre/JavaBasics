@@ -6,7 +6,7 @@ package jbcourseproject.actions;
 public class ActionExit extends Action {
 
     public ActionExit() {
-        super("Exit");
+        super("Exit", "Exit");
     }
     
     @Override

@@ -9,7 +9,7 @@ import jbcourseproject.UserInput;
 public class ActionListPrimeFactors extends Action {
     
     public ActionListPrimeFactors() {
-        super("compute the prime factors of a number");
+        super("Prime Factors", "compute the prime factors of a number");
     }
     
     @Override

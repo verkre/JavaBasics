@@ -1,12 +1,6 @@
 package jbcourseproject;
 
-import jbcourseproject.actions.ActionEulerProblems;
-import jbcourseproject.actions.Action;
-import jbcourseproject.actions.ActionListPrimeFactors;
-import jbcourseproject.actions.ActionListPrimes;
-import jbcourseproject.actions.ActionCheckPrime;
-import jbcourseproject.actions.ActionExit;
-import jbcourseproject.actions.ActionListPrimesBelow;
+import jbcourseproject.actions.*;
 import java.util.ArrayList;
 
 public class Controller {
