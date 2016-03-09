@@ -6,7 +6,9 @@ import java.util.ArrayList;
 /**
  * This class contains several (static) helper methods for computing or checking primes.
  */
-public class PrimesUtils {
+public final class PrimesUtils {
+    
+    private PrimesUtils() {}
     
     /**
      * Checks numbers up to Integer.MAX_VALUE for primeness.

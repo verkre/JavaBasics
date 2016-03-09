@@ -6,7 +6,9 @@ package jbcourseproject.actions.eulerproblems;
  * and to generate Pythagorean triples and return their sum.
  * Specific for the use in the solution of the 75th problem from projecteuler.
  */
-public class EulerProblemsUtils {
+public final class EulerProblemsUtils {
+    
+    private EulerProblemsUtils() {}
     
     /**
      * Efficiently computes the greatest common divisor of two integers using bit-shifting operations.
