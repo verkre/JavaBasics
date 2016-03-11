@@ -130,6 +130,25 @@ public final class PrimesUtils {
         return primeList;
     }
 
+    public static ArrayList<Long> listPrimesBelow(long upperBound) {
+        ArrayList<Long> primeList = new ArrayList<>();
+        if (upperBound == 2) {
+            return primeList;
+            // empty list; there are no primes smaller than 2
+        }
+        primeList.add(2L);
+        if (upperBound == 3) {
+            return primeList;
+        }
+        // if upperBound is larger than 3, check every odd number up to upperBound and add it if it is prime.
+        for (long i = 3; i < upperBound; i += 2) {
+            if (PrimesUtils.isPrime(i)) {
+                primeList.add(i);
+            }
+        }
+        return primeList;
+    }
+
 
     /**
      * Computes a list of primes of a given length.
@@ -150,5 +169,19 @@ public final class PrimesUtils {
         return primeList;
     }
     
+        public static ArrayList<Long> listFirstNPrimes(long howMany) {
+        ArrayList<Long> primeList = new ArrayList<>();
+        primeList.add(2L);
+        long potentialNextPrime = 3L;
+        // check every odd number and add it if it is prime until we have found howMany primes.
+        while (primeList.size() < (int) howMany) {
+            if (PrimesUtils.isPrime(potentialNextPrime)) {
+                primeList.add(potentialNextPrime);
+            }
+            potentialNextPrime += 2;
+        }
+        return primeList;
+    }
+
     
 }

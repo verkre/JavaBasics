@@ -20,15 +20,22 @@ public class ActionEulerProblems extends Action {
     private Ep7 ep7Object;
     private Ep75 ep75Object;
     
+    private Long inputNumber = null;
+    
     public ActionEulerProblems() {
-        super("Project Euler Problems", "show the solution to a problem from Project Euler");
+        super("Project Euler Problems", "show the solution to a problem from Project Euler", false);
         ep2Object = new Ep2();
         ep3Object = new Ep3();
         ep4Object = new Ep4();
         ep7Object = new Ep7();
         ep75Object = new Ep75();
     }
-
+    
+    @Override
+    public String getInfoText() {
+        return "...";
+    }
+    
     @Override
     public void execute() {
         MenuInterface eulerMenuInterface = new MenuInterface(this.collectEulerProblems());
@@ -52,6 +59,16 @@ public class ActionEulerProblems extends Action {
         availableEulerProblems.add(ep7Object);
         availableEulerProblems.add(ep75Object);
         return availableEulerProblems;
+    }
+
+    @Override
+    public void setInputNumber(Long newInputNumber) {
+        // do nothing, no input needed here
+    }
+
+    @Override
+    public String getSolutionString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

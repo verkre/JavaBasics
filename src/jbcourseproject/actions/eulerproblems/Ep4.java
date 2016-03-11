@@ -5,7 +5,7 @@ package jbcourseproject.actions.eulerproblems;
  */
 public class Ep4 extends EulerProblem {
 
-    private static final int ep4InputNumber = 3;
+    private static final int inputNumber = 3;
     
     public Ep4() {
         super("Problem 4", "Largest palindrome product (Problem 4)", "https://projecteuler.net/problem=4");
@@ -13,7 +13,7 @@ public class Ep4 extends EulerProblem {
 
     @Override
     public long solve() {
-        return this.findLargestPalindromeProduct(ep4InputNumber);
+        return this.findLargestPalindromeProduct(inputNumber);
     }
 
     @Override
@@ -40,6 +40,21 @@ public class Ep4 extends EulerProblem {
         }
         return largestPalindrome;
 
+    }
+
+    @Override
+    public String getInfoText() {
+        return "...";
+    }
+
+    @Override
+    public void setInputNumber(Long newInputNumber) {
+        System.out.println("not possible.");
+    }
+
+    @Override
+    public String getSolutionString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

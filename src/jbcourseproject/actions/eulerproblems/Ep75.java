@@ -8,14 +8,14 @@ import jbcourseproject.actions.eulerproblems.EulerProblemsUtils;
  */
 public class Ep75 extends EulerProblem {
     
-    private static final int ep75InputNumber = 1_500_000;
+    private static final int inputNumber = 1_500_000;
     public Ep75() {
         super("Problem 75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75");
     }
     
     @Override
     public long solve() {
-        return howManyTriplesWithUniqueSum(ep75InputNumber);
+        return howManyTriplesWithUniqueSum(inputNumber);
     }
     
     @Override
@@ -62,6 +62,21 @@ public class Ep75 extends EulerProblem {
                 }
         }
         return sumsFoundOnce.size();
+    }
+
+    @Override
+    public String getInfoText() {
+        return "...";
+    }
+
+    @Override
+    public void setInputNumber(Long newInputNumber) {
+        System.out.println("not possible.");
+    }
+
+    @Override
+    public String getSolutionString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

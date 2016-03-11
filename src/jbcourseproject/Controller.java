@@ -2,14 +2,21 @@ package jbcourseproject;
 
 import jbcourseproject.actions.*;
 import java.util.ArrayList;
+import jbcourseproject.userinterface.ViewGUI;
+import jbcourseproject.userinterface.ViewTUI;
 
 public class Controller {
     
     public static void main(String[] args) {
-        MenuInterface mainMenuInterface = new MenuInterface(new Controller().collectActionObjects());
-        while (true) {
-            mainMenuInterface.displayAndChooseFromMenu();
-        }
+//        MenuInterface mainMenuInterface = new MenuInterface(new Controller().collectActionObjects());
+//        while (true) {
+//            mainMenuInterface.displayAndChooseFromMenu();
+//        }
+//        
+//        ViewTUI viewTUI = new ViewTUI(new Controller().collectActionObjects());
+        ViewGUI viewGUI = new ViewGUI(new Controller().collectActionObjects());
+        viewGUI.go();
+        // TODO let the ViewGUI or ViewTUI start the program (= put main methods there)
     }
     
     /**

@@ -18,7 +18,7 @@ public abstract class EulerProblem extends Action {
     private String url;
     
     public EulerProblem(String title, String description, String url) {
-        super(title, description);
+        super(title, description, false);
         // passes the first constructor argument to the constructor of the superclass (Action)
         this.solutionWasComputed = false;
         this.url = url;
@@ -45,4 +45,8 @@ public abstract class EulerProblem extends Action {
         return this.solution;
     }
     
+    @Override
+    public abstract String getInfoText();
+    public abstract String getSolutionString();
+    // TODO why do these have to be here and is not passed on directly to the subclasses of this class
 }

@@ -5,13 +5,15 @@ package jbcourseproject.actions.eulerproblems;
  */
 public class Ep2 extends EulerProblem {
     
+    private Long inputNumber = 4_000_000L;
+    
     public Ep2() {
         super("Problem 2", "Even Fibonacci numbers (Problem 2)", "https://projecteuler.net/problem=2");
     }
     
     @Override
     public long solve() {
-        return evenFibSumUpTo(4_000_000L);
+        return evenFibSumUpTo(inputNumber);
     }
         
     @Override
@@ -35,7 +37,20 @@ public class Ep2 extends EulerProblem {
         return resultSum;
     }
 
+    @Override
+    public String getInfoText() {
+        return "...";
+    }
 
-   
-    
+    @Override
+    public void setInputNumber(Long newInputNumber) {
+        System.out.println("not possible");
+    }
+
+    @Override
+    public String getSolutionString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

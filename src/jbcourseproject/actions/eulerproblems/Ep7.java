@@ -7,7 +7,7 @@ import jbcourseproject.PrimesUtils;
  */
 public class Ep7 extends EulerProblem {
 
-    private static final int ep7InputNumber = 10001;
+    private static final int inputNumber = 10001;
     
     public Ep7() {
         super("Problem 7", "10001st prime (Problem 7)", "https://projecteuler.net/problem=7");
@@ -15,7 +15,7 @@ public class Ep7 extends EulerProblem {
     
     @Override
     public long solve() {
-        return PrimesUtils.listFirstNPrimes(ep7InputNumber).get(ep7InputNumber - 1);
+        return PrimesUtils.listFirstNPrimes(inputNumber).get(inputNumber - 1);
     }
     
     @Override
@@ -23,5 +23,22 @@ public class Ep7 extends EulerProblem {
         System.out.println("\nThe 10001st prime is " + this.getSolution());
         printUrl();
     }
+
+    @Override
+    public String getInfoText() {
+        return "...";
+    }
+
+    @Override
+    public void setInputNumber(Long newInputNumber) {
+        System.out.println("not possible.");
+    }
+
+    @Override
+    public String getSolutionString() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
 }
