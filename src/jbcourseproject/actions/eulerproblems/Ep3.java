@@ -25,7 +25,11 @@ public class Ep3 extends EulerProblem {
 
     @Override
     public String getInfoText() {
-        return "...";
+        return "The prime factors of 13195 are 5, 7, 13 and 29.\n"
+                + "\n"
+                + "What is the largest prime factor of the number 600851475143 ?"
+                + "\n\n"
+                + "https://projecteuler.net/problem=3";
     }
 
     @Override
@@ -35,7 +39,7 @@ public class Ep3 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "The largest prime factor of 600851475143 is " + this.getSolution() + ".";
     }
 
 }

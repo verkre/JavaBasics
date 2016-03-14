@@ -8,13 +8,8 @@ import jbcourseproject.userinterface.ViewTUI;
 public class Controller {
     
     public static void main(String[] args) {
-//        MenuInterface mainMenuInterface = new MenuInterface(new Controller().collectActionObjects());
-//        while (true) {
-//            mainMenuInterface.displayAndChooseFromMenu();
-//        }
-//        
 //        ViewTUI viewTUI = new ViewTUI(new Controller().collectActionObjects());
-        ViewGUI viewGUI = new ViewGUI(new Controller().collectActionObjects());
+        ViewGUI viewGUI = new ViewGUI(new Controller().collectActionObjects(), new ActionEulerProblems().collectEulerProblems());
         viewGUI.go();
         // TODO let the ViewGUI or ViewTUI start the program (= put main methods there)
     }

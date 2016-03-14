@@ -5,12 +5,24 @@
  */
 package jbcourseproject.userinterface;
 
+import jbcourseproject.Controller;
+import jbcourseproject.MenuInterface;
+
 /**
  *
  * @author Vera Kreuter
  */
 public class ViewTUI extends View {
 
+    public static void main(String[] args) {
+        MenuInterface mainMenuInterface = new MenuInterface(new Controller().collectActionObjects());
+        while (true) {
+            mainMenuInterface.displayAndChooseFromMenu();
+        }
+        // TODO move TUI code from MenuInterface and UserInput to here.
+ 
+
+    }
     // TODO implement the getInput methods by using code from UserInput class
     public long getInputLongInt(long lowerBound) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,4 +36,6 @@ public class ViewTUI extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     // methods for text output go here
+    
+    // TODO actually make this functional
 }

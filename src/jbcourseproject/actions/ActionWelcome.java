@@ -19,7 +19,12 @@ public class ActionWelcome extends Action {
 
     @Override
     public String getInfoText() {
-        return "Sorry, this welcome screen is yet to be prettified.";
+        return "This program provides some tools to check whether a number is a prime number, "
+                + "as well as to compute prime factors and lists of prime numbers."
+                + "\n"
+                + "It can also show the solutions to some problems from projecteuler.com"
+                + "\n\n"
+                + "You can go back and forth between the tools by using the tabs above.";
     }
 
     @Override

@@ -39,9 +39,9 @@ public abstract class EulerProblem extends Action {
             this.solution = this.solve();
             this.solutionWasComputed = true;
         }
-        else {
-            System.out.println("\n...getting cached solution...");
-        }
+//        else {
+//            System.out.println("\n...getting cached solution...");
+//        }
         return this.solution;
     }
     

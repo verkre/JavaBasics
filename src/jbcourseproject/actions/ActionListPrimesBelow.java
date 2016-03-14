@@ -30,7 +30,15 @@ public class ActionListPrimesBelow extends Action {
     
     @Override
     public String getInfoText() {
-        return "...";
+        return "A prime number (or a prime) is a natural number greater than 1 that has no positive \"\n"
+                + "divisors other than 1 and itself."
+                + "\n"
+                + "There are infinitely many primes."
+                + "\n\n"
+                + "-- quoted from https://en.wikipedia.org/wiki/Prime_number"
+                + "\n\n"
+                + "Enter a number (an integer) in the field below and click the "
+                + "button to get a list of all primes smaller than that number.";
     }
 
     @Override

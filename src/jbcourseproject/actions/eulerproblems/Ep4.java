@@ -44,7 +44,11 @@ public class Ep4 extends EulerProblem {
 
     @Override
     public String getInfoText() {
-        return "...";
+        return "A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\n"
+                + "\n"
+                + "Find the largest palindrome made from the product of two 3-digit numbers."
+                + "\n\n"
+                + "https://projecteuler.net/problem=4";
     }
 
     @Override
@@ -54,7 +58,7 @@ public class Ep4 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "The largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution() + ".";
     }
 
 }

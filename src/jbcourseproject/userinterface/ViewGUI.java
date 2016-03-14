@@ -5,13 +5,14 @@
  */
 package jbcourseproject.userinterface;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
@@ -35,10 +36,9 @@ public class ViewGUI extends View {
     
     private JFrame frame;
     private List<Action> actions;
-    private int inputInt;
+    private List<Action> epActions;
     private Long inputLong;
     private List<Long> inputLongs;
-    private String solutionString;
     Action firstAction;
     Action secondAction;
     Action thirdAction;
@@ -48,17 +48,20 @@ public class ViewGUI extends View {
     List<JPanel> calculationPanels;
     List<JTextField> inputNumberFields;
     List<JButton> startCalcButtons;
+    JPanel epContentsPanel;
+    JTextArea epInfo;
+    JTextArea epSolution;
     
-    private JTextArea textPrimeCheckerResult;
-    private JTextField textInputNumber;
     
-    public ViewGUI(List<Action> actions) {
+    public ViewGUI(List<Action> actions, List<Action> epActions) {
         this.inputLongs = new ArrayList<>();
         // frame is instantiated in the constructor - is that correct?
         frame = new JFrame("Primes and Euler Problems");
         this.actions = actions;
-        // REFACT the first action is manually exchanged here (from Exit to Welcome). It works but it is kind of ugly
+        this.epActions = epActions;
+        // REFACT the first actions are manually exchanged here (from Exit to Welcome). It works but it is kind of ugly
         this.actions.set(0, new ActionWelcome());
+        this.epActions.set(0, new ActionWelcomeEp());
         this.mainMenuPanels = new ArrayList<>();
         this.mainMenuResultTextAreas = new ArrayList();
         this.calculationPanels = new ArrayList();
@@ -67,13 +70,19 @@ public class ViewGUI extends View {
     }
     
     public void go() {
+        setNiceLookAndFeel();
+        
+        constructFrame();
+    }
+
+    private void setNiceLookAndFeel() {
         // show all available look-and-feels in the sys.out
 //        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                System.out.println(info.getName());
 //        }
-        
-        // copied from generated code from GUIBuilder
-        // set the look and feel; if the look and feel selected is not available, resort to the standard
+
+// copied from generated code from GUIBuilder
+// set the look and feel; if the look and feel selected is not available, resort to the standard
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -84,8 +93,6 @@ public class ViewGUI extends View {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
-        constructFrame();
     }
     
     private void constructFrame() {
@@ -93,7 +100,6 @@ public class ViewGUI extends View {
         frame.setSize(800, 400);
         fillFrame(frame);
         frame.setVisible(true);
-        
     }
     
     private void fillFrame(JFrame frame) {
@@ -108,11 +114,7 @@ public class ViewGUI extends View {
             nextPanel.setLayout(new BoxLayout(nextPanel, BoxLayout.Y_AXIS));
             nextPanel.setName(actions.get(i).getTitle());
             mainMenuPanels.add(nextPanel);
-        }
-        
-        // add the panels to the tabbedPane
-        for (JPanel panel : mainMenuPanels) {
-            tabsMainMenu.add(panel);
+            tabsMainMenu.add(nextPanel);
         }
         
         // add info text from the respective action to each panel
@@ -125,34 +127,35 @@ public class ViewGUI extends View {
         
         // construct a "result"/ user interaction text area for each action, collect them in a List
         // to be referenced later (to change their text)
-        for (int i = 0; i < actions.size()-1; i++) {
-            JTextArea nextTextArea = makeTextArea(actions.get(i).getDescription());
+        // no result area on the first (welcome) tab, so add null to the list first, then
+        // add textAreas for the other tabs.
+        mainMenuResultTextAreas.add(null); 
+        for (int i = 1; i < actions.size()-1; i++) {
+            JTextArea nextTextArea = makeTextArea("nothing to show yet");
             mainMenuResultTextAreas.add(nextTextArea);
         }
         
         // add the text areas to the panels, on a scroll pane
-        for (int i = 0; i < mainMenuPanels.size()-1; i++) {
-            JScrollPane newScrollPane = new JScrollPane(mainMenuResultTextAreas.get(i));
-            newScrollPane.setPreferredSize(new Dimension(800, 150));
-            mainMenuPanels.get(i).add(newScrollPane);
-        }
-        
-        
-        for (int i = 0; i < mainMenuPanels.size()-1; i++) {
-            Action thisAction = actions.get(i);
-            if (thisAction.needsInputNumber() == false) {
-                calculationPanels.add(null); // or maybe add an anonymous empty JPanel?
+        for (int i = 0; i < mainMenuPanels.size() - 1; i++) {
+            if (mainMenuResultTextAreas.get(i) != null) {
+                JScrollPane newScrollPane = new JScrollPane(mainMenuResultTextAreas.get(i));
+                newScrollPane.setPreferredSize(new Dimension(800, 150));
+                mainMenuPanels.get(i).add(newScrollPane);
             }
-            else {
+            
+            // add a panel for the input field and button to those panels that need user input
+            // (ask the respective action if it needs input)
+            Action thisAction = actions.get(i);
+            if (!thisAction.needsInputNumber()) {
+                calculationPanels.add(null);
+            } else {
                 JPanel nextCalcPanel = new JPanel();
                 nextCalcPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
                 calculationPanels.add(nextCalcPanel);
+                fillCalculationPanel(nextCalcPanel);
             }
-        }
-        
-        for (int i = 0; i < mainMenuPanels.size()-1; i++) {
+
             if (calculationPanels.get(i) != null) {
-                fillCalculationPanel(calculationPanels.get(i));
                 mainMenuPanels.get(i).add(calculationPanels.get(i));
             } else {
                 inputNumberFields.add(null);
@@ -161,26 +164,52 @@ public class ViewGUI extends View {
         }
         
         addEventHandlingToButtons(startCalcButtons);
+        addEventHandlingToInputFields(inputNumberFields);
         
-        // **** and now for the last tab *********
+        // the last tab is special
         fillEulerProblemsTab(mainMenuPanels.get(mainMenuPanels.size()-1));
     }
     
     private void fillEulerProblemsTab(JPanel epPanel) {
-        epPanel.setLayout(new BoxLayout(epPanel, BoxLayout.X_AXIS));
-        EpListModel epListModel = new EpListModel();
+//        epPanel.setLayout(new BoxLayout(epPanel, BoxLayout.X_AXIS));
+//        epPanel.setLayout(new GridLayout(1, 2));
+        EpListModel epListModel = new EpListModel(epActions);
         JList epList = new JList(epListModel);
         
-        
-        
         epList.addMouseListener(new MouseAdapter() {
-            public void mouseClicked() {
-                // TODO add method here to display content for the selected EP to the right of the list.
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                epListMouseClicked(evt, epList);
             }
         });
         
-        epPanel.add(new JScrollPane(epList));
-        epPanel.add(new JPanel());
+        epContentsPanel = new JPanel();
+        epContentsPanel.setLayout(new BoxLayout(epContentsPanel, BoxLayout.PAGE_AXIS));
+        JSplitPane epSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        // to make the split pane non-resizable:
+        epSplitPane.setEnabled(false);
+        epInfo = makeTextArea(epActions.get(0).getInfoText());
+        epSolution = makeTextArea(epActions.get(0).getSolutionString());
+        
+        epSplitPane.add(new JScrollPane(epList));
+        epSplitPane.add(epContentsPanel);
+        epContentsPanel.add(new JScrollPane(epInfo));
+        epContentsPanel.add(new JScrollPane(epSolution));
+        epPanel.add(epSplitPane);
+        
+        // TODO the text areas resize automatically when the mouse goes over one of the
+        // non-active tabs. why? how to fix?
+    }
+    
+    private void epListMouseClicked(MouseEvent evt, JList epList) {
+        String infoString = "***"
+                + ((Action) epList.getSelectedValue()).getDescription()
+                + "***"
+                + "\n\n" 
+                + ((Action) epList.getSelectedValue()).getInfoText();
+        epInfo.setText(infoString);
+        epSolution.setText(((Action) epList.getSelectedValue()).getSolutionString());
+
     }
     
     private void addEventHandlingToButtons(List<JButton> startCalcButtons) {
@@ -204,6 +233,26 @@ public class ViewGUI extends View {
         
     }
     
+    private void addEventHandlingToInputFields(List<JTextField> inputTextFields) {
+        for (int i = 0; i < mainMenuPanels.size()-1; i++) {
+            JTextField thisTextField = inputTextFields.get(i);
+            Action thisAction = actions.get(i);
+            final JTextArea thisResultArea = mainMenuResultTextAreas.get(i);
+            if (thisTextField != null) {
+                thisTextField.addActionListener((ActionEvent e) -> {
+                    inputLong = getInputLongInt(1L, thisTextField);
+                    if (inputLong == null) {
+                        thisResultArea.setText("Invalid input. Please enter a number between " + 1 + " and " + MAX_LONG + ".");
+                        return;
+                    }
+                    thisAction.setInputNumber(inputLong);
+                    thisResultArea.setText(thisAction.getSolutionString());
+                });
+            }
+        }
+        
+    }
+    
     private void fillCalculationPanel(JPanel calcPanel) {
         JTextField nextTextField = makeNumberInputTextField();
         inputNumberFields.add(nextTextField);
@@ -213,16 +262,14 @@ public class ViewGUI extends View {
         calcPanel.add(nextButton);
     }
     
-    private void fillActionPanel(JPanel thisPanel, Action thisAction) {
-        JTextArea textInfo = makeTextArea(thisAction.getInfoText());
-        thisPanel.add(textInfo);
-    }
-    
     private JTextArea makeTextArea(String textForArea) {
         JTextArea newTextArea = new JTextArea(textForArea);
         newTextArea.setEditable(false);
         newTextArea.setOpaque(false);
         newTextArea.setLineWrap(true);
+        newTextArea.setWrapStyleWord(true);
+        newTextArea.add(new PopupMenu());
+        newTextArea.addMouseListener(new PopUpMenuCopy(newTextArea));
         
         return newTextArea;
     }
@@ -233,21 +280,11 @@ public class ViewGUI extends View {
         newTextField.setPreferredSize(new Dimension(120, 30));
         newTextField.setHorizontalAlignment(JTextField.TRAILING);
         newTextField.setBorder(new EmptyBorder(4, 4, 4, 4));
-        return newTextField;
+        newTextField.addMouseListener(new PopUpMenuCopyPaste(newTextField));
         
-//        textInputNumber.addActionListener((ActionEvent e) -> {
-//            inputLong = getInputLongInt(1L, textInputNumber);
-//        });
-
-//        textInputNumber.addFocusListener(new FocusAdapter() {
-//            public void focusLost() {
-//                inputLong = getInputLongInt(1L, textInputNumber);
-//            }
-//        });
-
+        return newTextField;
     }
 
-    // TODO implement getInput methods by getting input from text fields in the JFrame object
     public Long getInputLongInt(long lowerBound, JTextField textInputField) {
         String inputString = textInputField.getText();
         try {
@@ -259,11 +296,4 @@ public class ViewGUI extends View {
         }
     }
 
-    public int getInputInteger(int lowerBound, int upperBound) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getInputInteger(int lowerBound) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

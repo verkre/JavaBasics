@@ -24,13 +24,8 @@ public class EpListModel extends AbstractListModel<Object> {
 
     private List<Action> epActions;
 
-    public EpListModel() {
-        epActions = new ArrayList<>();
-        epActions.add(new Ep2());
-        epActions.add(new Ep3());
-        epActions.add(new Ep4());
-        epActions.add(new Ep7());
-        epActions.add(new Ep75());
+    public EpListModel(List<Action> epActions) {
+        this.epActions = epActions;
     }
     
 
