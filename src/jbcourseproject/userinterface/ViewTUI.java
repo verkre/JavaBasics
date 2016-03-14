@@ -5,24 +5,56 @@
  */
 package jbcourseproject.userinterface;
 
+import java.util.List;
 import jbcourseproject.Controller;
-import jbcourseproject.MenuInterface;
+import jbcourseproject.UserInput;
+import jbcourseproject.actions.Action;
+import jbcourseproject.actions.ActionExitToMainMenu;
 
 /**
  *
  * @author Vera Kreuter
  */
 public class ViewTUI extends View {
+    
+    private List<Action> actions;
+
+    public ViewTUI() {
+    }
+
+    public ViewTUI(Controller controller) {
+        this.actions = controller.getActions();
+    }
 
     public static void main(String[] args) {
-        MenuInterface mainMenuInterface = new MenuInterface(new Controller().collectActionObjects());
-        while (true) {
-            mainMenuInterface.displayAndChooseFromMenu();
-        }
-        // TODO move TUI code from MenuInterface and UserInput to here.
- 
+        new ViewTUI(new Controller()).go();
+        // TODO move TUI code from UserInput to here.
 
     }
+
+    public void go() {
+        while (true) {
+            displayAndChooseFromMenu(actions);
+        }
+    }
+        
+    public boolean displayAndChooseFromMenu(List<Action> menuItems) {
+        System.out.println("\n");
+        // print a newline before the menu because it looks better
+        for (int i = 0; i < menuItems.size(); i++) {
+            System.out.printf("%d - " + menuItems.get(i).getDescription() + "%n", i);
+        }
+        int userChoice = new UserInput().askInputInteger(0, menuItems.size() - 1);
+        
+        // to return to main menu: return false if user chose the exit option (= exit object)
+        if (menuItems.get(userChoice) instanceof ActionExitToMainMenu) {
+            return false;
+        }
+        menuItems.get(userChoice).execute();
+        return true;
+    }
+
+    
     // TODO implement the getInput methods by using code from UserInput class
     public long getInputLongInt(long lowerBound) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
