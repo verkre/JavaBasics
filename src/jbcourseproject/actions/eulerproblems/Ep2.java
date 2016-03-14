@@ -1,27 +1,33 @@
 package jbcourseproject.actions.eulerproblems;
 
+import jbcourseproject.database.EulerSolutionsConnector;
+
 /**
  * EulerProblem sub-menu item/action: Compute and print the result of problem 2.
  */
 public class Ep2 extends EulerProblem {
-    
+
     private Long inputNumber = 4_000_000L;
-    
+
     public Ep2() {
-        super("Problem 2", "Even Fibonacci numbers (Problem 2)", "https://projecteuler.net/problem=2");
+        super("2", "Even Fibonacci numbers (Problem 2)", "https://projecteuler.net/problem=2");
     }
-    
+
+    public Ep2(EulerSolutionsConnector esc) {
+        super("2", "Even Fibonacci numbers (Problem 2)", "https://projecteuler.net/problem=2", esc);
+    }
+
     @Override
     public long solve() {
         return evenFibSumUpTo(inputNumber);
     }
-        
+
     @Override
     public void execute() {
         System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
         printUrl();
     }
-    
+
     private long evenFibSumUpTo(long upperBound) {
         // instantiates an FibonacciArray object which keeps the last 3 computed fibonacci numbers in an array
         // if last one is even, add it to resultSum, then compute the next fib. number
@@ -57,6 +63,5 @@ public class Ep2 extends EulerProblem {
     public String getSolutionString() {
         return "The sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution() + ".";
     }
-
 
 }

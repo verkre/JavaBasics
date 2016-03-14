@@ -6,6 +6,9 @@
 package jbcourseproject.userinterface;
 
 import java.util.InputMismatchException;
+import java.util.List;
+import jbcourseproject.Controller;
+import jbcourseproject.actions.Action;
 
 /**
  *
@@ -15,10 +18,10 @@ public abstract class View {
     // these constants are used to prompt the user if they enter a too-large number.
     public static final int MAX_INT = Integer.MAX_VALUE;
     public static final long MAX_LONG = Long.MAX_VALUE;
-    
     private long inputLong;
     
     public View() {
+
     }
     
     

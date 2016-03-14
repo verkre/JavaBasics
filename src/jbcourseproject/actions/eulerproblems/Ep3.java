@@ -1,6 +1,7 @@
 package jbcourseproject.actions.eulerproblems;
 
 import jbcourseproject.PrimesUtils;
+import jbcourseproject.database.EulerSolutionsConnector;
 
 /**
  * EulerProblem sub-menu item/action: Compute and print the result of problem 3.
@@ -9,7 +10,11 @@ public class Ep3 extends EulerProblem {
     
     private static final long inputNumber = 600851475143L;
     public Ep3() {
-        super("Problem 3", "Largest prime factor of 600851475143 (Problem 3)", "https://projecteuler.net/problem=3");
+        super("3", "Largest prime factor of 600851475143 (Problem 3)", "https://projecteuler.net/problem=3");
+    }
+
+    public Ep3(EulerSolutionsConnector esc) {
+        super("3", "Largest prime factor of 600851475143 (Problem 3)", "https://projecteuler.net/problem=3", esc);
     }
 
     @Override

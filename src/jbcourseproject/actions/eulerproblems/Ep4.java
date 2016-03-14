@@ -1,5 +1,7 @@
 package jbcourseproject.actions.eulerproblems;
 
+import jbcourseproject.database.EulerSolutionsConnector;
+
 /**
  * EulerProblem sub-menu item/action: Compute and print the result of problem 4.
  */
@@ -8,7 +10,11 @@ public class Ep4 extends EulerProblem {
     private static final int inputNumber = 3;
     
     public Ep4() {
-        super("Problem 4", "Largest palindrome product (Problem 4)", "https://projecteuler.net/problem=4");
+        super("4", "Largest palindrome product (Problem 4)", "https://projecteuler.net/problem=4");
+    }
+
+    public Ep4(EulerSolutionsConnector esc) {
+        super("4", "Largest palindrome product (Problem 4)", "https://projecteuler.net/problem=4", esc);
     }
 
     @Override

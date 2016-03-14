@@ -2,6 +2,7 @@ package jbcourseproject.actions.eulerproblems;
 
 import java.util.ArrayList;
 import jbcourseproject.actions.eulerproblems.EulerProblemsUtils;
+import jbcourseproject.database.EulerSolutionsConnector;
 
 /**
  * EulerProblem sub-menu item/action: Compute and print the result of problem 75.
@@ -9,8 +10,13 @@ import jbcourseproject.actions.eulerproblems.EulerProblemsUtils;
 public class Ep75 extends EulerProblem {
     
     private static final int inputNumber = 1_500_000;
+    
     public Ep75() {
-        super("Problem 75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75");
+        super("75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75");
+    }
+    
+    public Ep75(EulerSolutionsConnector esc) {
+        super("75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75", esc);
     }
     
     @Override

@@ -2,32 +2,47 @@ package jbcourseproject;
 
 import jbcourseproject.actions.*;
 import java.util.ArrayList;
+import java.util.List;
+import jbcourseproject.actions.eulerproblems.EulerProblem;
+import jbcourseproject.database.DbConnection;
+import jbcourseproject.database.EulerSolutionsConnector;
 import jbcourseproject.userinterface.ViewGUI;
 import jbcourseproject.userinterface.ViewTUI;
 
 public class Controller {
     
-    public static void main(String[] args) {
-//        ViewTUI viewTUI = new ViewTUI(new Controller().collectActionObjects());
-        ViewGUI viewGUI = new ViewGUI(new Controller().collectActionObjects(), new ActionEulerProblems().collectEulerProblems());
-        viewGUI.go();
-        // TODO let the ViewGUI or ViewTUI start the program (= put main methods there)
+    private ActionExit actionExit;
+    private ActionEulerProblems actionEulerProblems;
+    private List<Action> eulerProblems;
+    
+    public Controller() {
+        this.actionExit = new ActionExit();
+        this.actionEulerProblems = new ActionEulerProblems();
+        this.eulerProblems = actionEulerProblems.collectEulerProblems();
+    }
+    
+    public List<Action> getActions() {
+        return collectActionObjects();
+    }
+    
+    public List<Action> getEulerProblemActions() {
+        return eulerProblems;
     }
     
     /**
      * Collect all Actions that should appear in the main menu in an ArrayList.
      * @return an ArrayList of Action objects
      */
-    public ArrayList<Action> collectActionObjects() {
+    private ArrayList<Action> collectActionObjects() {
         // these are only instantiated once at the start of the program - so there is no need to declare them as 
         // class attributes (as with the EulerProblem objects in the sub-menu)
         ArrayList<Action> availableActionObjects = new ArrayList<>();
-        availableActionObjects.add(new ActionExit());
+        availableActionObjects.add(actionExit);
         availableActionObjects.add(new ActionCheckPrime());
         availableActionObjects.add(new ActionListPrimeFactors());
         availableActionObjects.add(new ActionListPrimes());
         availableActionObjects.add(new ActionListPrimesBelow());
-        availableActionObjects.add(new ActionEulerProblems());
+        availableActionObjects.add(actionEulerProblems);
         return availableActionObjects;
     }
     

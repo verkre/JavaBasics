@@ -26,6 +26,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import jbcourseproject.Controller;
 import jbcourseproject.actions.*;
 
 /**
@@ -53,12 +54,12 @@ public class ViewGUI extends View {
     JTextArea epSolution;
     
     
-    public ViewGUI(List<Action> actions, List<Action> epActions) {
+    public ViewGUI(Controller controller) {
+        this.actions = controller.getActions();
+        this.epActions = controller.getEulerProblemActions();
         this.inputLongs = new ArrayList<>();
         // frame is instantiated in the constructor - is that correct?
         frame = new JFrame("Primes and Euler Problems");
-        this.actions = actions;
-        this.epActions = epActions;
         // REFACT the first actions are manually exchanged here (from Exit to Welcome). It works but it is kind of ugly
         this.actions.set(0, new ActionWelcome());
         this.epActions.set(0, new ActionWelcomeEp());
@@ -67,6 +68,10 @@ public class ViewGUI extends View {
         this.calculationPanels = new ArrayList();
         this.inputNumberFields = new ArrayList();
         this.startCalcButtons = new ArrayList();
+    }
+    
+    public static void main(String[] args) {
+        new ViewGUI(new Controller()).go();
     }
     
     public void go() {
@@ -91,7 +96,7 @@ public class ViewGUI extends View {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frame.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
     
@@ -189,6 +194,7 @@ public class ViewGUI extends View {
         // to make the split pane non-resizable:
         epSplitPane.setEnabled(false);
         epInfo = makeTextArea(epActions.get(0).getInfoText());
+        epInfo.setPreferredSize(new Dimension(600, 200)); // frame size is 800x400
         epSolution = makeTextArea(epActions.get(0).getSolutionString());
         
         epSplitPane.add(new JScrollPane(epList));
@@ -198,7 +204,7 @@ public class ViewGUI extends View {
         epPanel.add(epSplitPane);
         
         // TODO the text areas resize automatically when the mouse goes over one of the
-        // non-active tabs. why? how to fix?
+        // non-active tabs.
     }
     
     private void epListMouseClicked(MouseEvent evt, JList epList) {

@@ -1,6 +1,9 @@
 package jbcourseproject.actions.eulerproblems;
 
+import java.sql.Connection;
 import jbcourseproject.actions.Action;
+import jbcourseproject.database.DbConnection;
+import jbcourseproject.database.EulerSolutionsConnector;
 
 /**
  * This is a superclass for all the "Project Euler" problems which show up in their
@@ -13,16 +16,36 @@ import jbcourseproject.actions.Action;
  */
 public abstract class EulerProblem extends Action {
 
-    private long solution;
+    private Long solution;
     private boolean solutionWasComputed;
     private String url;
+    private EulerSolutionsConnector esc;
+    private String problemNumber;
     
-    public EulerProblem(String title, String description, String url) {
-        super(title, description, false);
+    public EulerProblem(String problemNumber, String description, String url) {
+        super("Problem " + problemNumber, description, false);
         // passes the first constructor argument to the constructor of the superclass (Action)
         this.solutionWasComputed = false;
         this.url = url;
+        this.problemNumber = problemNumber;
     }
+    
+    // overload constructor to take a db connection. if it is present, solutions can be read from the db.
+    public EulerProblem(String problemNumber, String description, String url, EulerSolutionsConnector esc) {
+        super("Problem " + problemNumber, description, false);
+        this.solutionWasComputed = false;
+        this.url = url;
+        this.problemNumber = problemNumber;
+        this.esc = esc;
+        System.out.println(esc);
+    }
+    
+    @Override
+    public abstract String getInfoText();
+    
+    @Override
+    public abstract String getSolutionString();
+    // TODO why do these have to be here and is not passed on directly to the subclasses of this class
     
     public abstract long solve();
     
@@ -35,6 +58,21 @@ public abstract class EulerProblem extends Action {
     }
     
     public long getSolution() {
+        if (this.esc != null) {
+            if (esc.getSolutionForProblem(this.problemNumber) != null) {
+                System.out.println("getting solution from db");
+                String solutionStringFromDb = esc.getSolutionForProblem(this.problemNumber);
+                this.solution = new Long(solutionStringFromDb);
+                return this.solution;
+            } else {
+                // compute solution and insert it into the db
+                this.solution = this.solve();
+                this.solutionWasComputed = true;
+                System.out.println("writing solution to db");
+                esc.insert(problemNumber, solution.toString());
+            }
+        }
+        // if there is no db connection:
         if (!this.solutionWasComputed) {
             this.solution = this.solve();
             this.solutionWasComputed = true;
@@ -43,10 +81,13 @@ public abstract class EulerProblem extends Action {
 //            System.out.println("\n...getting cached solution...");
 //        }
         return this.solution;
+        
+        // TODO change this method: try to get the solution from the database
+        // if there is no connection or if solution is not in the db, compute it
+        // and write it in the db (if there is a connection).
     }
     
-    @Override
-    public abstract String getInfoText();
-    public abstract String getSolutionString();
-    // TODO why do these have to be here and is not passed on directly to the subclasses of this class
+//    public String getSolutionFromDB() {
+//        Connection connection = new DbConnection().getConnection();
+//    }
 }

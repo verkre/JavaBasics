@@ -28,7 +28,6 @@ public class PopUpMenuCopy extends MouseAdapter {
     @Override
     public void mouseReleased(final MouseEvent e) {
         if (e.isPopupTrigger()) {
-        System.out.println("right click");
             final JPopupMenu menu = new JPopupMenu();
             JMenuItem item;
             item = new JMenuItem(new DefaultEditorKit.CopyAction());
