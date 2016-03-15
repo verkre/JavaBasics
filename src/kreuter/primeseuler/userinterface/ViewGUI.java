@@ -10,10 +10,9 @@ import kreuter.primeseuler.actions.Action;
 import kreuter.primeseuler.actions.ActionWelcomeEp;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.PopupMenu;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class ViewGUI extends View {
         new ViewGUI(new Controller()).go();
     }
     
-    public void go() {
+    private void go() {
         setNiceLookAndFeel();
         
         constructFrame();
@@ -92,13 +91,13 @@ public class ViewGUI extends View {
 // set the look and feel; if the look and feel selected is not available, resort to the standard
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Nimbu".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(frame.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
     
@@ -110,7 +109,6 @@ public class ViewGUI extends View {
     }
     
     private void fillFrame(JFrame frame) {
-        // configure and fill frame here:
         JTabbedPane tabsMainMenu = new JTabbedPane();
         frame.add(tabsMainMenu);
         
@@ -178,8 +176,6 @@ public class ViewGUI extends View {
     }
     
     private void fillEulerProblemsTab(JPanel epPanel) {
-//        epPanel.setLayout(new BoxLayout(epPanel, BoxLayout.X_AXIS));
-//        epPanel.setLayout(new GridLayout(1, 2));
         EpListModel epListModel = new EpListModel(epActions);
         JList epList = new JList(epListModel);
         
@@ -196,17 +192,17 @@ public class ViewGUI extends View {
         // to make the split pane non-resizable:
         epSplitPane.setEnabled(false);
         epInfo = makeTextArea(epActions.get(0).getInfoText());
-        epInfo.setPreferredSize(new Dimension(600, 200)); // frame size is 800x400
+//        epInfo.setPreferredSize(new Dimension(600, 200)); // frame size is 800x400
         epSolution = makeTextArea(epActions.get(0).getSolutionString());
         
         epSplitPane.add(new JScrollPane(epList));
         epSplitPane.add(epContentsPanel);
-        epContentsPanel.add(new JScrollPane(epInfo));
+        JScrollPane epInfoScrollPane = new JScrollPane(epInfo);
+        epInfoScrollPane.setPreferredSize(new Dimension(600, 200));
+        epContentsPanel.add(epInfoScrollPane);
         epContentsPanel.add(new JScrollPane(epSolution));
         epPanel.add(epSplitPane);
         
-        // TODO the text areas resize automatically when the mouse goes over one of the
-        // non-active tabs.
     }
     
     private void epListMouseClicked(MouseEvent evt, JList epList) {
@@ -217,6 +213,11 @@ public class ViewGUI extends View {
                 + ((Action) epList.getSelectedValue()).getInfoText();
         epInfo.setText(infoString);
         epSolution.setText(((Action) epList.getSelectedValue()).getSolutionString());
+        // if it is problem 75, start a new thread that computes the solution
+        // new Object delayedEp75Solver whose run method:
+        // - displays "Please wait..." in the TextArea
+        // - call the solve method (or getSolution?) of ep75
+        // - display solution and possibly notify user via popup window?
 
     }
     
@@ -227,18 +228,20 @@ public class ViewGUI extends View {
             JTextField thisTextField = inputNumberFields.get(i);
             final JTextArea thisResultArea = mainMenuResultTextAreas.get(i);
             if (thisButton != null) {
-                thisButton.addActionListener((ActionEvent e) -> {
-                    inputLong = getInputLongInt(1L, thisTextField);
-                    if (inputLong == null) {
-                        thisResultArea.setText("Invalid input. Please enter a number between " + 1 + " and " + MAX_LONG + ".");
-                        return;
+                thisButton.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent e) {
+                        inputLong = getInputLongInt(thisTextField);
+                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
+                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
+                            return;
+                        }
+                        thisAction.setInputNumber(inputLong);
+                        thisResultArea.setText(thisAction.getSolutionString());
                     }
-                    thisAction.setInputNumber(inputLong);
-                    thisResultArea.setText(thisAction.getSolutionString());
                 });
             }
         }
-        
     }
     
     private void addEventHandlingToInputFields(List<JTextField> inputTextFields) {
@@ -247,18 +250,21 @@ public class ViewGUI extends View {
             Action thisAction = actions.get(i);
             final JTextArea thisResultArea = mainMenuResultTextAreas.get(i);
             if (thisTextField != null) {
-                thisTextField.addActionListener((ActionEvent e) -> {
-                    inputLong = getInputLongInt(1L, thisTextField);
-                    if (inputLong == null) {
-                        thisResultArea.setText("Invalid input. Please enter a number between " + 1 + " and " + MAX_LONG + ".");
-                        return;
+                // TODO put the following code into its own class (it's exactly the same here and above). 
+                thisTextField.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent e) {
+                        inputLong = getInputLongInt(thisTextField);
+                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
+                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
+                            return;
+                        }
+                        thisAction.setInputNumber(inputLong);
+                        thisResultArea.setText(thisAction.getSolutionString());
                     }
-                    thisAction.setInputNumber(inputLong);
-                    thisResultArea.setText(thisAction.getSolutionString());
                 });
             }
         }
-        
     }
     
     private void fillCalculationPanel(JPanel calcPanel) {
@@ -293,7 +299,7 @@ public class ViewGUI extends View {
         return newTextField;
     }
 
-    public Long getInputLongInt(long lowerBound, JTextField textInputField) {
+    private Long getInputLongInt(JTextField textInputField) {
         String inputString = textInputField.getText();
         try {
             Long parsedLong = Long.parseLong(inputString);

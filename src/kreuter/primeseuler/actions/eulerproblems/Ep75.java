@@ -1,7 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
 import java.util.ArrayList;
-import kreuter.primeseuler.actions.eulerproblems.EulerProblemsUtils;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 /**

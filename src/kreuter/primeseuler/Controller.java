@@ -9,20 +9,13 @@ import kreuter.primeseuler.actions.ActionEulerProblems;
 import kreuter.primeseuler.actions.ActionCheckPrime;
 import java.util.ArrayList;
 import java.util.List;
-import kreuter.primeseuler.actions.eulerproblems.EulerProblem;
-import kreuter.primeseuler.database.DbConnection;
-import kreuter.primeseuler.database.EulerSolutionsConnector;
-import kreuter.primeseuler.userinterface.ViewGUI;
-import kreuter.primeseuler.userinterface.ViewTUI;
 
 public class Controller {
     
-    private ActionExit actionExit;
     private ActionEulerProblems actionEulerProblems;
     private List<Action> eulerProblems;
     
     public Controller() {
-        this.actionExit = new ActionExit();
         this.actionEulerProblems = new ActionEulerProblems();
         this.eulerProblems = actionEulerProblems.collectEulerProblems();
     }
@@ -42,8 +35,11 @@ public class Controller {
     private ArrayList<Action> collectActionObjects() {
         // these are only instantiated once at the start of the program - so there is no need to declare them as 
         // class attributes (as with the EulerProblem objects in the sub-menu)
+        // except the actionEulerProblems that establishes the DB connection.
+        // if it weren't a class attribute, it would be instantiated twice (once here, once to collect its own
+        // actions).
         ArrayList<Action> availableActionObjects = new ArrayList<>();
-        availableActionObjects.add(actionExit);
+        availableActionObjects.add(new ActionExit());
         availableActionObjects.add(new ActionCheckPrime());
         availableActionObjects.add(new ActionListPrimeFactors());
         availableActionObjects.add(new ActionListPrimes());

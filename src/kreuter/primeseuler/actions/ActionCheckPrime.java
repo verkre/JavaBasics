@@ -1,7 +1,7 @@
 package kreuter.primeseuler.actions;
 
 import kreuter.primeseuler.PrimesUtils;
-import kreuter.primeseuler.UserInput;
+import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
  * Main menu item/action: Check a number (input from user) for primeness.
@@ -9,18 +9,23 @@ import kreuter.primeseuler.UserInput;
 public class ActionCheckPrime extends Action {
     
     private Long inputNumber;
+    private final Long lowerInputBound;
     
 
     public ActionCheckPrime() {
         super("Prime checker", "check if a number is prime", true);
+        this.lowerInputBound = 1L;
     }
     
     @Override
-    public void setInputNumber(Long inputNumber) {
-        this.inputNumber = inputNumber;
-        // TODO add validity checking; return true/false depending on whether new value was set?
+    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
+        if (isValidInput(newInputNumber)) {
+            this.inputNumber = newInputNumber;
+        } else {
+            throw new InvalidInputException();
+        }
     }
-    
+
     @Override
     public String getSolutionString() {
         String solutionString;
@@ -56,21 +61,23 @@ public class ActionCheckPrime extends Action {
     
     @Override
     public void execute() {
-        long numberToCheck = new UserInput().askInputLongInt(1L);
-        if (PrimesUtils.isPrime(numberToCheck)) {
-            System.out.printf("\n%d is prime.%n", numberToCheck);
+//        long inputNumber = new UserInput().askInputLongInt(1L);
+        if (PrimesUtils.isPrime(inputNumber)) {
+            System.out.printf("\n%d is prime.%n", inputNumber);
         }
         else {
-            System.out.printf("\n%d is not prime.%n", numberToCheck);
+            System.out.printf("\n%d is not prime.%n", inputNumber);
         }
     }
     
-    // TODO for GUI:
-    // declare a executeForGUI method in the Action class, 
-    // or in a new DisplayableInGui interface, (and implement it here) that
-    // - gets user input from the GUI somehow(?)
-    // - calls the method that solves the problem
-    // - passes its result to the GUI/ view object
+    @Override
+    public boolean isValidInput(Long inputNumber) {
+        return (inputNumber >= getLowerInputBound());
+    }
+
+    public Long getLowerInputBound() {
+        return lowerInputBound;
+    }
 
 
     

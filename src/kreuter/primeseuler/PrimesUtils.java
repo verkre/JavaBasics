@@ -73,13 +73,16 @@ public final class PrimesUtils {
         // optimization: we only check potential factors up to Sqrt(numberToFactorize)
         // (and the number itself after the for loop in case it is a prime)
         ArrayList<Long> factorsList = new ArrayList<>();
-        for (long i = 2; i * i <= numberToFactorize; i++) {
-            if ((numberToFactorize % i == 0) && PrimesUtils.isPrime(i))  {
-                factorsList.add(i);
+        for (long i = 2L; i * i <= numberToFactorize; i++) {
+            if ((numberToFactorize % i == 0) && PrimesUtils.isPrime(i)) {
+                if (!factorsList.contains(i)) {
+                    factorsList.add(i);
+                }
                 numberToFactorize /= i;
+                i -= 1;
             }
         }
-        if (PrimesUtils.isPrime(numberToFactorize)) {
+        if (!factorsList.contains(numberToFactorize) && PrimesUtils.isPrime(numberToFactorize)) {
             factorsList.add(numberToFactorize);
         }
         return factorsList;
@@ -97,6 +100,7 @@ public final class PrimesUtils {
             if ((numberToFactorize % i == 0) && PrimesUtils.isPrime(i)) {
                 largestPrimeFactor = i;
                 numberToFactorize /= i;
+                i -= 1;
             }
         }
         // if the number we have left after the for loop is prime (or numberToFactorize is itself prime), add it as a factor

@@ -1,8 +1,8 @@
 package kreuter.primeseuler.actions;
 
-import kreuter.primeseuler.UserInput;
 import kreuter.primeseuler.PrimesUtils;
 import java.util.ArrayList;
+import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
  * Main menu item/action: Ask the user for a number and print a list of all primes smaller than that number.
@@ -10,19 +10,22 @@ import java.util.ArrayList;
 public class ActionListPrimesBelow extends Action {
     
     private Long inputNumber;
+    private final Long lowerInputBound;
     
     public ActionListPrimesBelow() {
         super("Primes up to n", "compute all prime numbers smaller than a certain number", true);
+        this.lowerInputBound = 1L;
     }
     
     @Override
     public void execute() {
-        int upperBound = new UserInput().askInputInteger(1);
-        ArrayList<Integer> primeList = PrimesUtils.listPrimesBelow(upperBound);
-        System.out.printf("Here is a list of all primes smaller than %d: %n", upperBound);
+//        long inputNumber = new UserInput().askInputLongInt(getLowerInputBound());
+        ArrayList<Long> primeList = PrimesUtils.listPrimesBelow(inputNumber);
+        System.out.printf("Here is a list of all primes smaller than %d: %n", inputNumber);
         System.out.println(primeList);
     }
     
+    @Override
     public String getSolutionString() {
         return "Here is a list of all primes smaller than " + inputNumber + ":\n"
                 + PrimesUtils.listPrimesBelow(inputNumber);
@@ -42,7 +45,20 @@ public class ActionListPrimesBelow extends Action {
     }
 
     @Override
-    public void setInputNumber(Long newInputNumber) {
-        this.inputNumber = newInputNumber;
+    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
+        if (isValidInput(newInputNumber)) {
+            this.inputNumber = newInputNumber;
+        } else {
+            throw new InvalidInputException();
+        }
+    }
+    
+    @Override
+    public boolean isValidInput(Long inputNumber) {
+        return (inputNumber >= getLowerInputBound());
+    }
+
+    public Long getLowerInputBound() {
+        return lowerInputBound;
     }
 }

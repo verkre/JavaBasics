@@ -9,11 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.AbstractListModel;
 import kreuter.primeseuler.actions.Action;
-import kreuter.primeseuler.actions.eulerproblems.Ep2;
-import kreuter.primeseuler.actions.eulerproblems.Ep3;
-import kreuter.primeseuler.actions.eulerproblems.Ep4;
-import kreuter.primeseuler.actions.eulerproblems.Ep7;
-import kreuter.primeseuler.actions.eulerproblems.Ep75;
 
 /**
  *

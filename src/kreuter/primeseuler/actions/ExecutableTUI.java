@@ -6,9 +6,8 @@ package kreuter.primeseuler.actions;
  * could be abstract methods in the Action superclass since that's the only class that 
  * implements it (right now).
  */
-public interface Executable {
+public interface ExecutableTUI {
     void execute();
-    String getTitle();
     String getDescription();
     
 }

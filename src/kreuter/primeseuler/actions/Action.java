@@ -5,11 +5,10 @@ package kreuter.primeseuler.actions;
 * For putting an action in a menu, we need a description with a getter method 
 * and an execute() method (which is defined in the Executable interface).
 */
-public abstract class Action implements Executable {
+public abstract class Action implements ExecutableTUI, ExecutableGUI {
     
     private String title;
     private String description;
-    private String infoText;
     private boolean needsInputNumber;
     
     public Action(String title, String description, boolean needsInput) {
@@ -25,11 +24,8 @@ public abstract class Action implements Executable {
        return needsInputNumber;
    }
     
-    public abstract String getInfoText();
-    public abstract String getSolutionString();
     public abstract void setInputNumber(Long newInputNumber);
     
-    @Override
     public String getTitle() {
         return title;
     }
@@ -44,5 +40,16 @@ public abstract class Action implements Executable {
         return getTitle();
     }
     
+    public boolean isValidInput(Long inputNumber) {
+        return false;
+        // some actions don't need input; this might as well return false in those
+        // cases so there is no need to implement this method in each action,
+        // just override it where input within specific bounds is needed.
+    }
+    
+    public Long getLowerInputBound() {
+        return 0L;
+        // this is overridden in actions that actually need an input
+    }
     
 }

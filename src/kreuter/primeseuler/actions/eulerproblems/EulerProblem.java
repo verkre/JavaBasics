@@ -32,12 +32,8 @@ public abstract class EulerProblem extends Action {
     
     // overload constructor to take a db connection. if it is present, solutions can be read from the db.
     public EulerProblem(String problemNumber, String description, String url, EulerSolutionsConnector esc) {
-        super("Problem " + problemNumber, description, false);
-        this.solutionWasComputed = false;
-        this.url = url;
-        this.problemNumber = problemNumber;
+        this(problemNumber, description, url);
         this.esc = esc;
-        System.out.println(esc);
     }
     
     @Override
@@ -47,6 +43,15 @@ public abstract class EulerProblem extends Action {
     public abstract String getSolutionString();
     // TODO why do these have to be here and is not passed on directly to the subclasses of this class
     
+    
+    /**
+     * @param esc the esc to set
+     */
+    public void setEsc(EulerSolutionsConnector esc) {
+        this.esc = esc;
+    }
+    // TODO use this instead of overloaded constructor
+ 
     public abstract long solve();
     
     public void printUrl() {
@@ -59,35 +64,29 @@ public abstract class EulerProblem extends Action {
     
     public long getSolution() {
         if (this.esc != null) {
-            if (esc.getSolutionForProblem(this.problemNumber) != null) {
+            if (esc.getSolutionForProblem(problemNumber) != null) {
+                // TODO extract method to check if problem is already in db, put it in esc
                 System.out.println("getting solution from db");
-                String solutionStringFromDb = esc.getSolutionForProblem(this.problemNumber);
-                this.solution = new Long(solutionStringFromDb);
-                return this.solution;
+                String solutionStringFromDb = esc.getSolutionForProblem(problemNumber);
+                solution = new Long(solutionStringFromDb);
+                solutionWasComputed = true;
+            } else if (solutionWasComputed) {
+                // insert it into the db
+                System.out.println("writing solution to db");
+                esc.insert(problemNumber, solution.toString());
             } else {
-                // compute solution and insert it into the db
-                this.solution = this.solve();
-                this.solutionWasComputed = true;
+                solution = solve();
+                solutionWasComputed = true;
                 System.out.println("writing solution to db");
                 esc.insert(problemNumber, solution.toString());
             }
         }
         // if there is no db connection:
-        if (!this.solutionWasComputed) {
-            this.solution = this.solve();
-            this.solutionWasComputed = true;
+        if (!solutionWasComputed) {
+            solution = solve();
+            solutionWasComputed = true;
         }
-//        else {
-//            System.out.println("\n...getting cached solution...");
-//        }
-        return this.solution;
-        
-        // TODO change this method: try to get the solution from the database
-        // if there is no connection or if solution is not in the db, compute it
-        // and write it in the db (if there is a connection).
+        return solution;
     }
-    
-//    public String getSolutionFromDB() {
-//        Connection connection = new DbConnection().getConnection();
-//    }
+
 }

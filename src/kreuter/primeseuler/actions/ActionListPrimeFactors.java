@@ -1,7 +1,7 @@
 package kreuter.primeseuler.actions;
 
 import kreuter.primeseuler.PrimesUtils;
-import kreuter.primeseuler.UserInput;
+import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
  * Main menu item/action: Ask the user for a number, compute and print its prime factors.
@@ -9,18 +9,21 @@ import kreuter.primeseuler.UserInput;
 public class ActionListPrimeFactors extends Action {
     
     private Long inputNumber;
+    private final Long lowerInputBound;
     
     public ActionListPrimeFactors() {
         super("Prime Factors", "compute the prime factors of a number", true);
+        this.lowerInputBound = 2L;
     }
     
     @Override
     public void execute() {
-        long numberToFactorize = new UserInput().askInputLongInt(2L);
-        System.out.printf("\nThe prime factors of %d are:%n", numberToFactorize);
-        System.out.println(PrimesUtils.computePrimeFactors(numberToFactorize));
+//        long numberToFactorize = new UserInput().askInputLongInt(getLowerInputBound());
+        System.out.printf("\nThe prime factors of %d are:%n", inputNumber);
+        System.out.println(PrimesUtils.computePrimeFactors(inputNumber));
     }
     
+    @Override
     public String getSolutionString() {
         return "The prime factors of " + this.inputNumber + " are:\n"
                 + PrimesUtils.computePrimeFactors(this.inputNumber);
@@ -42,7 +45,23 @@ public class ActionListPrimeFactors extends Action {
     }
 
     @Override
-    public void setInputNumber(Long newInputNumber) {
-        this.inputNumber = newInputNumber;
+    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
+        if (isValidInput(newInputNumber)) {
+            this.inputNumber = newInputNumber;
+        } else {
+            throw new InvalidInputException();
+            // if the UserInterface does not check the validity of the input first
+            // by using the isValidInput() method, and tries to set an invalid input
+            // here, throw an exception.
+        }
+    }
+    
+    @Override
+    public boolean isValidInput(Long inputNumber) {
+        return (inputNumber >= getLowerInputBound());
+    }
+
+    public Long getLowerInputBound() {
+        return lowerInputBound;
     }
 }

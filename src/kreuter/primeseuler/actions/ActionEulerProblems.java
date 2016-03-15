@@ -1,5 +1,6 @@
 package kreuter.primeseuler.actions;
 
+import java.sql.SQLException;
 import kreuter.primeseuler.actions.eulerproblems.Ep75;
 import kreuter.primeseuler.actions.eulerproblems.Ep3;
 import kreuter.primeseuler.actions.eulerproblems.Ep7;
@@ -22,40 +23,34 @@ public class ActionEulerProblems extends Action {
     private Ep7 ep7Object;
     private Ep75 ep75Object;
 
-//    private EulerSolutionsConnector esc;
     private Long inputNumber = null;
 
-//    public ActionEulerProblems() {
-//        super("Project Euler Problems", "show the solution to a problem from Project Euler", false);
-//        ep2Object = new Ep2();
-//        ep3Object = new Ep3();
-//        ep4Object = new Ep4();
-//        ep7Object = new Ep7();
-//        ep75Object = new Ep75();
-//    }
     public ActionEulerProblems() {
         super("Project Euler Problems", "show the solution to a problem from Project Euler", false);
-        try {
-            EulerSolutionsConnector esc = new EulerSolutionsConnector(new DbConnection().getConnection());
+        DbConnection dbConnection = new DbConnection();
+        // TODO if db connection is not possible, the ensuing exception is caught in its constructor.
+        // is there a better way?
+        // TODO there is a lot going on in this constructor... where should the db connection best be established?
+        if (dbConnection.isConnected()) {
+            EulerSolutionsConnector esc = new EulerSolutionsConnector(dbConnection.getConnection());
             ep2Object = new Ep2(esc);
             ep3Object = new Ep3(esc);
             ep4Object = new Ep4(esc);
             ep7Object = new Ep7(esc);
             ep75Object = new Ep75(esc);
-        } catch (NullPointerException ex) {
+        } else {
             ep2Object = new Ep2();
             ep3Object = new Ep3();
             ep4Object = new Ep4();
             ep7Object = new Ep7();
             ep75Object = new Ep75();
-            // but isn't this using exceptions to control the program flow
-            // which would better be achieved by an if/else or something?
         }
     }
 
     @Override
     public String getInfoText() {
         return "...";
+        // this should never be called
     }
 
     @Override
@@ -88,7 +83,8 @@ public class ActionEulerProblems extends Action {
 
     @Override
     public String getSolutionString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "";
+        // this should never be called
     }
 
 }
