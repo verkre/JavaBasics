@@ -1,6 +1,9 @@
 package kreuter.primeseuler.database;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class DbConnection {
 
@@ -13,29 +16,30 @@ public class DbConnection {
     private String user;
     private String password;
 
-    public DbConnection() {
-//        Properties p = new Properties();
-//        try {
-//            p.load(new FileReader("src/de(javafish/db/jdbc.properties"));
-//        } catch (IOException ex) {
-//            System.out.println(ex);
-//        }
-        server = "localhost"; // 127.0.0.1
-        db = "primeeuler";
-        user = "root";
-        password = "toor";
-        
-        String connectionString = "jdbc:mysql://" + server + "/" + db;
-        
+    
+    public boolean connect() {
+        Properties p = new Properties();
         try {
-            connection = DriverManager.getConnection(connectionString, user, password);
-        } catch (SQLException ex) {
-            System.out.print("in DbConnection constructor --> ");
+            p.load(new FileReader("src/kreuter/primeseuler/database/jdbc.properties"));
+        } catch (IOException ex) {
             System.out.println(ex);
         }
+        server = p.getProperty("server", "localhost");
+        db = p.getProperty("db", "primeeuler");
+        user = p.getProperty("user", "root");
+        password = p.getProperty("password", "");
+
+        String connectionString = "jdbc:mysql://" + server + "/" + db;
+
+        try {
+            connection = DriverManager.getConnection(connectionString, user, password);
+            return true;
+        } catch (SQLException ex) {
+            System.out.print("in connect() method in dbConnection --> ");
+            System.out.println(ex);
+            return false;
+        }
     }
-    
-    // TODO extract method from constructor (.connect()) that returns true/false
     
     public boolean isConnected() {
         return connection != null; //  && connection.isValid(0);

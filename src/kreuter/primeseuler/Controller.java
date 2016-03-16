@@ -9,15 +9,24 @@ import kreuter.primeseuler.actions.ActionEulerProblems;
 import kreuter.primeseuler.actions.ActionCheckPrime;
 import java.util.ArrayList;
 import java.util.List;
+import kreuter.primeseuler.database.DbConnection;
+import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 public class Controller {
     
     private ActionEulerProblems actionEulerProblems;
     private List<Action> eulerProblems;
+    private EulerSolutionsConnector esc;
     
     public Controller() {
-        this.actionEulerProblems = new ActionEulerProblems();
-        this.eulerProblems = actionEulerProblems.collectEulerProblems();
+        DbConnection dbConnection = new DbConnection();
+        if (dbConnection.connect()) {
+            this.esc = new EulerSolutionsConnector(dbConnection);
+            this.actionEulerProblems = new ActionEulerProblems(esc);
+        } else {
+            this.actionEulerProblems = new ActionEulerProblems();
+        }
+        this.eulerProblems = actionEulerProblems.getEulerProblems();
     }
     
     public List<Action> getActions() {

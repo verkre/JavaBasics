@@ -31,13 +31,12 @@ public class Ep75 extends EulerProblem {
     
     /**
      * This method generates the sums Pythagorean triples up to a given max sum and checks for each sum
-     * whether a triple with that sum was already found.
+     * whether a triple with that sum was already found. It is very specific to the 75th problem from projecteuler.
      * @param maxSum
      * @return the number of sums up to the given max sum that were the sum of exactly one Pythagorean triple
      */
     private int howManyTriplesWithUniqueSum(int maxSum) {
-        // This method is very specific to the 75th problem from projecteuler
-        // TODO also quite long and not very readable. Should possibly be broken down into two or more methods.
+        // TODO quite long and not very readable. Should possibly be broken down into two or more methods.
         ArrayList<Integer> sumsFoundOnce = new ArrayList<>();
         ArrayList<Integer> sumsFoundMoreThanOnce = new ArrayList<>();
         
@@ -91,7 +90,7 @@ public class Ep75 extends EulerProblem {
 
     @Override
     public void setInputNumber(Long newInputNumber) {
-        System.out.println("not possible.");
+        throw new UnsupportedOperationException("This does not take input.");
     }
 
     @Override

@@ -21,9 +21,9 @@ public class EulerSolutionsConnector {
     private ResultSet resultSet;
     private List<EulerSolution> eulerSolutions;
     
-    public EulerSolutionsConnector(Connection connection) {
+    public EulerSolutionsConnector(DbConnection dbConnection) {
         try {
-            this.connection = connection;
+            this.connection = dbConnection.getConnection();
             statement = connection.createStatement();
         } catch (SQLException ex) {
             System.out.print("in ESC constructor -->");
@@ -43,7 +43,6 @@ public class EulerSolutionsConnector {
 
     
     private void read(String sql) {
-        // use prepared statement here?
         eulerSolutions.clear();
         
         try {
@@ -63,16 +62,22 @@ public class EulerSolutionsConnector {
     }
     
     public List<EulerSolution> getEulerSolutions() {
+        readAll();
         return new ArrayList<>(eulerSolutions);
     }
     
     public String getSolutionForProblem(String problemNumber) {
-        readByProblemNumber(problemNumber);
-        if (eulerSolutions.isEmpty()) {
+        if (! isInDB(problemNumber)) {
             return null;
         } else {
+            readByProblemNumber(problemNumber);
             return eulerSolutions.get(0).getProblemSolution();
         }
+    }
+    
+    public boolean isInDB(String problemNumber) {
+        readByProblemNumber(problemNumber);
+        return (! eulerSolutions.isEmpty());
     }
 
     public boolean insert(EulerSolution eulerSolution) {
@@ -120,28 +125,6 @@ public class EulerSolutionsConnector {
             readAll();
         }
     }
-    
-    // TODO do I even need this? If yes: use prepared statement to prevent SQL injection?
-//    public boolean update(EulerSolution eulerSolution) {
-//        if (eulerSolution.getUid() == 0) {
-//            return false;
-//        }
-//        // TODO why?
-//        
-//        String sql = "UPDATE eulersolutions SET "
-//                + "problemNumber = '" + eulerSolution.getProblemNumber()+ "', "
-//                + "problemSolution = '" + eulerSolution.getProblemSolution()+ "', "
-//                + "WHERE uid = '" + eulerSolution.getUid() + "'";
-//
-//        try {
-//            return statement.executeUpdate(sql) == 1;
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//            return false;
-//        } finally {
-//            readAll();
-//        }
-//    }
     
     public boolean deleteProblemNumber(String problemNumber) {
         

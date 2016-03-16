@@ -5,6 +5,8 @@ package kreuter.primeseuler.actions.eulerproblems;
 /**
  * Implements some methods on a long array of 3 consecutive fibonacci numbers. 
  * Specific to use within the Ep2 class to help with the solution of the 2nd problem on projecteuler.com.
+ * It is not very robust (e.g. no checking whether the argument really is a 3-element array, which it has to be) 
+ * or useful for anything but this purpose.
  */
 public class FibonacciArray {
     private long[] array;
@@ -30,8 +32,4 @@ public class FibonacciArray {
         this.array[2] = nextFib;
         
     }
-    
-    // TODO This class is now very specific for use in the Ep2 class. It is not very robust
-    // (e.g. no checking whether the argument really is a 3-element array, which it has to be)
-    // or useful for anything but this purpose.
 }

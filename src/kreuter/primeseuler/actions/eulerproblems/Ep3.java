@@ -39,7 +39,7 @@ public class Ep3 extends EulerProblem {
 
     @Override
     public void setInputNumber(Long newInputNumber) {
-        System.out.println("not possible.");
+        throw new UnsupportedOperationException("This does not take input.");
     }
 
     @Override

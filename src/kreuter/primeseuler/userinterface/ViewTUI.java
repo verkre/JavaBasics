@@ -30,8 +30,6 @@ public class ViewTUI extends View {
 
     public static void main(String[] args) {
         new ViewTUI(new Controller()).go();
-        // TODO move TUI code from UserInput to here.
-
     }
 
     private void go() {

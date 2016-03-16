@@ -1,8 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
-import java.sql.Connection;
 import kreuter.primeseuler.actions.Action;
-import kreuter.primeseuler.database.DbConnection;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 /**
@@ -41,7 +39,7 @@ public abstract class EulerProblem extends Action {
     
     @Override
     public abstract String getSolutionString();
-    // TODO why do these have to be here and is not passed on directly to the subclasses of this class
+    // TODO why do these have to be here and are not passed on directly to the subclasses of this class
     
     
     /**
@@ -58,14 +56,9 @@ public abstract class EulerProblem extends Action {
         System.out.println("Find details on this problem here: " + this.url);
     }
     
-    public boolean isSolved() {
-        return this.solutionWasComputed;
-    }
-    
     public long getSolution() {
         if (this.esc != null) {
-            if (esc.getSolutionForProblem(problemNumber) != null) {
-                // TODO extract method to check if problem is already in db, put it in esc
+            if (esc.isInDB(problemNumber)) {
                 System.out.println("getting solution from db");
                 String solutionStringFromDb = esc.getSolutionForProblem(problemNumber);
                 solution = new Long(solutionStringFromDb);
