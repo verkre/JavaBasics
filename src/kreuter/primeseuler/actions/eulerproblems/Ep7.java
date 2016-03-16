@@ -24,12 +24,6 @@ public class Ep7 extends EulerProblem {
     }
     
     @Override
-    public void execute() {
-        System.out.println("\nThe 10001st prime is " + this.getSolution());
-        printUrl();
-    }
-
-    @Override
     public String getInfoText() {
         return "By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.\n"
                 + "\n"
@@ -45,6 +39,7 @@ public class Ep7 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "The 10001st prime is " + this.getSolution() + ".";
     }
 

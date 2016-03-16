@@ -16,16 +16,11 @@ public class ActionListPrimeFactors extends Action {
     }
     
     @Override
-    public void execute() {
-//        long numberToFactorize = new UserInput().askInputLongInt(getLowerInputBound());
-        System.out.printf("\nThe prime factors of %d are:%n", getInputNumber());
-        System.out.println(PrimesUtils.computePrimeFactors(getInputNumber()));
-    }
-    
-    @Override
     public String getSolutionString() {
-        return "The prime factors of " + this.getInputNumber() + " are:\n"
+        String solutionString = "The prime factors of " + this.getInputNumber() + " are:\n"
                 + PrimesUtils.computePrimeFactors(this.getInputNumber());
+        writeToLogFile();
+        return solutionString;
     }
 
     @Override

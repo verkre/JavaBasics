@@ -22,12 +22,6 @@ public class Ep2 extends EulerProblem {
         return evenFibSumUpTo(inputNumber);
     }
 
-    @Override
-    public void execute() {
-        System.out.println("\nThe sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution());
-        printUrl();
-    }
-
     private long evenFibSumUpTo(long upperBound) {
         // instantiates an FibonacciArray object which keeps the last 3 computed fibonacci numbers in an array
         // if last one is even, add it to resultSum, then compute the next fib. number
@@ -61,6 +55,7 @@ public class Ep2 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "The sum of the even-valued fibonacci numbers up to 4 million is " + this.getSolution() + ".";
     }
 

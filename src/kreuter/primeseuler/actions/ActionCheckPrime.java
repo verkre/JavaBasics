@@ -23,6 +23,7 @@ public class ActionCheckPrime extends Action {
         } else {
             solutionString = "" + getInputNumber() + " is not prime.";
         }
+        writeToLogFile();
         return solutionString;
     }
     
@@ -46,17 +47,6 @@ public class ActionCheckPrime extends Action {
 
     public String getHowtoText() {
         return "Enter the number (integer) that you want to check and click the 'check' button.";
-    }
-    
-    @Override
-    public void execute() {
-//        long inputNumber = new UserInput().askInputLongInt(1L);
-        if (PrimesUtils.isPrime(getInputNumber())) {
-            System.out.printf("\n%d is prime.%n", getInputNumber());
-        }
-        else {
-            System.out.printf("\n%d is not prime.%n", getInputNumber());
-        }
     }
     
     @Override

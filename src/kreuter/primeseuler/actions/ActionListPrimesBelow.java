@@ -17,15 +17,8 @@ public class ActionListPrimesBelow extends Action {
     }
     
     @Override
-    public void execute() {
-//        long inputNumber = new UserInput().askInputLongInt(getLowerInputBound());
-        ArrayList<Long> primeList = PrimesUtils.listPrimesBelow(getInputNumber());
-        System.out.printf("Here is a list of all primes smaller than %d: %n", getInputNumber());
-        System.out.println(primeList);
-    }
-    
-    @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "Here is a list of all primes smaller than " + getInputNumber() + ":\n"
                 + PrimesUtils.listPrimesBelow(getInputNumber());
     }

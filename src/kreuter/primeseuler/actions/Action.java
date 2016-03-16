@@ -1,5 +1,6 @@
 package kreuter.primeseuler.actions;
 
+import kreuter.primeseuler.Logger;
 import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
@@ -41,6 +42,11 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
         return getTitle();
     }
     
+    @Override
+    public void execute() {
+        System.out.println(getSolutionString());
+    }
+    
     public boolean isValidInput(Long inputNumber) {
         throw new UnsupportedOperationException("Override me if this class really needs input");
         // some actions don't need input; this might as well return false in those
@@ -56,11 +62,20 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
     public Long getInputNumber() {
         return inputNumber;
     }
-    
+
     public void setInputNumber(Long newInputNumber) throws InvalidInputException {
         if (isValidInput(newInputNumber)) {
             this.inputNumber = newInputNumber;
         } else {
             throw new InvalidInputException();
         }
-    }}
+    }
+    
+    public void writeToLogFile() {
+        if (inputNumber == null) {
+            Logger.writeToLogFile(getTitle() + " / No input");
+        } else {
+            Logger.writeToLogFile(getTitle() + " / Input: " + inputNumber);
+        }
+    }
+}

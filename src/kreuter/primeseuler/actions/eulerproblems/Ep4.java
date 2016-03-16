@@ -22,12 +22,6 @@ public class Ep4 extends EulerProblem {
         return this.findLargestPalindromeProduct(inputNumber);
     }
 
-    @Override
-    public void execute() {
-        System.out.println("\nThe largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution());
-        printUrl();
-    }
-
     private boolean isPalindromic(int number) {
         String numberString = Integer.toString(number);
         String reverseNumberString = new StringBuilder(numberString).reverse().toString();
@@ -64,6 +58,7 @@ public class Ep4 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "The largest palindrome number made from the product of two 3-digit numbers is " + this.getSolution() + ".";
     }
 

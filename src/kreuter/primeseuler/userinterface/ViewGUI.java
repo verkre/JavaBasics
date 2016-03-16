@@ -87,7 +87,7 @@ public class ViewGUI extends View {
 //                System.out.println(info.getName());
 //        }
 
-// copied from generated code from GUIBuilder
+// copied generated code from GUIBuilder
 // set the look and feel; if the look and feel selected is not available, resort to the standard
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -213,6 +213,7 @@ public class ViewGUI extends View {
                 + ((Action) epList.getSelectedValue()).getInfoText();
         epInfo.setText(infoString);
         epSolution.setText(((Action) epList.getSelectedValue()).getSolutionString());
+        // TODO to try using Threads:
         // if it is problem 75, start a new thread that computes the solution
         // new Object delayedEp75Solver whose run method:
         // - displays "Please wait..." in the TextArea
@@ -228,18 +229,7 @@ public class ViewGUI extends View {
             JTextField thisTextField = inputNumberFields.get(i);
             final JTextArea thisResultArea = mainMenuResultTextAreas.get(i);
             if (thisButton != null) {
-                thisButton.addActionListener(new ActionListener() {
-
-                    public void actionPerformed(ActionEvent e) {
-                        inputLong = getInputLongInt(thisTextField);
-                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
-                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
-                            return;
-                        }
-                        thisAction.setInputNumber(inputLong);
-                        thisResultArea.setText(thisAction.getSolutionString());
-                    }
-                });
+                thisButton.addActionListener(new NumberInputActionListener(thisAction, thisResultArea, thisTextField));
             }
         }
     }
@@ -250,19 +240,7 @@ public class ViewGUI extends View {
             Action thisAction = actions.get(i);
             final JTextArea thisResultArea = mainMenuResultTextAreas.get(i);
             if (thisTextField != null) {
-                // TODO put the following code into its own class (it's exactly the same here and above). 
-                thisTextField.addActionListener(new ActionListener() {
-
-                    public void actionPerformed(ActionEvent e) {
-                        inputLong = getInputLongInt(thisTextField);
-                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
-                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
-                            return;
-                        }
-                        thisAction.setInputNumber(inputLong);
-                        thisResultArea.setText(thisAction.getSolutionString());
-                    }
-                });
+                thisTextField.addActionListener(new NumberInputActionListener(thisAction, thisResultArea, thisTextField));
             }
         }
     }
@@ -306,8 +284,31 @@ public class ViewGUI extends View {
             return parsedLong;
         } catch (NumberFormatException nfe) {
             textInputField.setText("");
+            textInputField.requestFocus();
             return null;
         }
     }
 
+    
+class NumberInputActionListener implements ActionListener {
+    private Action thisAction;
+    private JTextArea thisResultArea;
+    private JTextField thisTextField;
+
+    public NumberInputActionListener(Action thisAction, JTextArea thisResultArea, JTextField thisTextField) {
+        this.thisAction = thisAction;
+        this.thisResultArea = thisResultArea;
+        this.thisTextField = thisTextField;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+                        inputLong = getInputLongInt(thisTextField);
+                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
+                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
+                            return;
+                        }
+                        thisAction.setInputNumber(inputLong);
+                        thisResultArea.setText(thisAction.getSolutionString());
+                    }    }
 }

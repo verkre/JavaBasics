@@ -19,6 +19,7 @@ public class Controller {
     private EulerSolutionsConnector esc;
     
     public Controller() {
+        this.actionEulerProblems = new ActionEulerProblems();
         DbConnection dbConnection = new DbConnection();
         if (dbConnection.connect()) {
             this.esc = new EulerSolutionsConnector(dbConnection);
@@ -37,6 +38,7 @@ public class Controller {
         return eulerProblems;
     }
     
+
     /**
      * Collect all Actions that should appear in the main menu in an ArrayList.
      * @return an ArrayList of Action objects

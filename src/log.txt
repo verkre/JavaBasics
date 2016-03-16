@@ -1,0 +1,13 @@
+Log File
+Wed Mar 16 14:58:52 CET 2016 - Problem 7 / No input
+Wed Mar 16 14:58:52 CET 2016 - getting solution to 7 from db
+Wed Mar 16 14:58:52 CET 2016 - Problem 75 / No input
+Wed Mar 16 14:58:52 CET 2016 - getting solution to 75 from db
+Wed Mar 16 15:10:19 CET 2016 - Problem 3 / No input
+Wed Mar 16 15:10:19 CET 2016 - getting solution to Problem 3 from db
+Wed Mar 16 15:10:20 CET 2016 - Problem 75 / No input
+Wed Mar 16 15:10:20 CET 2016 - getting solution to Problem 75 from db
+Wed Mar 16 15:10:21 CET 2016 - Problem 2 / No input
+Wed Mar 16 15:10:21 CET 2016 - getting solution to Problem 2 from db
+Wed Mar 16 15:10:29 CET 2016 - Prime checker / Input: 54564567
+Wed Mar 16 15:10:32 CET 2016 - Prime checker / Input: 545764567

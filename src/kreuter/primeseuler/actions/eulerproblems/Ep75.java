@@ -23,12 +23,6 @@ public class Ep75 extends EulerProblem {
         return howManyTriplesWithUniqueSum(inputNumber);
     }
     
-    @Override
-    public void execute() {
-        System.out.printf("\nFor %d values <= 1,500,000 exactly one integer sided right triangle can be formed.%n", this.getSolution());
-        printUrl();
-    }
-    
     /**
      * This method generates the sums Pythagorean triples up to a given max sum and checks for each sum
      * whether a triple with that sum was already found. It is very specific to the 75th problem from projecteuler.
@@ -95,6 +89,7 @@ public class Ep75 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "For " + this.getSolution() + " values <= 1,500,000 exactly one integer sided right triangle can be formed.";
     }
 

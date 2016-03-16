@@ -17,18 +17,12 @@ public class ActionListPrimes extends Action {
     }
     
     @Override
-    public void execute() {
-//        long inputNumber = new UserInput().askInputLongInt(getLowerInputBound());
-        ArrayList<Long> primeList = PrimesUtils.listFirstNPrimes(getInputNumber());
-        System.out.printf("Here is a list of the first %d primes: %n", getInputNumber());
-        System.out.println(primeList);
-    }
-    
-    @Override
     public String getSolutionString() {
+        writeToLogFile();
         return "Here is a list of the first " + getInputNumber() + " primes:\n"
                 + PrimesUtils.listFirstNPrimes(getInputNumber());
     }
+    
     @Override
     public String getInfoText() {
         return "\"A prime number (or a prime) is a natural number greater than 1 that has no positive \"\n"

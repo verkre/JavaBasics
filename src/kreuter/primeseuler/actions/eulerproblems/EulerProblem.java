@@ -1,5 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
+import kreuter.primeseuler.Logger;
 import kreuter.primeseuler.actions.Action;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
@@ -22,7 +23,6 @@ public abstract class EulerProblem extends Action {
     
     public EulerProblem(String problemNumber, String description, String url) {
         super("Problem " + problemNumber, description, false);
-        // passes the first constructor argument to the constructor of the superclass (Action)
         this.solutionWasComputed = false;
         this.url = url;
         this.problemNumber = problemNumber;
@@ -41,15 +41,6 @@ public abstract class EulerProblem extends Action {
     public abstract String getSolutionString();
     // TODO why do these have to be here and are not passed on directly to the subclasses of this class
     
-    
-    /**
-     * @param esc the esc to set
-     */
-    public void setEsc(EulerSolutionsConnector esc) {
-        this.esc = esc;
-    }
-    // TODO use this instead of overloaded constructor
- 
     public abstract long solve();
     
     public void printUrl() {
@@ -59,18 +50,18 @@ public abstract class EulerProblem extends Action {
     public long getSolution() {
         if (this.esc != null) {
             if (esc.isInDB(problemNumber)) {
-                System.out.println("getting solution from db");
+                Logger.writeToLogFile("getting solution to " + getTitle() + " from db");
                 String solutionStringFromDb = esc.getSolutionForProblem(problemNumber);
                 solution = new Long(solutionStringFromDb);
                 solutionWasComputed = true;
             } else if (solutionWasComputed) {
                 // insert it into the db
-                System.out.println("writing solution to db");
+                Logger.writeToLogFile("writing solution to " + getTitle() + " to db");
                 esc.insert(problemNumber, solution.toString());
             } else {
                 solution = solve();
                 solutionWasComputed = true;
-                System.out.println("writing solution to db");
+                Logger.writeToLogFile("writing solution to " + getTitle() + " to db");
                 esc.insert(problemNumber, solution.toString());
             }
         }
@@ -80,6 +71,13 @@ public abstract class EulerProblem extends Action {
             solutionWasComputed = true;
         }
         return solution;
+    }
+    
+    @Override
+    public void execute() {
+        System.out.println(getSolutionString());
+        printUrl();
+        writeToLogFile();
     }
 
 }
