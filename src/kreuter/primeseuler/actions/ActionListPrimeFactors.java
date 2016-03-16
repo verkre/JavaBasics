@@ -8,7 +8,6 @@ import kreuter.primeseuler.exceptions.InvalidInputException;
  */
 public class ActionListPrimeFactors extends Action {
     
-    private Long inputNumber;
     private final Long lowerInputBound;
     
     public ActionListPrimeFactors() {
@@ -19,14 +18,14 @@ public class ActionListPrimeFactors extends Action {
     @Override
     public void execute() {
 //        long numberToFactorize = new UserInput().askInputLongInt(getLowerInputBound());
-        System.out.printf("\nThe prime factors of %d are:%n", inputNumber);
-        System.out.println(PrimesUtils.computePrimeFactors(inputNumber));
+        System.out.printf("\nThe prime factors of %d are:%n", getInputNumber());
+        System.out.println(PrimesUtils.computePrimeFactors(getInputNumber()));
     }
     
     @Override
     public String getSolutionString() {
-        return "The prime factors of " + this.inputNumber + " are:\n"
-                + PrimesUtils.computePrimeFactors(this.inputNumber);
+        return "The prime factors of " + this.getInputNumber() + " are:\n"
+                + PrimesUtils.computePrimeFactors(this.getInputNumber());
     }
 
     @Override
@@ -43,24 +42,13 @@ public class ActionListPrimeFactors extends Action {
                 + "Enter a number in the field below and click the button to show a list of its prime factors."
                 ;
     }
-
-    @Override
-    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
-        if (isValidInput(newInputNumber)) {
-            this.inputNumber = newInputNumber;
-        } else {
-            throw new InvalidInputException();
-            // if the UserInterface does not check the validity of the input first
-            // by using the isValidInput() method, and tries to set an invalid input
-            // here, throw an exception.
-        }
-    }
     
     @Override
     public boolean isValidInput(Long inputNumber) {
         return (inputNumber >= getLowerInputBound());
     }
 
+    @Override
     public Long getLowerInputBound() {
         return lowerInputBound;
     }

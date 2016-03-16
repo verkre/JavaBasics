@@ -1,5 +1,7 @@
 package kreuter.primeseuler.actions;
 
+import kreuter.primeseuler.exceptions.InvalidInputException;
+
 /**
 * This is a superclass for all actions/options that can show up in a menu (main menu or sub-menu).
 * For putting an action in a menu, we need a description with a getter method 
@@ -10,6 +12,7 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
     private String title;
     private String description;
     private boolean needsInputNumber;
+    private Long inputNumber;
     
     public Action(String title, String description, boolean needsInput) {
         this.title = title;
@@ -23,9 +26,7 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
    public boolean needsInputNumber() {
        return needsInputNumber;
    }
-    
-    public abstract void setInputNumber(Long newInputNumber);
-    
+        
     public String getTitle() {
         return title;
     }
@@ -41,7 +42,7 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
     }
     
     public boolean isValidInput(Long inputNumber) {
-        return false;
+        throw new UnsupportedOperationException("Override me if this class really needs input");
         // some actions don't need input; this might as well return false in those
         // cases so there is no need to implement this method in each action,
         // just override it where input within specific bounds is needed.
@@ -51,5 +52,15 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
         return 0L;
         // this is overridden in actions that actually need an input
     }
+
+    public Long getInputNumber() {
+        return inputNumber;
+    }
     
-}
+    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
+        if (isValidInput(newInputNumber)) {
+            this.inputNumber = newInputNumber;
+        } else {
+            throw new InvalidInputException();
+        }
+    }}

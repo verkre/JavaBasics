@@ -30,7 +30,8 @@ public class ActionEulerProblems extends Action {
         DbConnection dbConnection = new DbConnection();
         // TODO if db connection is not possible, the ensuing exception is caught in its constructor.
         // is there a better way?
-        // TODO there is a lot going on in this constructor... where should the db connection best be established?
+        // establish db connection in controller and pass it to this action
+        // replace ep instance attributes by a list (as one instance attribute)
         if (dbConnection.isConnected()) {
             EulerSolutionsConnector esc = new EulerSolutionsConnector(dbConnection.getConnection());
             ep2Object = new Ep2(esc);

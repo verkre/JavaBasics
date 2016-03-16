@@ -9,7 +9,6 @@ import kreuter.primeseuler.exceptions.InvalidInputException;
  */
 public class ActionListPrimes extends Action {
     
-    private Long inputNumber;
     private final Long lowerInputBound;
     
     public ActionListPrimes() {
@@ -20,14 +19,15 @@ public class ActionListPrimes extends Action {
     @Override
     public void execute() {
 //        long inputNumber = new UserInput().askInputLongInt(getLowerInputBound());
-        ArrayList<Long> primeList = PrimesUtils.listFirstNPrimes(inputNumber);
-        System.out.printf("Here is a list of the first %d primes: %n", inputNumber);
+        ArrayList<Long> primeList = PrimesUtils.listFirstNPrimes(getInputNumber());
+        System.out.printf("Here is a list of the first %d primes: %n", getInputNumber());
         System.out.println(primeList);
     }
     
+    @Override
     public String getSolutionString() {
-        return "Here is a list of the first " + inputNumber + " primes:\n"
-                + PrimesUtils.listFirstNPrimes(inputNumber);
+        return "Here is a list of the first " + getInputNumber() + " primes:\n"
+                + PrimesUtils.listFirstNPrimes(getInputNumber());
     }
     @Override
     public String getInfoText() {
@@ -41,20 +41,13 @@ public class ActionListPrimes extends Action {
                 + "Enter in the field below how many primes you want and click the button to get a list.";
     }
 
-    @Override
-    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
-        if (isValidInput(newInputNumber)) {
-            this.inputNumber = newInputNumber;
-        } else {
-            throw new InvalidInputException();
-        }
-    }
     
     @Override
     public boolean isValidInput(Long inputNumber) {
         return (inputNumber >= getLowerInputBound());
     }
 
+    @Override
     public Long getLowerInputBound() {
         return lowerInputBound;
     }

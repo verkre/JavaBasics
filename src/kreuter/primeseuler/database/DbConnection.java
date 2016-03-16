@@ -35,6 +35,8 @@ public class DbConnection {
         }
     }
     
+    // TODO extract method from constructor (.connect()) that returns true/false
+    
     public boolean isConnected() {
         return connection != null; //  && connection.isValid(0);
     }

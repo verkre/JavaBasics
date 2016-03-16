@@ -1,14 +1,12 @@
 package kreuter.primeseuler.actions;
 
 import kreuter.primeseuler.PrimesUtils;
-import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
  * Main menu item/action: Check a number (input from user) for primeness.
  */
 public class ActionCheckPrime extends Action {
     
-    private Long inputNumber;
     private final Long lowerInputBound;
     
 
@@ -18,21 +16,12 @@ public class ActionCheckPrime extends Action {
     }
     
     @Override
-    public void setInputNumber(Long newInputNumber) throws InvalidInputException {
-        if (isValidInput(newInputNumber)) {
-            this.inputNumber = newInputNumber;
-        } else {
-            throw new InvalidInputException();
-        }
-    }
-
-    @Override
     public String getSolutionString() {
         String solutionString;
-        if (PrimesUtils.isPrime(inputNumber)) {
-            solutionString = "" + inputNumber + " is prime.";
+        if (PrimesUtils.isPrime(getInputNumber())) {
+            solutionString = "" + getInputNumber() + " is prime.";
         } else {
-            solutionString = "" + inputNumber + " is not prime.";
+            solutionString = "" + getInputNumber() + " is not prime.";
         }
         return solutionString;
     }
@@ -62,11 +51,11 @@ public class ActionCheckPrime extends Action {
     @Override
     public void execute() {
 //        long inputNumber = new UserInput().askInputLongInt(1L);
-        if (PrimesUtils.isPrime(inputNumber)) {
-            System.out.printf("\n%d is prime.%n", inputNumber);
+        if (PrimesUtils.isPrime(getInputNumber())) {
+            System.out.printf("\n%d is prime.%n", getInputNumber());
         }
         else {
-            System.out.printf("\n%d is not prime.%n", inputNumber);
+            System.out.printf("\n%d is not prime.%n", getInputNumber());
         }
     }
     
@@ -75,11 +64,9 @@ public class ActionCheckPrime extends Action {
         return (inputNumber >= getLowerInputBound());
     }
 
+    @Override
     public Long getLowerInputBound() {
         return lowerInputBound;
     }
 
-
-    
-    
 }
