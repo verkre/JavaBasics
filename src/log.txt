@@ -116,3 +116,12 @@ Thu Mar 17 14:51:25 CET 2016 - Problem 7 / No input
 Thu Mar 17 14:51:25 CET 2016 - Lost database connection
 Thu Mar 17 14:51:27 CET 2016 - Problem 3 / No input
 Thu Mar 17 14:51:27 CET 2016 - Lost database connection
+Thu Mar 17 15:15:24 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Thu Mar 17 15:15:28 CET 2016 - Problem 67 / No input
+Thu Mar 17 15:15:28 CET 2016 - Input file for problem 67 not found
+Thu Mar 17 15:15:37 CET 2016 - Problem 7 / No input
+Thu Mar 17 15:15:39 CET 2016 - Problem 67 / No input
+Thu Mar 17 15:15:40 CET 2016 - Problem 3 / No input
+Thu Mar 17 15:15:46 CET 2016 - Problem 67 / No input
+Thu Mar 17 15:20:02 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Thu Mar 17 15:20:04 CET 2016 - Input file for problem 67 not found

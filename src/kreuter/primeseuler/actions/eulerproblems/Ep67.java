@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 import kreuter.primeseuler.utils.Logger;
 
@@ -47,6 +46,11 @@ public class Ep67 extends EulerProblem {
 
     @Override
     public String getSolutionString() {
+        if (getSolution() == 0) {
+            return "The input file could not be read, sorry.";
+        }
+        // TODO if there is no DB connection *and* the input file cannot be found or read,
+        // 0 is stored as the solution (and this error message will be displayed until the program exits)
         writeToLogFile();
         return "The maximum path sum is " + getSolution() + ".";
     }
@@ -79,7 +83,6 @@ public class Ep67 extends EulerProblem {
                 inputTriangle.get(i).set(j, inputTriangle.get(i).get(j) + greaterChild);
             }
             inputTriangle.remove(inputTriangle.size() - 1);
-
             return greedyPathSumSolver(inputTriangle);
         }
     }
