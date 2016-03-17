@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
+import kreuter.primeseuler.utils.Logger;
 
 /**
  *
@@ -52,7 +54,16 @@ public class Ep67 extends EulerProblem {
     @Override
     public long solve() {
         String inputFilePath = "src/p067_triangle.txt";
-        List<List<Integer>> inputTriangle = readInputFile(inputFilePath);
+        List<List<Integer>> inputTriangle;
+        try {
+            inputTriangle = readInputFile(inputFilePath);
+        } catch (FileNotFoundException ex) {
+            Logger.writeToLogFile("Input file for problem 67 not found");
+            return 0;
+        } catch (IOException ex) {
+            Logger.writeToLogFile("Could not read input file for problem 67");
+            return 0;
+        }
         return (long) greedyPathSumSolver(inputTriangle);
     }
     
@@ -73,7 +84,7 @@ public class Ep67 extends EulerProblem {
         }
     }
     
-    public List<List<Integer>> readInputFile(String inputFilePath) {
+    public List<List<Integer>> readInputFile(String inputFilePath) throws FileNotFoundException, IOException {
         List<List<Integer>> inputTriangle = new ArrayList<>();
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
@@ -86,10 +97,6 @@ public class Ep67 extends EulerProblem {
                 }
                 inputTriangle.add(lineArrayInts);
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("file not found " + ex);
-        } catch (IOException ex) {
-            System.out.println(ex);
         }
         return inputTriangle;
     }
