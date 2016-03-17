@@ -36,13 +36,18 @@ public class DbConnection {
             connection = DriverManager.getConnection(connectionString, user, password);
             return true;
         } catch (SQLException ex) {
-            Logger.writeToLogFile("No database connection --> " + ex);
+            Logger.writeToLogFile("AT STARTUP: No database connection --> " + ex.getClass());
             return false;
         }
     }
     
     public boolean isConnected() {
-        return connection != null; //  && connection.isValid(0);
+        try {
+            return connection != null && connection.isValid(0);
+        } catch (SQLException ex) {
+            Logger.writeToLogFile("Lost database connection --> " + ex.getClass());
+            return false;
+        }
     }
     
     public Connection getConnection() {

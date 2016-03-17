@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kreuter.primeseuler.database;
 
 import java.sql.*;
 import java.util.*;
+import kreuter.primeseuler.utils.Logger;
 
 /**
  *
@@ -16,20 +12,20 @@ import java.util.*;
 
 public class EulerSolutionsConnector {
     
-    Connection connection;
+    private Connection connection;
     private Statement statement;
     private ResultSet resultSet;
     private List<EulerSolution> eulerSolutions;
+    private final DbConnection dbConnection;
     
     public EulerSolutionsConnector(DbConnection dbConnection) {
         try {
             this.connection = dbConnection.getConnection();
             statement = connection.createStatement();
         } catch (SQLException ex) {
-            System.out.print("in ESC constructor -->");
-            System.out.println(ex);
+            Logger.writeToLogFile("DATABASE: Could not create statement");
         }
-        
+        this.dbConnection = dbConnection;
         eulerSolutions = new ArrayList<>();
     }
     
@@ -56,8 +52,7 @@ public class EulerSolutionsConnector {
                 eulerSolutions.add(eulerSolution);
             }
         } catch (SQLException ex) {
-            System.out.print("in ESC.read(String) method -->");
-            System.out.println(ex);
+            Logger.writeToLogFile("DATABASE: Could not read table");
         }            
     }
     
@@ -83,21 +78,18 @@ public class EulerSolutionsConnector {
     public boolean insert(EulerSolution eulerSolution) {
         readByProblemNumber(eulerSolution.getProblemNumber());
         if (!eulerSolutions.isEmpty()) {
-            System.out.println("this problem is already in the DB");
+            Logger.writeToLogFile("DATABASE: Can not add problem that is already there");
             readAll();
             return false;
-            // if there is already an entry with that number, do not insert another one
         }
         String sql = "INSERT INTO eulersolutions (problemNumber, problemSolution) "
                 + "VALUES ('" + eulerSolution.getProblemNumber()
                 + "', '" + eulerSolution.getProblemSolution()
                 + "')";
-        
         try {
             return statement.executeUpdate(sql) == 1;
         } catch (SQLException ex) {
-            System.out.print("in ESC insert method -->");
-            System.out.println(ex);
+            Logger.writeToLogFile("DATABASE: Could not update table");
             return false;
         } finally {
             readAll();
@@ -114,12 +106,10 @@ public class EulerSolutionsConnector {
                 + "VALUES ('" + problemNumber
                 + "', '" + problemSolution
                 + "')";
-        
         try {
             return statement.executeUpdate(sql) == 1;
         } catch (SQLException ex) {
-            System.out.print("in ESC insert method -->");
-            System.out.println(ex);
+            Logger.writeToLogFile("DATABASE: Could not update table");
             return false;
         } finally {
             readAll();
@@ -127,21 +117,24 @@ public class EulerSolutionsConnector {
     }
     
     public boolean deleteProblemNumber(String problemNumber) {
-        
         String sql = "DELETE FROM eulersolutions WHERE problemNumber=?";
-        
         try {
-            PreparedStatement prep = connection.prepareStatement(sql);
+            PreparedStatement prep = getConnection().prepareStatement(sql);
             prep.setString(1, problemNumber);
             return prep.executeUpdate() == 1;
-
         } catch (SQLException ex) {
-            System.out.print("in ESC delete method --> ");
-            System.out.println(ex);
+            Logger.writeToLogFile("DATABASE: Could not delete from table");
             return false;
-        
         } finally {
             readAll();
         }
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public DbConnection getDbConnection() {
+        return dbConnection;
     }
 }

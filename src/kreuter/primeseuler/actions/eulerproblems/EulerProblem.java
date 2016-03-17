@@ -28,7 +28,8 @@ public abstract class EulerProblem extends Action {
         this.problemNumber = problemNumber;
     }
     
-    // overload constructor to take a db connection. if it is present, solutions can be read from the db.
+    // overload constructor to take a db connection. if it is present, 
+    // objects can read their solutions from the db.
     public EulerProblem(String problemNumber, String description, String url, EulerSolutionsConnector esc) {
         this(problemNumber, description, url);
         this.esc = esc;
@@ -48,7 +49,7 @@ public abstract class EulerProblem extends Action {
     public abstract long solve();
     
     public void printUrl() {
-        System.out.println("Find details on this problem here: " + this.url);
+        System.out.println("Find details on this problem here: " + url);
     }
     
     /**
@@ -59,7 +60,7 @@ public abstract class EulerProblem extends Action {
      * @return The solution to the problem from projecteuler.com that is represented by the object as a long integer.
      */
     public long getSolution() {
-        if (this.esc != null) {
+        if (esc != null && esc.getDbConnection().isConnected()) {
             if (esc.isInDB(problemNumber)) {
                 Logger.writeToLogFile("getting solution to " + getTitle() + " from db");
                 String solutionStringFromDb = esc.getSolutionForProblem(problemNumber);
@@ -77,7 +78,10 @@ public abstract class EulerProblem extends Action {
                 esc.insert(problemNumber, solution.toString());
             }
         }
-        // if esc == 0, there is no db connection. compute solution if it is not set yet:
+        if (esc != null && esc.getDbConnection().isConnected() == false) {
+            Logger.writeToLogFile("Lost database connection");
+        }
+        // if esc == null, there is no db connection. compute and set solution if it is not set yet:
         if (!solutionWasComputed) {
             solution = solve();
             solutionWasComputed = true;

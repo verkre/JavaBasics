@@ -32,7 +32,9 @@ import kreuter.primeseuler.MainController;
 import kreuter.primeseuler.utils.Logger;
 
 /**
- *
+ * This class starts the program in the GUI, constructs the main frame and fills
+ * it. It gets the main controller as an argument (the controller has the list of menu
+ * actions that are used in the GUI).
  * @author Vera Kreuter
  */
 public class ViewGUI extends View {
@@ -59,7 +61,8 @@ public class ViewGUI extends View {
         this.actions = controller.getMenuItems();
         this.epActions = controller.getEulerProblemActions();
         frame = new JFrame("Primes and Euler Problems");
-        // REFACT the first actions are manually exchanged here (from Exit to Welcome). It works but it is kind of ugly
+        // REFACT the first actions are manually exchanged here (from Exit, which is used in the TUI, to Welcome). 
+        // There might be a better way but I can't think of one.
         this.actions.set(0, new ActionGUIWelcome());
         this.epActions.set(0, new ActionGUIWelcomeEp(controller.getEsc()));
         this.mainMenuPanels = new ArrayList<>();
@@ -209,12 +212,14 @@ public class ViewGUI extends View {
                 + ((Action) epList.getSelectedValue()).getInfoText();
         epInfo.setText(infoString);
         epSolution.setText(((Action) epList.getSelectedValue()).getSolutionString());
+        
         // TODO to try using Threads:
         // if it is problem 75, start a new thread that computes the solution
-        // new Object delayedEp75Solver whose run method:
-        // - displays "Please wait..." in the TextArea
-        // - call the solve method (or getSolution?) of ep75
-        // - display solution and possibly notify user via popup window?
+        // ideally something like:
+        // - new Object delayedEp75Solver whose run method:
+        // -- displays "Please wait..." in the TextArea
+        // -- call the solve method (or getSolution?) of ep75
+        // -- display solution and maybe notifies user via popup window?
 
     }
     
@@ -285,7 +290,7 @@ public class ViewGUI extends View {
         }
     }
 
-     class NumberInputActionListener implements ActionListener {
+    class NumberInputActionListener implements ActionListener {
 
         private final Action thisAction;
         private final JTextArea thisResultArea;

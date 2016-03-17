@@ -12,9 +12,9 @@ import kreuter.primeseuler.exceptions.InvalidInputException;
 */
 public abstract class Action implements ExecutableTUI, ExecutableGUI {
     
-    private String title;
-    private String description;
-    private boolean needsInputNumber;
+    private final String title;
+    private final String description;
+    private final boolean needsInputNumber;
     private Long inputNumber;
     
     public Action(String title, String description, boolean needsInput) {
@@ -50,11 +50,11 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
     }
     
     public boolean isValidInput(Long inputNumber) {
-        throw new UnsupportedOperationException("Override me if this class really needs input");
+        throw new UnsupportedOperationException("Override me if this subclass really needs input");
     }
     
     public Long getLowerInputBound() {
-        throw new UnsupportedOperationException("Override me if this class really needs input");
+        throw new UnsupportedOperationException("Override me if this subclass really needs input");
     }
 
     public Long getInputNumber() {

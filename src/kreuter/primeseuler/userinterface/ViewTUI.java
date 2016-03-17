@@ -5,12 +5,17 @@
  */
 package kreuter.primeseuler.userinterface;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import kreuter.primeseuler.MainController;
-import kreuter.primeseuler.utils.PrimesUtils;
 import kreuter.primeseuler.actions.Action;
 import kreuter.primeseuler.actions.ActionTUIExitToMainMenu;
+import kreuter.primeseuler.interfaces.Controller;
 
 /**
  *
@@ -24,7 +29,7 @@ public class ViewTUI extends View {
     public ViewTUI() {
     }
 
-    public ViewTUI(MainController controller) {
+    public ViewTUI(Controller controller) {
         this.actions = controller.getMenuItems();
     }
 
@@ -34,23 +39,29 @@ public class ViewTUI extends View {
 
     private void go() {
         while (true) {
-            displayAndChooseFromMenu(actions);
+            displayAndChooseFromMenu();
         }
     }
         
-    public boolean displayAndChooseFromMenu(List<Action> menuItems) {
+    /**
+     * This method is used to display the main menu items and let the user choose from them
+     * at the start of the program, but is also called from the ActionEpSubcontroller to 
+     * display the sub-menu of available Euler Problems. (A second instance of this class is
+     * constructed there - more generally a new instance is constructed for every sub-menu/ sub-controller).
+     * @return false only when a back-to-main-menu action is chosen by the user, to jump out of the current sub-menu.
+     */
+    public boolean displayAndChooseFromMenu() {
         System.out.println("\n");
         // print a newline before the menu because it looks better
-        for (int i = 0; i < menuItems.size(); i++) {
-            System.out.printf("%d - " + menuItems.get(i).getDescription() + "%n", i);
+        for (int i = 0; i < actions.size(); i++) {
+            System.out.printf("%d - " + actions.get(i).getDescription() + "%n", i);
         }
-        int userChoice = askMenuItem(menuItems.size());
+        int userChoice = askMenuItem(actions.size());
         
-        // to return to main menu: return false if user chose the exit option (= exit object)
-        if (menuItems.get(userChoice) instanceof ActionTUIExitToMainMenu) {
+        if (actions.get(userChoice) instanceof ActionTUIExitToMainMenu) {
             return false;
         }
-        currentAction = menuItems.get(userChoice);
+        currentAction = actions.get(userChoice);
         if (currentAction.needsInputNumber()) {
             getInputLongInt();
         }
@@ -60,12 +71,13 @@ public class ViewTUI extends View {
 
     private int askMenuItem(int numberOfChoices) {
         int upperBound = numberOfChoices - 1;
-        System.out.printf("Please type a number between %d and %d. > ", 0, upperBound);
         int inputNumber;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.printf("Please type a number between %d and %d. > ", 0, upperBound);
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextInt();
-            } catch(InputMismatchException inputNotInteger) {
+                inputNumber = Integer.parseInt(br.readLine());
+            } catch(InputMismatchException | IOException inputNotInteger) {
                 System.out.printf("That was not an integer. Please enter an integer between %d and %d. > ", 0, upperBound);
                 continue;
             }
@@ -79,24 +91,23 @@ public class ViewTUI extends View {
     }
 
     private void getInputLongInt() {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.printf("Please type a number (" + currentAction.getLowerInputBound() + " or greater). > ");
         Long inputNumber;
         while (true) {
             try {
-                inputNumber = new java.util.Scanner(System.in).nextLong();
-            } catch(InputMismatchException ex) {
+                inputNumber = Long.parseLong(br.readLine());
+            } catch (InputMismatchException | IOException ex) {
                 System.out.print("That was not an integer. Please type an integer between " + currentAction.getLowerInputBound() + " and " + MAX_LONG + ". > ");
                 continue;
             }
-            // if input could be parsed to a long, ask the action whether it is valid; if it is, pass it on
+            // if input could be parsed to a long int, ask the action whether it is valid; if it is, pass it on
             if (currentAction.isValidInput(inputNumber)) {
                 currentAction.setInputNumber(inputNumber);
                 return;
             } else {
                 System.out.print("Invalid input. Number must be at least " + currentAction.getLowerInputBound() + ". > ");
             }
-            
         }
     }
-
 }

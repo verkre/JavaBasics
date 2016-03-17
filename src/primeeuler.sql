@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Mrz 2016 um 15:14
+-- Erstellungszeit: 17. Mrz 2016 um 13:44
 -- Server-Version: 10.1.10-MariaDB
 -- PHP-Version: 7.0.4
 
@@ -44,7 +44,8 @@ INSERT INTO `eulersolutions` (`uid`, `problemNumber`, `problemSolution`) VALUES
 (17, '3', '6857'),
 (18, '4', '906609'),
 (19, '7', '104743'),
-(20, '75', '161667');
+(20, '75', '161667'),
+(21, '67', '7273');
 
 --
 -- Indizes der exportierten Tabellen
@@ -64,7 +65,7 @@ ALTER TABLE `eulersolutions`
 -- AUTO_INCREMENT für Tabelle `eulersolutions`
 --
 ALTER TABLE `eulersolutions`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kreuter.primeseuler.actions;
 
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 /**
- *
+ * This object represents the "welcome" screen for the Euler-Problem-Submenu in
+ * the GUI. It contains some info on the project and a how-to text that can be displayed
+ * in the respective text fields.
  * @author Vera Kreuter
  */
 public class ActionGUIWelcomeEp extends Action {

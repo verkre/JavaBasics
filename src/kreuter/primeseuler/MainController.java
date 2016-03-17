@@ -15,12 +15,11 @@ import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 public class MainController implements Controller {
     
-    private ActionEpSubcontroller actionEulerProblems;
-    private List<Action> eulerProblems;
+    private final ActionEpSubcontroller actionEulerProblems;
+    private final List<Action> eulerProblems;
     private EulerSolutionsConnector esc;
     
     public MainController() {
-        this.actionEulerProblems = new ActionEpSubcontroller(this);
         DbConnection dbConnection = new DbConnection();
         if (dbConnection.connect()) {
             this.esc = new EulerSolutionsConnector(dbConnection);
@@ -39,7 +38,10 @@ public class MainController implements Controller {
     public List<Action> getEulerProblemActions() {
         return eulerProblems;
     }
-    
+
+    public EulerSolutionsConnector getEsc() {
+        return esc;
+    }
 
     /**
      * Collect all Actions that should appear in the main menu in an ArrayList.
@@ -59,9 +61,5 @@ public class MainController implements Controller {
         availableActionObjects.add(new ActionListPrimesBelow());
         availableActionObjects.add(actionEulerProblems);
         return availableActionObjects;
-    }
-
-    public EulerSolutionsConnector getEsc() {
-        return esc;
     }
 }

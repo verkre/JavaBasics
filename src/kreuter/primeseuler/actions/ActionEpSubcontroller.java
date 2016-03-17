@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import kreuter.primeseuler.MainController;
 import kreuter.primeseuler.interfaces.Controller;
 import kreuter.primeseuler.actions.eulerproblems.Ep67;
-import kreuter.primeseuler.database.EulerSolutionsConnector;
 import kreuter.primeseuler.userinterface.ViewTUI;
 
 /**
@@ -18,8 +17,7 @@ import kreuter.primeseuler.userinterface.ViewTUI;
  */
 public class ActionEpSubcontroller extends Action implements Controller {
 
-    private ArrayList<Action> availableEulerProblems;
-    private ActionGUIWelcomeEp epWelcomeScreen;
+    private final ArrayList<Action> availableEulerProblems;
 
     public ActionEpSubcontroller(MainController controller) {
         super("Project Euler Problems", "show the solution to a problem from Project Euler", false);
@@ -31,7 +29,6 @@ public class ActionEpSubcontroller extends Action implements Controller {
         availableEulerProblems.add(new Ep7(controller.getEsc()));
         availableEulerProblems.add(new Ep67(controller.getEsc()));
         availableEulerProblems.add(new Ep75(controller.getEsc()));
-        epWelcomeScreen = new ActionGUIWelcomeEp(controller.getEsc());
     }
 
     public ActionEpSubcontroller() {
@@ -44,7 +41,6 @@ public class ActionEpSubcontroller extends Action implements Controller {
         availableEulerProblems.add(new Ep7());
         availableEulerProblems.add(new Ep67());
         availableEulerProblems.add(new Ep75());
-        epWelcomeScreen = new ActionGUIWelcomeEp();
     }
         
 
@@ -55,10 +51,11 @@ public class ActionEpSubcontroller extends Action implements Controller {
 
     @Override
     public void execute() {
-        while (new ViewTUI().displayAndChooseFromMenu(getMenuItems())) {
+        while (new ViewTUI(this).displayAndChooseFromMenu()) {
         }
     }
 
+    @Override
     public ArrayList<Action> getMenuItems() {
         return availableEulerProblems;
     }
