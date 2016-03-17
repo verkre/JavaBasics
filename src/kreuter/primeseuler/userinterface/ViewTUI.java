@@ -7,10 +7,10 @@ package kreuter.primeseuler.userinterface;
 
 import java.util.InputMismatchException;
 import java.util.List;
-import kreuter.primeseuler.Controller;
-import kreuter.primeseuler.PrimesUtils;
+import kreuter.primeseuler.MainController;
+import kreuter.primeseuler.utils.PrimesUtils;
 import kreuter.primeseuler.actions.Action;
-import kreuter.primeseuler.actions.ActionExitToMainMenu;
+import kreuter.primeseuler.actions.ActionTUIExitToMainMenu;
 
 /**
  *
@@ -24,12 +24,12 @@ public class ViewTUI extends View {
     public ViewTUI() {
     }
 
-    public ViewTUI(Controller controller) {
-        this.actions = controller.getActions();
+    public ViewTUI(MainController controller) {
+        this.actions = controller.getMenuItems();
     }
 
     public static void main(String[] args) {
-        new ViewTUI(new Controller()).go();
+        new ViewTUI(new MainController()).go();
     }
 
     private void go() {
@@ -47,7 +47,7 @@ public class ViewTUI extends View {
         int userChoice = askMenuItem(menuItems.size());
         
         // to return to main menu: return false if user chose the exit option (= exit object)
-        if (menuItems.get(userChoice) instanceof ActionExitToMainMenu) {
+        if (menuItems.get(userChoice) instanceof ActionTUIExitToMainMenu) {
             return false;
         }
         currentAction = menuItems.get(userChoice);

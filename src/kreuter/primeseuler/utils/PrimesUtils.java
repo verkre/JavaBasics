@@ -1,5 +1,5 @@
 
-package kreuter.primeseuler;
+package kreuter.primeseuler.utils;
 
 import java.util.ArrayList;
 

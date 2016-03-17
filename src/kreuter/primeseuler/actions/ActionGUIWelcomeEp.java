@@ -5,14 +5,23 @@
  */
 package kreuter.primeseuler.actions;
 
+import kreuter.primeseuler.database.EulerSolutionsConnector;
+
 /**
  *
  * @author Vera Kreuter
  */
-public class ActionWelcomeEp extends Action {
+public class ActionGUIWelcomeEp extends Action {
     
-    public ActionWelcomeEp() {
+    private EulerSolutionsConnector esc;
+    
+    public ActionGUIWelcomeEp() {
         super("General info", "General info on Project Euler", false);
+    }
+    
+    public ActionGUIWelcomeEp(EulerSolutionsConnector esc) {
+        super("General info", "General info on Project Euler", false);
+        this.esc = esc;
     }
 
     @Override
@@ -25,7 +34,13 @@ public class ActionWelcomeEp extends Action {
 
     @Override
     public String getSolutionString() {
-        return "You can display the solutions to some Euler Problems here. Choose one from the list on the left.";
+        if (esc != null) {
+            return "You can display the solutions to some Euler Problems here. Choose one from the list on the left.";
+        }
+        return "You can display the solutions to some Euler Problems here. Choose one from the list on the left."
+                + "\n\n"
+                + "There is no connection to the Euler Problems Solutions Database. Some Problems (e.g. 75) will "
+                + "take a few minutes to display.";
     }
 
     @Override

@@ -1,6 +1,6 @@
 package kreuter.primeseuler.actions;
 
-import kreuter.primeseuler.PrimesUtils;
+import kreuter.primeseuler.utils.PrimesUtils;
 import java.util.ArrayList;
 import kreuter.primeseuler.exceptions.InvalidInputException;
 

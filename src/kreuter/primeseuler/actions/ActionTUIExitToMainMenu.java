@@ -4,11 +4,11 @@ package kreuter.primeseuler.actions;
 /**
  * Sub-menu item/action: Exit the sub-menu to go back to the main menu.
  */
-public class ActionExitToMainMenu extends Action {
+public class ActionTUIExitToMainMenu extends Action {
     
     private Long inputNumber = null;
     
-    public ActionExitToMainMenu() {
+    public ActionTUIExitToMainMenu() {
         super("Back to main menu", "Back to main menu", false);
     }
 

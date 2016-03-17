@@ -1,6 +1,8 @@
 package kreuter.primeseuler.actions;
 
-import kreuter.primeseuler.Logger;
+import kreuter.primeseuler.interfaces.ExecutableGUI;
+import kreuter.primeseuler.interfaces.ExecutableTUI;
+import kreuter.primeseuler.utils.Logger;
 import kreuter.primeseuler.exceptions.InvalidInputException;
 
 /**
@@ -49,14 +51,10 @@ public abstract class Action implements ExecutableTUI, ExecutableGUI {
     
     public boolean isValidInput(Long inputNumber) {
         throw new UnsupportedOperationException("Override me if this class really needs input");
-        // some actions don't need input; this might as well return false in those
-        // cases so there is no need to implement this method in each action,
-        // just override it where input within specific bounds is needed.
     }
     
     public Long getLowerInputBound() {
-        return 0L;
-        // this is overridden in actions that actually need an input
+        throw new UnsupportedOperationException("Override me if this class really needs input");
     }
 
     public Long getInputNumber() {

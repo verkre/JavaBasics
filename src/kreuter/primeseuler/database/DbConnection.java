@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
+import kreuter.primeseuler.utils.Logger;
 
 public class DbConnection {
 
@@ -35,8 +36,7 @@ public class DbConnection {
             connection = DriverManager.getConnection(connectionString, user, password);
             return true;
         } catch (SQLException ex) {
-            System.out.print("in connect() method in dbConnection --> ");
-            System.out.println(ex);
+            Logger.writeToLogFile("No database connection --> " + ex);
             return false;
         }
     }

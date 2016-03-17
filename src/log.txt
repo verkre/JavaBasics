@@ -1,13 +1,64 @@
-Log File
-Wed Mar 16 14:58:52 CET 2016 - Problem 7 / No input
-Wed Mar 16 14:58:52 CET 2016 - getting solution to 7 from db
-Wed Mar 16 14:58:52 CET 2016 - Problem 75 / No input
-Wed Mar 16 14:58:52 CET 2016 - getting solution to 75 from db
-Wed Mar 16 15:10:19 CET 2016 - Problem 3 / No input
-Wed Mar 16 15:10:19 CET 2016 - getting solution to Problem 3 from db
-Wed Mar 16 15:10:20 CET 2016 - Problem 75 / No input
-Wed Mar 16 15:10:20 CET 2016 - getting solution to Problem 75 from db
-Wed Mar 16 15:10:21 CET 2016 - Problem 2 / No input
-Wed Mar 16 15:10:21 CET 2016 - getting solution to Problem 2 from db
-Wed Mar 16 15:10:29 CET 2016 - Prime checker / Input: 54564567
-Wed Mar 16 15:10:32 CET 2016 - Prime checker / Input: 545764567
+Wed Mar 16 19:01:15 CET 2016 - Problem 7 / No input
+Wed Mar 16 19:01:15 CET 2016 - getting solution to Problem 7 from db
+Thu Mar 17 08:18:04 CET 2016 - Problem 67 / No input
+Thu Mar 17 08:20:00 CET 2016 - Problem 67 / No input
+Thu Mar 17 08:20:48 CET 2016 - Problem 67 / No input
+Thu Mar 17 08:20:48 CET 2016 - writing solution to Problem 67 to db
+Thu Mar 17 08:20:59 CET 2016 - Prime Factors / Input: 56
+Thu Mar 17 08:21:03 CET 2016 - Prime Factors / Input: 4365656
+Thu Mar 17 08:27:09 CET 2016 - Problem 67 / No input
+Thu Mar 17 08:27:09 CET 2016 - getting solution to Problem 67 from db
+Thu Mar 17 08:27:41 CET 2016 - Prime checker / Input: 546747
+Thu Mar 17 08:27:48 CET 2016 - Prime checker / Input: 7546747
+Thu Mar 17 08:27:52 CET 2016 - Prime checker / Input: 37546747
+Thu Mar 17 08:27:57 CET 2016 - Prime checker / Input: 375467347
+Thu Mar 17 08:28:00 CET 2016 - Prime checker / Input: 3754673347
+Thu Mar 17 08:33:59 CET 2016 - Problem 67 / No input
+Thu Mar 17 08:33:59 CET 2016 - getting solution to Problem 67 from db
+Thu Mar 17 08:34:01 CET 2016 - Problem 75 / No input
+Thu Mar 17 08:34:01 CET 2016 - getting solution to Problem 75 from db
+Thu Mar 17 10:06:25 CET 2016 - Problem 75 / No input
+Thu Mar 17 10:06:25 CET 2016 - getting solution to Problem 75 from db
+Thu Mar 17 10:06:35 CET 2016 - Prime Factors / Input: 45654645
+Thu Mar 17 10:57:40 CET 2016 - Prime checker / Input: 34
+Thu Mar 17 10:58:02 CET 2016 - Problem 75 / No input
+Thu Mar 17 10:58:02 CET 2016 - getting solution to Problem 75 from db
+Thu Mar 17 10:58:03 CET 2016 - Problem 67 / No input
+Thu Mar 17 10:58:03 CET 2016 - getting solution to Problem 67 from db
+Thu Mar 17 10:58:18 CET 2016 - Problem 2 / No input
+Thu Mar 17 10:58:18 CET 2016 - getting solution to Problem 2 from db
+Thu Mar 17 10:58:24 CET 2016 - Problem 3 / No input
+Thu Mar 17 10:58:24 CET 2016 - getting solution to Problem 3 from db
+Thu Mar 17 10:58:25 CET 2016 - Problem 4 / No input
+Thu Mar 17 10:58:25 CET 2016 - getting solution to Problem 4 from db
+Thu Mar 17 11:29:06 CET 2016 - Prime checker / Input: 456
+Thu Mar 17 11:29:16 CET 2016 - Prime checker / Input: 6456567
+Thu Mar 17 11:29:21 CET 2016 - Problem 67 / No input
+Thu Mar 17 11:29:21 CET 2016 - getting solution to Problem 67 from db
+Thu Mar 17 11:29:24 CET 2016 - Problem 2 / No input
+Thu Mar 17 11:29:24 CET 2016 - getting solution to Problem 2 from db
+Thu Mar 17 11:48:13 CET 2016 - Problem 3 / No input
+Thu Mar 17 11:48:13 CET 2016 - getting solution to Problem 3 from db
+Thu Mar 17 11:49:45 CET 2016 - Problem 4 / No input
+Thu Mar 17 11:49:45 CET 2016 - getting solution to Problem 4 from db
+Thu Mar 17 11:49:46 CET 2016 - Problem 7 / No input
+Thu Mar 17 11:49:46 CET 2016 - getting solution to Problem 7 from db
+Thu Mar 17 11:50:02 CET 2016 - No database connection --> com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Thu Mar 17 11:50:15 CET 2016 - Problem 2 / No input
+Thu Mar 17 11:50:19 CET 2016 - Problem 3 / No input
+Thu Mar 17 11:50:42 CET 2016 - No database connection --> com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Thu Mar 17 11:52:05 CET 2016 - No database connection --> com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+Thu Mar 17 11:52:12 CET 2016 - Prime Factors / Input: 3253445
+Thu Mar 17 11:53:52 CET 2016 - Problem 4 / No input
+Thu Mar 17 11:53:52 CET 2016 - getting solution to Problem 4 from db
+Thu Mar 17 11:54:30 CET 2016 - Problem 2 / No input
+Thu Mar 17 11:54:30 CET 2016 - getting solution to Problem 2 from db
+Thu Mar 17 12:45:31 CET 2016 - No database connection --> com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.

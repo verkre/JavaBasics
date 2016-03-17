@@ -9,11 +9,11 @@ package kreuter.primeseuler.actions;
  *
  * @author Vera Kreuter
  */
-public class ActionWelcome extends Action {
+public class ActionGUIWelcome extends Action {
     
     private Long inputNumber;
 
-    public ActionWelcome() {
+    public ActionGUIWelcome() {
         super("Start here", "This application offers some tools for prime numbers as well as solutions to some problems from projecteuler.com", false);
     }
 

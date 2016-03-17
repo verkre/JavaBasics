@@ -1,6 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
-import kreuter.primeseuler.PrimesUtils;
+import kreuter.primeseuler.utils.PrimesUtils;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 /**

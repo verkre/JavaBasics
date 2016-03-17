@@ -5,9 +5,9 @@
  */
 package kreuter.primeseuler.userinterface;
 
-import kreuter.primeseuler.actions.ActionWelcome;
+import kreuter.primeseuler.actions.ActionGUIWelcome;
 import kreuter.primeseuler.actions.Action;
-import kreuter.primeseuler.actions.ActionWelcomeEp;
+import kreuter.primeseuler.actions.ActionGUIWelcomeEp;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.PopupMenu;
@@ -28,7 +28,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import kreuter.primeseuler.Controller;
+import kreuter.primeseuler.MainController;
+import kreuter.primeseuler.utils.Logger;
 
 /**
  *
@@ -36,11 +37,10 @@ import kreuter.primeseuler.Controller;
  */
 public class ViewGUI extends View {
     
-    private JFrame frame;
-    private List<Action> actions;
-    private List<Action> epActions;
+    private final JFrame frame;
+    private final List<Action> actions;
+    private final List<Action> epActions;
     private Long inputLong;
-    private List<Long> inputLongs;
     Action firstAction;
     Action secondAction;
     Action thirdAction;
@@ -55,15 +55,13 @@ public class ViewGUI extends View {
     JTextArea epSolution;
     
     
-    public ViewGUI(Controller controller) {
-        this.actions = controller.getActions();
+    public ViewGUI(MainController controller) {
+        this.actions = controller.getMenuItems();
         this.epActions = controller.getEulerProblemActions();
-        this.inputLongs = new ArrayList<>();
-        // frame is instantiated in the constructor - is that correct?
         frame = new JFrame("Primes and Euler Problems");
         // REFACT the first actions are manually exchanged here (from Exit to Welcome). It works but it is kind of ugly
-        this.actions.set(0, new ActionWelcome());
-        this.epActions.set(0, new ActionWelcomeEp());
+        this.actions.set(0, new ActionGUIWelcome());
+        this.epActions.set(0, new ActionGUIWelcomeEp(controller.getEsc()));
         this.mainMenuPanels = new ArrayList<>();
         this.mainMenuResultTextAreas = new ArrayList();
         this.calculationPanels = new ArrayList();
@@ -72,12 +70,11 @@ public class ViewGUI extends View {
     }
     
     public static void main(String[] args) {
-        new ViewGUI(new Controller()).go();
+        new ViewGUI(new MainController()).go();
     }
     
     private void go() {
         setNiceLookAndFeel();
-        
         constructFrame();
     }
 
@@ -97,13 +94,13 @@ public class ViewGUI extends View {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frame.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            Logger.writeToLogFile("GUI: Look and Feel not found, using default Look and Feel");
         }
     }
     
     private void constructFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 400);
+        frame.setSize(800, 500);
         fillFrame(frame);
         frame.setVisible(true);
     }
@@ -189,10 +186,9 @@ public class ViewGUI extends View {
         epContentsPanel = new JPanel();
         epContentsPanel.setLayout(new BoxLayout(epContentsPanel, BoxLayout.PAGE_AXIS));
         JSplitPane epSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-        // to make the split pane non-resizable:
+        // make the split pane non-resizable:
         epSplitPane.setEnabled(false);
         epInfo = makeTextArea(epActions.get(0).getInfoText());
-//        epInfo.setPreferredSize(new Dimension(600, 200)); // frame size is 800x400
         epSolution = makeTextArea(epActions.get(0).getSolutionString());
         
         epSplitPane.add(new JScrollPane(epList));
@@ -289,26 +285,27 @@ public class ViewGUI extends View {
         }
     }
 
-    
-class NumberInputActionListener implements ActionListener {
-    private Action thisAction;
-    private JTextArea thisResultArea;
-    private JTextField thisTextField;
+     class NumberInputActionListener implements ActionListener {
 
-    public NumberInputActionListener(Action thisAction, JTextArea thisResultArea, JTextField thisTextField) {
-        this.thisAction = thisAction;
-        this.thisResultArea = thisResultArea;
-        this.thisTextField = thisTextField;
+        private final Action thisAction;
+        private final JTextArea thisResultArea;
+        private final JTextField thisTextField;
+
+        public NumberInputActionListener(Action thisAction, JTextArea thisResultArea, JTextField thisTextField) {
+            this.thisAction = thisAction;
+            this.thisResultArea = thisResultArea;
+            this.thisTextField = thisTextField;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            inputLong = getInputLongInt(thisTextField);
+            if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
+                thisResultArea.setText("Invalid input: " + thisTextField.getText() + ". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
+                return;
+            }
+            thisAction.setInputNumber(inputLong);
+            thisResultArea.setText(thisAction.getSolutionString());
+        }
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-                        inputLong = getInputLongInt(thisTextField);
-                        if (inputLong == null || thisAction.isValidInput(inputLong) == false) {
-                            thisResultArea.setText("Invalid input: " + thisTextField.getText() +". Please enter a number between " + thisAction.getLowerInputBound() + " and " + MAX_LONG + ".");
-                            return;
-                        }
-                        thisAction.setInputNumber(inputLong);
-                        thisResultArea.setText(thisAction.getSolutionString());
-                    }    }
 }

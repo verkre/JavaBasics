@@ -1,5 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
+import kreuter.primeseuler.utils.EulerProblemsUtils;
 import java.util.ArrayList;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
@@ -11,11 +12,11 @@ public class Ep75 extends EulerProblem {
     private static final int inputNumber = 1_500_000;
     
     public Ep75() {
-        super("75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75");
+        super("75", "Singular integer right triangles (Problem 75). This might take a few minutes!", "https://projecteuler.net/problem=75");
     }
     
     public Ep75(EulerSolutionsConnector esc) {
-        super("75", "Singular integer right triangles (Problem 75). This will take a few minutes!", "https://projecteuler.net/problem=75", esc);
+        super("75", "Singular integer right triangles (Problem 75). This might take a few minutes!", "https://projecteuler.net/problem=75", esc);
     }
     
     @Override

@@ -3,11 +3,11 @@ package kreuter.primeseuler.actions;
 /**
  * Main menu item/action: Exit the program.
  */
-public class ActionExit extends Action {
+public class ActionTUIExit extends Action {
     
     private Long inputNumber = null;
 
-    public ActionExit() {
+    public ActionTUIExit() {
         super("Exit", "Exit", false);
     }
     

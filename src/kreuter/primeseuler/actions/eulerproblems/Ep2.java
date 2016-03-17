@@ -1,5 +1,6 @@
 package kreuter.primeseuler.actions.eulerproblems;
 
+import kreuter.primeseuler.utils.FibonacciArray;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
 /**

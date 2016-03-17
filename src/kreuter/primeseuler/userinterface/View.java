@@ -7,7 +7,7 @@ package kreuter.primeseuler.userinterface;
 
 import java.util.InputMismatchException;
 import java.util.List;
-import kreuter.primeseuler.Controller;
+import kreuter.primeseuler.MainController;
 import kreuter.primeseuler.actions.Action;
 
 /**

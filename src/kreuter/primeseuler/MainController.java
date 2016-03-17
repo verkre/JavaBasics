@@ -1,36 +1,38 @@
 package kreuter.primeseuler;
 
+import kreuter.primeseuler.interfaces.Controller;
 import kreuter.primeseuler.actions.ActionListPrimeFactors;
 import kreuter.primeseuler.actions.ActionListPrimesBelow;
 import kreuter.primeseuler.actions.Action;
-import kreuter.primeseuler.actions.ActionExit;
+import kreuter.primeseuler.actions.ActionTUIExit;
 import kreuter.primeseuler.actions.ActionListPrimes;
-import kreuter.primeseuler.actions.ActionEulerProblems;
+import kreuter.primeseuler.actions.ActionEpSubcontroller;
 import kreuter.primeseuler.actions.ActionCheckPrime;
 import java.util.ArrayList;
 import java.util.List;
 import kreuter.primeseuler.database.DbConnection;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
 
-public class Controller {
+public class MainController implements Controller {
     
-    private ActionEulerProblems actionEulerProblems;
+    private ActionEpSubcontroller actionEulerProblems;
     private List<Action> eulerProblems;
     private EulerSolutionsConnector esc;
     
-    public Controller() {
-        this.actionEulerProblems = new ActionEulerProblems();
+    public MainController() {
+        this.actionEulerProblems = new ActionEpSubcontroller(this);
         DbConnection dbConnection = new DbConnection();
         if (dbConnection.connect()) {
             this.esc = new EulerSolutionsConnector(dbConnection);
-            this.actionEulerProblems = new ActionEulerProblems(esc);
+            this.actionEulerProblems = new ActionEpSubcontroller(this);
         } else {
-            this.actionEulerProblems = new ActionEulerProblems();
+            this.actionEulerProblems = new ActionEpSubcontroller();
         }
-        this.eulerProblems = actionEulerProblems.getEulerProblems();
+        this.eulerProblems = actionEulerProblems.getMenuItems();
     }
     
-    public List<Action> getActions() {
+    @Override
+    public ArrayList<Action> getMenuItems() {
         return collectActionObjects();
     }
     
@@ -50,7 +52,7 @@ public class Controller {
         // if it weren't a class attribute, it would be instantiated twice (once here, once to collect its own
         // actions).
         ArrayList<Action> availableActionObjects = new ArrayList<>();
-        availableActionObjects.add(new ActionExit());
+        availableActionObjects.add(new ActionTUIExit());
         availableActionObjects.add(new ActionCheckPrime());
         availableActionObjects.add(new ActionListPrimeFactors());
         availableActionObjects.add(new ActionListPrimes());
@@ -58,13 +60,8 @@ public class Controller {
         availableActionObjects.add(actionEulerProblems);
         return availableActionObjects;
     }
-    
-    // TODO
-        // possible PE problems that have to do with primes:
-        // -- problem 10: method to find all primes up to upperBound (first, learn to handle large numbers)
-        // -- problem 35: iterate over list of primes, permutate numbers (convert to string and back?) then check for primeness
-        // -- problem 41: permutations of 9 (8..) digits, check for primeness and find largest
-        // -- problem 49: 
-        // -- problem 50: add up sub-lists of prime list and check result for primeness
 
+    public EulerSolutionsConnector getEsc() {
+        return esc;
+    }
 }

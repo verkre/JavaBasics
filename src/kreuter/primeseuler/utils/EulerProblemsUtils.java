@@ -1,4 +1,4 @@
-package kreuter.primeseuler.actions.eulerproblems;
+package kreuter.primeseuler.utils;
 
 
 /**

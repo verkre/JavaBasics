@@ -1,4 +1,4 @@
-package kreuter.primeseuler;
+package kreuter.primeseuler.utils;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,9 +10,13 @@ import java.util.Date;
  */
 public class Logger {
     
+    private static FileWriter logFileWriter;
+    
     public static FileWriter getLogFileWriter() {
-        String logFilePath = "src/kreuter/primeseuler/log.txt";
-        FileWriter logFileWriter = null;
+        if (logFileWriter != null) {
+            return logFileWriter;
+        }
+        String logFilePath = "src/log.txt";
         try {
             logFileWriter = new FileWriter(logFilePath, true);
         } catch (IOException ex) {
@@ -23,16 +27,19 @@ public class Logger {
     
     public static boolean writeToLogFile(String stringToLog) {
         // write: Date, time, String
-
-        try (FileWriter logFileWriter = getLogFileWriter()) {
-            if (logFileWriter == null) {
-                System.out.println("logPrintWriter is null");
+        
+        try {
+            FileWriter writer = getLogFileWriter();
+            if (writer == null) {
+                System.out.println("logFileWriter is null");
                 return false;
             }
             String stringToWrite = new Date() + " - " + stringToLog + "\n";
-            logFileWriter.write(stringToWrite);
+            writer.write(stringToWrite);
+            writer.flush();
         } catch (IOException ex) {
             System.out.println("Logger could not write to logFileWriter");
+            return false;
         }
         return true;
 

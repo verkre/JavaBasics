@@ -1,6 +1,6 @@
 package kreuter.primeseuler.actions;
 
-import kreuter.primeseuler.PrimesUtils;
+import kreuter.primeseuler.utils.PrimesUtils;
 
 /**
  * Main menu item/action: Check a number (input from user) for primeness.
