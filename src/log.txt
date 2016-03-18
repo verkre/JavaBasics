@@ -125,3 +125,21 @@ Thu Mar 17 15:15:40 CET 2016 - Problem 3 / No input
 Thu Mar 17 15:15:46 CET 2016 - Problem 67 / No input
 Thu Mar 17 15:20:02 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
 Thu Mar 17 15:20:04 CET 2016 - Input file for problem 67 not found
+Fri Mar 18 08:34:57 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 08:35:01 CET 2016 - Could not read input file for problem 67
+Fri Mar 18 08:35:13 CET 2016 - Problem 7 / No input
+Fri Mar 18 08:37:05 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 08:37:08 CET 2016 - Could not read input file for problem 67
+Fri Mar 18 08:37:10 CET 2016 - Problem 7 / No input
+Fri Mar 18 08:37:37 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 08:37:40 CET 2016 - Could not read input file for problem 67
+Fri Mar 18 08:38:03 CET 2016 - Problem 7 / No input
+Fri Mar 18 08:38:35 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 08:38:38 CET 2016 - Could not read input file for problem 67
+Fri Mar 18 08:38:41 CET 2016 - Problem 7 / No input
+Fri Mar 18 08:39:32 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 08:39:35 CET 2016 - Problem 67 / No input
+Fri Mar 18 09:11:56 CET 2016 - AT STARTUP: No database connection --> class com.mysql.jdbc.exceptions.jdbc4.CommunicationsException
+Fri Mar 18 09:12:02 CET 2016 - Problem 2 / No input
+Fri Mar 18 09:12:03 CET 2016 - Problem 3 / No input
+Fri Mar 18 09:12:04 CET 2016 - Problem 67 / No input

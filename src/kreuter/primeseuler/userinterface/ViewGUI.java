@@ -66,10 +66,10 @@ public class ViewGUI extends View {
         this.actions.set(0, new ActionGUIWelcome());
         this.epActions.set(0, new ActionGUIWelcomeEp(controller.getEsc()));
         this.mainMenuPanels = new ArrayList<>();
-        this.mainMenuResultTextAreas = new ArrayList();
-        this.calculationPanels = new ArrayList();
-        this.inputNumberFields = new ArrayList();
-        this.startCalcButtons = new ArrayList();
+        this.mainMenuResultTextAreas = new ArrayList<>();
+        this.calculationPanels = new ArrayList<>();
+        this.inputNumberFields = new ArrayList<>();
+        this.startCalcButtons = new ArrayList<>();
     }
     
     public static void main(String[] args) {
@@ -177,7 +177,7 @@ public class ViewGUI extends View {
     
     private void fillEulerProblemsTab(JPanel epPanel) {
         EpListModel epListModel = new EpListModel(epActions);
-        JList epList = new JList(epListModel);
+        JList<Action> epList = new JList<>(epListModel);
         
         epList.addMouseListener(new MouseAdapter() {
             @Override

@@ -9,6 +9,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import kreuter.primeseuler.database.EulerSolutionsConnector;
@@ -58,9 +60,12 @@ public class Ep67 extends EulerProblem {
     @Override
     public long solve() {
         String inputFilePath = "src/p067_triangle.txt";
+        String inputFileUrl = "http://projecteuler.net/project/resources/p067_triangle.txt"; // TODO does not work with https
         List<List<Integer>> inputTriangle;
         try {
-            inputTriangle = readInputFile(inputFilePath);
+            inputTriangle = readInputFileFromURL(inputFileUrl);
+//        try {
+//            inputTriangle = readInputFile(inputFilePath);
         } catch (FileNotFoundException ex) {
             Logger.writeToLogFile("Input file for problem 67 not found");
             return 0;
@@ -91,6 +96,24 @@ public class Ep67 extends EulerProblem {
         List<List<Integer>> inputTriangle = new ArrayList<>();
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
+            while ((line = br.readLine()) != null) {
+                String[] lineArray = line.split(" ");
+                ArrayList<Integer> lineArrayInts = new ArrayList<>();
+                for (String intString : lineArray) {
+                    int nextInt = Integer.parseInt(intString);
+                    lineArrayInts.add(nextInt);
+                }
+                inputTriangle.add(lineArrayInts);
+            }
+        }
+        return inputTriangle;
+    }
+    
+    public List<List<Integer>> readInputFileFromURL(String url) throws FileNotFoundException, IOException {
+        List<List<Integer>> inputTriangle = new ArrayList<>();
+        String line;
+        URL inputUrl = new URL(url);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputUrl.openStream()))) {
             while ((line = br.readLine()) != null) {
                 String[] lineArray = line.split(" ");
                 ArrayList<Integer> lineArrayInts = new ArrayList<>();

@@ -14,10 +14,10 @@ import kreuter.primeseuler.actions.Action;
  *
  * @author Vera Kreuter
  */
-public class EpListModel extends AbstractListModel<Object> {
+public class EpListModel extends AbstractListModel<Action> {
     
 
-    private List<Action> epActions;
+    private final List<Action> epActions;
 
     public EpListModel(List<Action> epActions) {
         this.epActions = epActions;
@@ -30,7 +30,7 @@ public class EpListModel extends AbstractListModel<Object> {
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public Action getElementAt(int index) {
         return epActions.get(index);
     }
     
