@@ -143,3 +143,11 @@ Fri Mar 18 09:11:56 CET 2016 - AT STARTUP: No database connection --> class com.
 Fri Mar 18 09:12:02 CET 2016 - Problem 2 / No input
 Fri Mar 18 09:12:03 CET 2016 - Problem 3 / No input
 Fri Mar 18 09:12:04 CET 2016 - Problem 67 / No input
+Fri Mar 18 12:15:52 CET 2016 - getting solution to Problem 67 from db
+Fri Mar 18 12:15:52 CET 2016 - Problem 67 / No input
+Fri Mar 18 12:15:52 CET 2016 - getting solution to Problem 67 from db
+Fri Mar 18 12:15:55 CET 2016 - Problem 75 / No input
+Fri Mar 18 12:15:55 CET 2016 - getting solution to Problem 75 from db
+Fri Mar 18 12:16:05 CET 2016 - Primes up to n / Input: 657567
+Fri Mar 18 12:16:46 CET 2016 - Problem 7 / No input
+Fri Mar 18 12:16:46 CET 2016 - getting solution to Problem 7 from db

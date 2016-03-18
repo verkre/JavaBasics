@@ -54,7 +54,7 @@ public class MainController implements Controller {
         // if it weren't a class attribute, it would be instantiated twice (once here, once to collect its own
         // actions).
         ArrayList<Action> availableActionObjects = new ArrayList<>();
-        availableActionObjects.add(new ActionTUIExit());
+        availableActionObjects.add(new ActionTUIExit(esc));
         availableActionObjects.add(new ActionCheckPrime());
         availableActionObjects.add(new ActionListPrimeFactors());
         availableActionObjects.add(new ActionListPrimes());

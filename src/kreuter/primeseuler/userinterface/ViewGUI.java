@@ -15,6 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BoxLayout;
@@ -29,6 +32,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import kreuter.primeseuler.MainController;
+import kreuter.primeseuler.interfaces.Controller;
 import kreuter.primeseuler.utils.Logger;
 
 /**
@@ -55,9 +59,11 @@ public class ViewGUI extends View {
     JPanel epContentsPanel;
     JTextArea epInfo;
     JTextArea epSolution;
+    MainController controller;
     
     
     public ViewGUI(MainController controller) {
+        this.controller = controller;
         this.actions = controller.getMenuItems();
         this.epActions = controller.getEulerProblemActions();
         frame = new JFrame("Primes and Euler Problems");
@@ -102,7 +108,20 @@ public class ViewGUI extends View {
     }
     
     private void constructFrame() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                try {
+                    if (controller.getEsc() != null) {
+                        controller.getEsc().getConnection().close();
+                    }
+                } catch (SQLException ex) {
+                    // TODO do something with this exception?
+                }
+                System.exit(0);
+            }
+        });
         frame.setSize(800, 500);
         fillFrame(frame);
         frame.setVisible(true);
