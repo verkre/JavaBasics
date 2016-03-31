@@ -42,7 +42,8 @@ public class ActionEpSubcontroller extends Action implements Controller {
         availableEulerProblems.add(new Ep67());
         availableEulerProblems.add(new Ep75());
     }
-        
+    // REFACT the esc attribute is null anyway when there is no ESC present, so 
+    // we do not really need the second constructor
 
     @Override
     public String getInfoText() {
@@ -54,6 +55,7 @@ public class ActionEpSubcontroller extends Action implements Controller {
         while (new ViewTUI(this).displayAndChooseFromMenu()) {
         }
     }
+    // REFACT Controller should not call UI but the other way around. HOW???
 
     @Override
     public ArrayList<Action> getMenuItems() {
